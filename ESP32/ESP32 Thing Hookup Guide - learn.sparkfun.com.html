@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+          <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- mobile mode if small screen device -->
+    
+    <title>ESP32 Thing Hookup Guide - learn.sparkfun.com</title>
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/theme.github.css" type="text/css" media="screen">    <link rel="alternate" type="application/atom+xml" title="Education Blog" href="https://learn.sparkfun.com/feeds/blog">
+    <link rel="alternate" type="application/atom+xml" title="Tutorials" href="https://learn.sparkfun.com/feeds/tutorials">
+    <link rel="alternate" type="application/atom+xml" title="Education Blog Comments" href="https://learn.sparkfun.com/feeds/blog_comments">
+    <link rel="alternate" type="application/atom+xml" title="Tutorial Comments" href="https://learn.sparkfun.com/feeds/tutorial_comments">
+
+    <script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/leadflows.js.download" type="text/javascript" id="LeadFlows-2224003" crossorigin="anonymous" data-leadin-portal-id="2224003" data-leadin-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="2224003" data-hsjs-env="prod"></script><script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/messageswidgetshell.js.download" type="text/javascript" id="hubspot-messages-loader" data-loader="hs-scriptloader" data-hsjs-portal="2224003" data-hsjs-env="prod"></script><script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/2224003.js.download" type="text/javascript" id="hs-script-loader"></script><script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/2224003.js(1).download" type="text/javascript" id="messages-2224003"></script><script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/4761.js.download" async="" type="text/javascript"></script><script id="hs-analytics" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/2224003.js(2).download"></script><script async="" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/loader.js.download"></script><script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/988931021243392" async=""></script><script async="" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/fbevents.js.download"></script><script async="" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/analytics.js.download"></script><script type="text/javascript">
+      var SFECONFIG = {
+        dnt: false,
+        http_server: 'http://learn.sparkfun.com',
+        https_server: 'https://learn.sparkfun.com',
+        http_static: 'https://cdn.sparkfun.com',
+        learn_server: 'https://learn.sparkfun.com',
+        commerce_server: 'https://www.sparkfun.com',
+        base_url: '/',
+        url: '/',
+        controller: 'tutorials',
+        action: 'view',
+        entity_id: '',
+        auth: false,
+        sparkrev: '1508445428',
+        track_arduino_products: false,
+        search_key: 'xY6qr5Ui3V2UMA762D9Z'      };
+      var require = {
+        paths: {
+          'jqueryui': 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min'
+        },
+        baseUrl: '/js/',
+        urlArgs: "sparkrev=" + SFECONFIG.sparkrev,
+        deps: ['jqueryui'],
+        callback: function() {
+          $('#learn').learn();
+          $('#learn').sfeutil();
+          $.shared('domready');
+        }
+      };
+    </script>
+    <script src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/learn-built.js.download"></script>
+          <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-3404365-1', 'auto', {'allowLinker': true});
+      ga('require', 'linker');
+      ga('linker:autoLink', ['www.sparkfun.com', 'avc.sparkfun.com'] );
+      ga('require', 'displayfeatures');
+            ga('set', 'dimension1', 'Guest');
+      ga('send', 'pageview');
+
+      </script>
+        <script type="text/javascript">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '988931021243392');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    &lt;img height="1" width="1"src="https://www.facebook.com/tr?id=988931021243392&amp;ev=PageView&amp;noscript=1"/&gt;
+  </noscript>
+      <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jqueryui" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/jquery-ui.min.js.download"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="tutorial" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/tutorial.js.download"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery.imagesloaded" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/jquery.imagesloaded.js.download"></script><style type="text/css">.pika-single{z-index:9999;display:block;position:relative;color:#333;background:#fff;border:1px solid #ccc;border-bottom-color:#bbb;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.pika-single.is-hidden{display:none}.pika-single.is-bound{position:absolute;box-shadow:0 5px 15px -5px rgba(0,0,0,0.5)}.pika-single{*zoom:1}.pika-single:before,.pika-single:after{content:" ";display:table}.pika-single:after{clear:both}.pika-lendar{float:left;width:240px;margin:8px}.pika-title{position:relative;text-align:center}.pika-title select{cursor:pointer;position:absolute;z-index:9998;margin:0;left:0;top:5px;filter:alpha(opacity=0);opacity:0}.pika-label{display:inline-block;*display:inline;position:relative;z-index:9999;overflow:hidden;margin:0;padding:5px 3px;font-size:14px;line-height:20px;font-weight:bold;background-color:#fff}.pika-prev,.pika-next{display:block;cursor:pointer;position:relative;outline:none;border:0;padding:0;width:20px;height:30px;text-indent:20px;white-space:nowrap;overflow:hidden;background-color:transparent;background-position:center center;background-repeat:no-repeat;background-size:75% 75%;opacity:0.5;*position:absolute;*top:0}.pika-prev:hover,.pika-next:hover{opacity:1}.pika-prev.is-disabled,.pika-next.is-disabled{cursor:default;opacity:0.2}.pika-prev,.is-rtl .pika-next{float:left;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==");*left:0}.pika-next,.is-rtl .pika-prev{float:right;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=");*right:0}.pika-select{display:inline-block;*display:inline}.pika-table{width:100%;border-collapse:collapse;border-spacing:0;border:0}.pika-table th,.pika-table td{width:14.28571%;padding:0}.pika-table th{color:#999;font-size:12px;line-height:25px;font-weight:bold;text-align:center}.pika-table abbr{border-bottom:none;cursor:help}.pika-button{cursor:pointer;display:block;-moz-box-sizing:border-box;box-sizing:border-box;outline:none;border:0;margin:0;width:100%;padding:5px;color:#666;font-size:12px;line-height:15px;text-align:right;background:#f5f5f5}.is-today .pika-button{color:#3af;font-weight:bold}.is-selected .pika-button{color:#fff;font-weight:bold;background:#3af;box-shadow:inset 0 1px 3px #178fe5;border-radius:3px}.is-disabled .pika-button{pointer-events:none;cursor:default;color:#999;opacity:0.3}.pika-button:hover{color:#fff !important;background:#ff8000 !important;box-shadow:none !important;border-radius:3px !important}.pika-week{font-size:11px;color:#999}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset{border:0;padding:0;margin:0;max-width:500px}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-1 .hs-input{width:95%}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-1 .input{margin-right:8px}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-1 input[type="checkbox"],.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-1 input[type="radio"]{width:auto}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-2 .hs-form-field{width:50%;float:left}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-2 .input{margin-right:8px}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-3 .hs-form-field{width:32.7%;float:left}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 fieldset.form-columns-3 .input{margin-right:8px}.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 label.hs-hidden{visibility:hidden}.hsformerror{margin:0 0 2px;padding:2px 6px;height:auto;background-color:#fdd2d0;font-size:11px;border:1px solid #fcb3af;padding:4px 16px 4px 10px;color:#000;display:none;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fefefe), color-stop(100%, #fdd2d0));background-image:-webkit-linear-gradient(#fefefe, #fdd2d0);background-image:-moz-linear-gradient(#fefefe, #fdd2d0);background-image:-o-linear-gradient(#fefefe, #fdd2d0);background-image:linear-gradient(#fefefe,#fdd2d0);-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 0 6px #ddd;-moz-box-shadow:0 0 6px #ddd;box-shadow:0 0 6px #ddd;z-index:99999}.hsformerror em{border:10px solid;border-color:#fdd2d0 transparent transparent;bottom:-17px;display:block;height:0;left:60px;position:absolute;width:0}.hsformerror p{font-family:Lucida Grande,Lucida Sans Unicode,bitstream vera sans,trebuchet ms,verdana,sans-serif;margin:0;float:left;margin-right:8px}.hsformerror:hover{cursor:default}.hsformerror .close-form-error{float:right;display:inline;top:3px;position:absolute;font-family:Verdana !important;color:#b17c79 !important;cursor:pointer !important;font-size:11px !important;font-weight:normal !important}.hsformerror .close-form-error:hover{color:#cc8884}@media (max-width: 400px), (min-device-width: 320px) and (max-device-width: 480px){form.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 .form-columns-2 .hs-form-field,form.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 .form-columns-3 .hs-form-field{float:none;width:100%}form.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 .form-columns-2 .hs-form-field .hs-input,form.hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5 .form-columns-3 .hs-form-field .hs-input{width:95%}}</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="rainbow" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/rainbow.js.download"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="generic" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/generic.js.download"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="c" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/c.js.download"></script><style data-olark="true" type="text/css">.olark-key,#hbl_code,#olark-data{display: none !important;}</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="ZeroClipboard.min" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/ZeroClipboard.min.js.download"></script><style data-olark="true" type="text/css">@media print {#habla_beta_container_do_not_rely_on_div_classes_or_names {display: none !important}}</style><link data-olark="true" rel="stylesheet" href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/theme.css" type="text/css"></head>
+
+  <body id="learn" class="layout-default no-type tutorials-view no-touch" ontouchstart="" style=""><style type="text/css">html.hs-messages-widget-open.hs-messages-mobile,html.hs-messages-widget-open.hs-messages-mobile body{height:100%!important;overflow:hidden!important;position:relative!important}html.hs-messages-widget-open.hs-messages-mobile body{margin:0!important}#hubspot-messages-iframe-container{display:initial!important;z-index:2147483647;position:fixed!important;bottom:0!important;right:0!important}#hubspot-messages-iframe-container.internal{z-index:1016}#hubspot-messages-iframe-container .shadow{display:initial!important;z-index:-1;position:absolute;width:0;height:0;bottom:0;right:0;content:""}#hubspot-messages-iframe-container .shadow.active{width:400px;height:400px;background:radial-gradient(ellipse at bottom right,rgba(29,39,54,.16) 0,rgba(29,39,54,0) 72%)}#hubspot-messages-iframe-container iframe{display:initial!important;width:100%!important;height:100%!important;border:none!important;position:absolute!important;bottom:0!important;right:0!important}</style>
+            <!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Universal
+    URL of the webpage where the tag is expected to be placed: http://sparkfun.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 07/18/2016
+  -->
+  <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+  </script><iframe src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/activityi.html" width="1" height="1" frameborder="0" style="display:none"></iframe>
+  <noscript>
+    &lt;iframe src="https://5626816.fls.doubleclick.net/activityi;src=5626816;type=count0;cat=unive0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1?" width="1" height="1" frameborder="0" style="display:none"&gt;&lt;/iframe&gt;
+  </noscript>
+  <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+    
+    <div class="wrapper" itemscope="" itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://learn.sparkfun.com/">
+      <div class="wrapper-inner">
+
+    
+<div class="header">
+  <div class="container">
+
+    <!-- Mobile Nav Button -->
+    <div class="mobile-menu-container left">
+      <a id="nav_toggle" class="mobile-menu-button nav_toggle" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" aria-expanded="false"><span class="sfe-icon-hamburger"></span></a>
+              <a id="search_toggle" class="mobile-menu-button" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#"><span class="glyphicon glyphicon-search"></span></a>
+          </div>
+
+    <nav class="top-links">
+      <ul>
+        <li>
+          <a href="https://www.sparkfun.com/distributors">Find a Retailer</a>        </li>
+                  <li>
+            <div class="dropdown">
+              <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" id="phone_hours" type="button" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                Need Help?
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu pull-right need-help" role="menu" aria-labelledby="phone_hours">
+                <h4>Customer Service</h4>
+                <p><a href="https://www.sparkfun.com/orders/"><span class="glyphicon glyphicon-dashboard"></span> Track My Order</a></p>
+                <p><a href="https://www.sparkfun.com/support"><span class="glyphicon glyphicon-question-sign"></span> Frequently Asked Questions</a></p>
+                <p><a href="https://www.sparkfun.com/support#InternationalShipping"><span class="glyphicon glyphicon-globe"></span> International Shipping Info</a></p>
+                <p><a href="mailto:cservice@sparkfun.com"><span class="glyphicon glyphicon-envelope"></span> Send Email</a></p>
+                <p class="small text-muted">
+                  Mon-Fri, 9am to 12pm and<br>
+                  1pm to 5pm U.S. Mountain Time:
+                </p>
+                <p><span class="glyphicon glyphicon-earphone"></span> (303) 284-0979</p>
+                                  <p><a data-toggle="chatpopup" href="https://www.sparkfun.com/chat/popup"><span class="glyphicon glyphicon-comment"></span> Chat With Us</a></p>
+                              </div>
+            </div>
+          </li>
+              </ul>
+    </nav>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <a class="logo" href="https://www.sparkfun.com/">
+        <span class="sfe-icon-flame"></span>
+        <span class="sfe-icon-sparkfun" data-icon="🔥">
+          <span class="visuallyhidden">sparkfun.com</span>
+        </span>
+      </a>
+    </div>
+
+    <!-- Tabs -->
+    <!-- also edit mobile tabs in .tabs-container-mobile -->
+    <nav class="tabs-container hidden-xs">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+    <!-- Cart & User -->
+    <div class="user-container mobile-menu-container right">
+
+      <a id="account_toggle" class="mobile-menu-button" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#"><span class="glyphicon glyphicon-user"></span></a>
+
+              <div class="cart mobile-menu-button">
+          <a href="https://www.sparkfun.com/cart">
+            <span id="cart_status" class="sfe-icon-carticon cart-empty">
+              <span class="visuallyhidden">Shopping Cart</span>
+            </span>
+            <span class="cart_count">
+              <span id="items_in_cart">0</span>
+              <span id="cart_noun" class="visuallyhidden">items</span>
+            </span>
+          </a>
+        </div>
+      
+              <div class="user">
+          <!-- login modal trigger -->
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fesp32-thing-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">log in</a>
+          <a class="btn btn-default" href="https://www.sparkfun.com/account/make">register</a>        </div>
+      
+    </div>
+
+    <nav class="tabs-container-mobile visible-xs col-xs-12">
+      <ul>
+        <li class="shop "><a href="https://www.sparkfun.com/categories">Shop</a></li>
+        <li class="learn active"><a href="https://learn.sparkfun.com/">Learn</a></li>
+        <li class="blog "><a href="https://www.sparkfun.com/news">Blog</a></li>
+        <li class="support "><a href="https://www.sparkfun.com/support">Support</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Navigation / Search -->
+  <div class="main-nav-container">
+
+    <div class="container">
+
+      <nav class="product-nav">
+        <button type="button" class="product-menu" aria-expanded="false">
+          <span class="menu-icon sfe-icon-hamburger"></span>
+          <span class="product-menu-name">Product Menu</span>
+        </button>
+
+                  <form id="search_form" class="search" action="https://www.sparkfun.com/search/results" method="get" itemprop="potentialAction" itemscope="" itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="https://www.sparkfun.com/search/results?term={term}">
+            <div class="ui-widget">
+              <input name="term" id="global-search" class="form-control ui-autocomplete-input" type="text" value="" placeholder="find products, tutorials, etc..." itemprop="query-input" autocomplete="off">
+              <button type="submit" class="glyphicon glyphicon-search global-search-icon" aria-label="Search"></button>
+            </div>
+          </form>
+              </nav>
+
+      <nav class="sub-nav">
+        <ul>
+          <li>
+            <a href="http://www.sparkfuneducation.com/?__hstc=108804957.59a06dc8d43af720c92785b6ecf6eecb.1508433335756.1508516983917.1508525086626.3&amp;__hssc=108804957.1.1508525086626&amp;__hsfp=956807396" target="_blank">Education</a>
+          </li>
+          <li>
+            <a href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>          </li>
+          <li>
+            <a href="https://forum.sparkfun.com/" target="_blank">Forum</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="product-menu-container" tabindex="-1" aria-hidden="true">
+      <div class="container">
+
+        <div class="fixed-product-menu-container col-lg-2 col-sm-3 col-xs-12">
+          <div class="sub-nav-mobile product-menu-group">
+            <a class="product-menu-heading desktop-toggle" href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fesp32-thing-hookup-guide">Desktop Site</a>            <a class="product-menu-heading" href="http://www.sparkfuneducation.com/?__hstc=108804957.59a06dc8d43af720c92785b6ecf6eecb.1508433335756.1508516983917.1508525086626.3&amp;__hssc=108804957.1.1508525086626&amp;__hsfp=956807396" target="_blank">Education</a>
+            <a class="product-menu-heading" href="https://avc.sparkfun.com/"><span class="sfe-icon-avc"></span></a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories">All Categories</a>            <ul class="list-unstyled">
+            </ul>
+          </div>
+          <div class="product-menu-group">
+            <a class="product-menu-heading" href="https://www.sparkfun.com/categories/featured">Featured <span class="visible-xs pull-right glyphicon glyphicon-plus"></span></a>            <ul class="list-unstyled">
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/new_products">New Products</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/top"><span class="sfe-icon-flame"></span> Top Sellers</a></li>
+                              <li>
+                  <a href="https://www.sparkfun.com/spectacle" class="product-menu-item"><span class="sfe-icon-spectacle-glasses" style="color:#000000"></span> Spectacle</a>
+                </li>
+                            <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/283">SparkX</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/categories/sale">Sale</a></li>
+              <li><a class="product-menu-item" href="https://www.sparkfun.com/gift_certificates">Gift Certificates</a></li>
+            </ul>
+          </div>
+                      <a href="https://www.sparkfun.com/lilypad_sewable_electronics" class="hidden-xs">
+              <img class="img-responsive img-rounded center-block" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/lilypad-menu-image.jpg" alt="LilyPad Ecosystem">
+            </a>
+                  </div>
+
+                              <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/287" class="product-menu-heading">
+                 Brands                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/featured" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-flame" style="color:#ee2e22"></span> SparkFun                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/103" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-arduino" style="color:#00878f"></span> Arduino                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/233" class="product-menu-item">
+                                              <span class="product-menu-item-icon sfe-icon-rpi-multi-color" style="color:#ffffff"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> Raspberry Pi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/284" class="product-menu-item">
+                                               micro:bit                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/279" class="product-menu-item">
+                                               Espressif (ESP)                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/287" class="product-menu-item">
+                                               <small>all brands</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/2" class="product-menu-heading">
+                 Development                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/299" class="product-menu-item">
+                                               Single Board Comp.                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/300" class="product-menu-item">
+                                               Microcontrollers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/136" class="product-menu-item">
+                                               FPGA                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/149" class="product-menu-item">
+                                               Prototyping Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/1" class="product-menu-item">
+                                               Programmers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/2" class="product-menu-item">
+                                               <small>all development</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/23" class="product-menu-heading">
+                 Sensors                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/304" class="product-menu-item">
+                                               Movement                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/146" class="product-menu-item">
+                                               Biometrics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/102" class="product-menu-item">
+                                               Imaging                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/305" class="product-menu-item">
+                                               Environment                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/117" class="product-menu-item">
+                                               Capacitive                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/23" class="product-menu-item">
+                                               <small>all sensors</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/46" class="product-menu-heading">
+                 Tools                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/271" class="product-menu-item">
+                                               3D Printing                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/280" class="product-menu-item">
+                                               CNC                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/49" class="product-menu-item">
+                                               Soldering                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/47" class="product-menu-item">
+                                               Hand Tools                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/177" class="product-menu-item">
+                                               Instruments                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/46" class="product-menu-item">
+                                               <small>all tools</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/310" class="product-menu-heading">
+                 Miscellaneous                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/157" class="product-menu-item">
+                                               All Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/176" class="product-menu-item">
+                                               Books                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/311" class="product-menu-item">
+                                               Arts/Crafts Supplies                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/351" class="product-menu-item">
+                                               SD Cards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/130" class="product-menu-item">
+                                               Swag                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/310" class="product-menu-item">
+                                               <small>all misc</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/51" class="product-menu-heading">
+                 Components                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/89" class="product-menu-item">
+                                               LED &amp; Illumination                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/145" class="product-menu-item">
+                                               Buttons &amp; Switches                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/28" class="product-menu-item">
+                                               Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/76" class="product-menu-item">
+                                               LCDs                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/70" class="product-menu-item">
+                                               Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/51" class="product-menu-item">
+                                               <small>all components</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/204" class="product-menu-heading">
+                 E-Textiles                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/327" class="product-menu-item">
+                                               LilyPad                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/328" class="product-menu-item">
+                                               Sewable Electronics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/206" class="product-menu-item">
+                                               Materials                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/268" class="product-menu-item">
+                                               E-Textile Power                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/329" class="product-menu-item">
+                                               E-Textile Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/204" class="product-menu-item">
+                                               <small>all e-textiles</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/31" class="product-menu-heading">
+                 Robotics                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/pages/Actobotics" class="product-menu-item">
+                                               Actobotics                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/178" class="product-menu-item">
+                                               Motors &amp; Drivers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/330" class="product-menu-item">
+                                               Parts                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/155" class="product-menu-item">
+                                               Hardware                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/181" class="product-menu-item">
+                                               Robotics Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/31" class="product-menu-item">
+                                               <small>all robotics</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/16" class="product-menu-heading">
+                 Wireless &amp; IoT                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/115" class="product-menu-item">
+                                               Bluetooth                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/112" class="product-menu-item">
+                                               WiFi                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/338" class="product-menu-item">
+                                               Satellite                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/4" class="product-menu-item">
+                                               GPS                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/339" class="product-menu-item">
+                                               Wireless Kits                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/16" class="product-menu-item">
+                                               <small>all wireless/IoT</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                      <div class="product-menu-group col-lg-2 col-sm-3 col-xs-12">
+              <a href="https://www.sparkfun.com/categories/273" class="product-menu-heading">
+                 Audio                <span class="visible-xs pull-right glyphicon glyphicon-plus"></span>
+              </a>
+              <ul class="list-unstyled">
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/343" class="product-menu-item">
+                                               Audio Boards                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/342" class="product-menu-item">
+                                               Audio Cables                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/344" class="product-menu-item">
+                                               Speakers                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/345" class="product-menu-item">
+                                               Audio Chips                                          </a>
+                  </li>
+                                  <li>
+                    <a href="https://www.sparkfun.com/categories/273" class="product-menu-item">
+                                               <small>all audio</small>
+                                          </a>
+                  </li>
+                              </ul>
+            </div>
+                  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    
+    <div class="content">
+      <div class="container" id="airlock">
+
+        
+        <div class="main-title">
+  <ul class="breadcrumb">
+    <li><a href="https://learn.sparkfun.com/">Home</a></li>
+    <li><a href="https://learn.sparkfun.com/tutorials">Tutorials</a></li>
+    <li>ESP32 Thing Hookup Guide</li>
+      </ul>
+
+  <h1>
+    ESP32 Thing Hookup Guide  </h1>
+
+</div>
+
+
+<a id="nav_toggle_pages" class="nav_toggle" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#"><span>≡</span> Pages</a>
+
+<div id="tutorial" class="row">
+
+  <div class="col-sm-8" id="sections">
+
+    <div class="contributors">
+                      Contributors:
+                <a href="https://www.sparkfun.com/users/69916"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/f4c7d38e015f5dc7ca404c23b30305f4"> Jimb0</a>          </div>
+
+    <span class="fave_widget verbose">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="507">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">7</span>
+</span>    <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t507" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;googleplus&#39;);" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft507" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;tumblr&#39;);" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft507&amp;name=ESP32+Thing+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;reddit&#39;);" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft507" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;twitter&#39;);" href="https://twitter.com/intent/tweet?text=ESP32+Thing+Hookup+Guide&amp;url=http%3A%2F%2Fsfe.io%2Ft507&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;facebook&#39;);" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft507&amp;t=ESP32+Thing+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;pinterest&#39;);" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft507&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F5%2F0%2F7%2Fesp32-thing-iso.jpg&amp;description=ESP32+Thing+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+          <div class="section tutorial-page">
+        <h2 id="introduction">Introduction</h2>
+        <p>The <a href="https://www.sparkfun.com/products/13907">SparkFun ESP32 Thing</a> is a comprehensive development platform for <a href="https://espressif.com/en/products/hardware/esp32/overview">Espressif’s ESP32</a>, their super-charged version of the popular <a href="https://www.sparkfun.com/products/13711">ESP8266</a>. Like the 8266, the ESP32 is a <strong>WiFi</strong>-compatible microcontroller, but to that it adds support for <strong>Bluetooth low-energy</strong> (i.e BLE, BT4.0, Bluetooth Smart), and nearly 30 I/O pins. The ESP32’s power and versatility will help make it the foundation of IoT and connected projects for many years to come.</p>
+
+
+
+<div>
+<div class="tile product-tile has_addl_actions big grid " data-id="13907" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="DEV13907">
+      <meta itemprop="gtin13" content="0845156007646">
+    <meta itemprop="sku" content="DEV-13907">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13907">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/13907-01.jpg" alt="SparkFun ESP32 Thing" height="500" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="13907">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_13907" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13907 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_13907"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13907" itemprop="url">
+        <span itemprop="name">SparkFun ESP32 Thing</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      DEV-13907    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        The SparkFun ESP32 Thing is a comprehensive development platform for Espressif’s ESP32, their super-charged version of the …      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="19.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="19.95">19.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="3.7 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-half" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="3.7">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">47</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13907">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">35</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="13907" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+<p>The SparkFun ESP32 Thing equips the ESP32 with everything necessary to program, run, and develop on the wonderchip. In addition to the WiFi/BLE SoC, the Thing includes an <a href="https://www.sparkfun.com/products/13263">FTDI FT231x</a>, which converts USB to serial, and allows your computer to program and communicate with the microcontroller. It also features a <strong>lithium-polymer (LiPo) battery charger</strong>, so your ESP32 project can be truly wireless. Additionally, the board includes a handful of LEDs and buttons to aid in your development.</p>
+
+<h3>Covered In This Tutorial</h3>
+
+<p>This hookup guide serves as a primer on all things ESP32 Thing. It documents hardware features of the board, including a handful of assembly tips. Then it will delve into firmware development – including demonstrating how to add ESP32 support to the popular <strong>Arduino</strong> IDE.</p>
+
+<p>The tutorial is broken up into a handful of sections, which you can navigate through using the menu on the right. Those sections include:</p>
+
+<ul>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#hardware-overview">Hardware Overview</a> – An examination of the ESP32 Thing’s hardware layout and features, including an introduction to the ESP32’s I/O capabilities.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#assembly-tips">Assembly Tips</a> – Quick soldering tips and tricks.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#installing-the-esp32-arduino-core">Installing the ESP32 Arduino Core</a> – How to add ESP32 support to your computer’s Arduino development environment.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#arduino-example-blink">Arduino Example: Blink</a> – Verify that your ESP32 Thing and Arduino board definitions work with the classic blink sketch.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#arduino-example-wifi">Arduino Example: WiFi</a> – Connect your ESP32 to a local WiFi network, and start IoT'ing.</li>
+<li><a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#using-the-arduino-addon">Using the Arduino Addon</a> – Tips to help you get started creating Arduino sketches of your own.</li>
+</ul>
+
+
+<h3></h3>
+
+<p>  </p><div class="alert alert-warning"><b>Not Yet Implemented</b> The Arduino board definitions for the ESP32 are still a work in progress. There are a handful of peripherals and features that have yet to be implemented, including:<p></p>
+
+<ul>
+<li>Bluetooth</li>
+<li>Analog Input (<code>analogRead([pin])</code>)</li>
+<li>Analog Ouptut (<code>analogWrite([pin], [value])</code>)</li>
+<li>WiFi Server and WiFI UDP</li>
+<li>Real-Time Clock</li>
+<li>Touch-controller interface</li>
+</ul>
+
+
+<p>These peripherals are available (if, also, still in their infancy) in the <a href="https://github.com/espressif/esp-idf">IoT Development Framework</a> for the ESP32. If your application requires Bluetooth, analog input, or any of the features above, consider giving the <a href="https://github.com/espressif/esp-idf">ESP-IDF</a> a try!</p></div><p></p>
+
+<h3>Bill of Materials</h3>
+
+<p>The ESP32 Thing includes <em>almost</em> everything you’ll need to begin using and programming the WiFi/BT SoC. In fact, the only required extra is a <a href="https://www.sparkfun.com/products/10215">Micro-B USB Cable</a>. The ESP32 Thing’s USB interface can be used to both power and program the chip. Once you’re done programming the chip, a <a href="https://www.sparkfun.com/products/12890">5V Micro-B USB Wall Adapter</a> can be used to power the board.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="10215" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="CAB10215">
+    <meta itemprop="sku" content="CAB-10215">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/10215">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/10215-01.jpg" alt="USB micro-B Cable - 6 Foot" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="10215">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_10215" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_10215 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_10215"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/10215" itemprop="url">
+        <span itemprop="name">USB micro-B Cable - 6 Foot</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      CAB-10215    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        USB 2.0 type A to micro USB 5-pin. This is a new, smaller connector for USB devices. Micro USB connectors are about half the …      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="4.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="4.95">4.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.2 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.2">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">9</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="10215">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">5</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="10215" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="13244" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="CAB13244">
+    <meta itemprop="sku" content="CAB-13244">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13244">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/13244-01.jpg" alt="USB Micro-B Cable - 6&quot;" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="confirm_backorder" method="post">
+          <input type="hidden" name="id" value="13244">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_13244" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-default" value="Backorder">
+                  </form>
+      </div>
+      <div class="added_to_cart_13244 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_13244"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13244" itemprop="url">
+        <span itemprop="name">USB Micro-B Cable - 6"</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="out of stock"><span class="sfe-icon-stock-out"><span class="visuallyhidden">Out of stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      CAB-13244    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        This is a USB 2.0 type B to Micro-B 5-pin black cable. You know, the mini-B connector that usually comes with cell phones, Ca…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="1.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="1.95">1.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/OutOfStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-full" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">3</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13244">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">3</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="13244" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="12890" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="TOL12890">
+    <meta itemprop="sku" content="TOL-12890">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/12890">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/12890-01.jpg" alt="Wall Adapter Power Supply - 5V DC 2A (USB Micro-B)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="12890">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_12890" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_12890 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_12890"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/12890" itemprop="url">
+        <span itemprop="name">Wall Adapter Power Supply - 5V DC 2A (USB Micro-B)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      TOL-12890    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        This is a high quality switching 'wall wart' AC to DC 5V 2000mA USB Micro-B wall power supply manufactured specifically for S…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="5.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="5.95">5.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="3.5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-half" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="3.5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">14</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12890">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">7</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="12890" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="12016" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="CAB12016">
+      <meta itemprop="gtin13" content="0845156007042">
+    <meta itemprop="sku" content="CAB-12016">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/12016">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/12016-01.jpg" alt="SparkFun Cerberus USB Cable - 6ft" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="12016">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_12016" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_12016 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_12016"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/12016" itemprop="url">
+        <span itemprop="name">SparkFun Cerberus USB Cable - 6ft</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      CAB-12016    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        You've got the wrong USB cable. It doesn't matter which one you have, it's the wrong one. But what if you could have the righ…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="6.97"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="6.97">6.97</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-full" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">12</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="12016">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">21</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="12016" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<p>As an alternative power source, the ESP32 Thing includes support for <a href="https://www.sparkfun.com/search/results?term=lithium%20polymer&amp;tab=products">single-cell lithium-polymer (LiPo)</a> batteries, which plug into the board’s white 2-pin JST connector. LiPo’s are perfect for projects on-the-go, or those that just need a little extra umph. The board includes a <strong>LiPo charger</strong> – the rechargeable batteries can be juiced back up by plugging the Thing into a 5V USB source.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid retired" data-id="8483" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT08483">
+    <meta itemprop="sku" content="PRT-08483">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/retired/8483">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/Batt2AJST-01-L.jpg" alt="Lithium Ion Battery - 2000mAh" height="140" itemprop="image">
+    </a>
+
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/retired/8483" itemprop="url">
+        <span itemprop="name">Lithium Ion Battery - 2000mAh</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="Retired"><span class="sfe-icon-stock-retired"><span class="visuallyhidden">Retired</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-08483    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        These are very slim, extremely light weight batteries based on the new Polymer Lithium Ion chemistry. This is the highest ene…      </p>
+    
+  </div>
+
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">26</span>
+  </span>
+
+      <strong class="retired">Retired</strong>
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="8483">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">44</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="8483" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="13813" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT13813">
+    <meta itemprop="sku" content="PRT-13813">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13813">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/13813-01.jpg" alt="Lithium Ion Battery - 1Ah" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="13813">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_13813" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13813 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_13813"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13813" itemprop="url">
+        <span itemprop="name">Lithium Ion Battery - 1Ah</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-13813    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        These are very slim, extremely light weight batteries based on Lithium Ion chemistry. Each cell outputs a nominal 3.7V at 100…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="9.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="9.95">9.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="5 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-full" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="5">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">4</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13813">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">18</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="13813" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="13851" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT13851">
+    <meta itemprop="sku" content="PRT-13851">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/13851">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/13857-01.jpg" alt="Lithium Ion Battery - 400mAh" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="13851">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_13851" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_13851 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_13851"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/13851" itemprop="url">
+        <span itemprop="name">Lithium Ion Battery - 400mAh</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-13851    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        This is a very small, extremely lightweight battery based on Lithium Ion chemistry, with the highest energy density currently…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="4.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="4.95">4.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.8 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.8">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">5</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="13851">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">10</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="13851" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid retired" data-id="341" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT00341">
+    <meta itemprop="sku" content="PRT-00341">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/retired/341">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/00341-01b.jpg" alt="Lithium Ion Battery - 850mAh" height="140" itemprop="image">
+    </a>
+
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/retired/341" itemprop="url">
+        <span itemprop="name">Lithium Ion Battery - 850mAh</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="Retired"><span class="sfe-icon-stock-retired"><span class="visuallyhidden">Retired</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-00341    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        These are very slim, extremely light weight batteries based on the new Polymer Lithium Ion chemistry. This is the highest ene…      </p>
+    
+  </div>
+
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.7 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.7">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">11</span>
+  </span>
+
+      <strong class="retired">Retired</strong>
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="341">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">13</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="341" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<p>Finally, to connect the ESP32’s 28 I/O pins to external components, you’ll need to do some soldering. <a href="https://www.sparkfun.com/categories/49">Soldering tools</a>, including an <a href="https://www.sparkfun.com/products/9507">iron</a> and <a href="https://www.sparkfun.com/products/9325">solder</a>, are a must for any electronics workbench. And either <a href="https://www.sparkfun.com/products/116">headers</a> or <a href="https://www.sparkfun.com/products/11375">wire</a> are our recommended mate for soldering into the Thing’s pins.</p>
+
+
+
+<div class="tile-wrap">
+<div class="tile product-tile has_addl_actions  grid " data-id="116" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT00116">
+    <meta itemprop="sku" content="PRT-00116">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/116">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/00116-02-L.jpg" alt="Break Away Headers - Straight" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="116">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_116" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_116 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_116"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/116" itemprop="url">
+        <span itemprop="name">Break Away Headers - Straight</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-00116    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        A row of headers - break to fit. 40 pins that can be cut to any size. Used with custom PCBs or general custom headers.      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="1.5"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="1.50">1.50</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.6 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.6">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">20</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="116">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">63</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="116" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="9325" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="TOL09325">
+    <meta itemprop="sku" content="TOL-09325">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9325">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/09161-02-L.jpg" alt="Solder Lead Free - 100-gram Spool" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="9325">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_9325" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9325 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_9325"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9325" itemprop="url">
+        <span itemprop="name">Solder Lead Free - 100-gram Spool</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      TOL-09325    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        This is your basic spool of lead free solder with a water soluble resin core. 0.031" gauge and 100 grams. This is a good spoo…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="7.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="7.95">7.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.8 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-full" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.8">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">6</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9325">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">18</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="9325" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="9507" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="TOL09507">
+    <meta itemprop="sku" content="TOL-09507">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/9507">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/09507-01.jpg" alt="Soldering Iron - 30W (US, 110V)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="9507">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_9507" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_9507 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_9507"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/9507" itemprop="url">
+        <span itemprop="name">Soldering Iron - 30W (US, 110V)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      TOL-09507    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        This is a very simple fixed temp, quick heating, 30W 110/120 VAC soldering iron. We really enjoy using the more expensive iro…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="9.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="9.95">9.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="3.7 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-half" data-star-index="3"></span>
+          <span class="sfe-icon-star-empty" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="3.7">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">6</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="9507">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">14</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="9507" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+<div class="tile product-tile has_addl_actions  grid " data-id="11375" itemscope="" itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="SparkFun">
+  <meta itemprop="mpn" content="PRT11375">
+    <meta itemprop="sku" content="PRT-11375">
+
+  <div class="actions-wrap">
+
+    <a class="thumb" href="https://www.sparkfun.com/products/11375">
+      <img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/11367-04a.jpg" alt="Hook-Up Wire - Assortment (Stranded, 22 AWG)" height="140" itemprop="image">
+    </a>
+
+          <div class="actions" style="display:none">
+        <form class="form-inline" action="https://www.sparkfun.com/cart/add" data-cart-action="add" method="post">
+          <input type="hidden" name="id" value="11375">
+          <input type="hidden" name="qty" value="1">
+          <input type="hidden" name="csrf_token" value="75f5a6b584366469ad35b9d8de1a5a9a77b41e07a7e96424addc4aeeeb8f0e355e04032363ae3e9f06eb72cbd72cf965acabeaea501fa942d56aaa34fa6f9102">          <!-- Add to Cart -->
+          <div class="quantity-container">
+            <input aria-label="Quantity" type="text" name="qty" id="add_qty_11375" class="add_qty quantity form-control" data-spin-buttons="{&quot;min&quot;: 1, &quot;max&quot;: 10000}" value="1">
+          </div>
+                      <input type="submit" class="btn btn-cart btn-action" value="Add to Cart">
+                  </form>
+      </div>
+      <div class="added_to_cart_11375 hide added_to_cart" style="display: none;">
+        <p class="success-message">
+          added <strong class="added_qty_11375"></strong> to your <a href="https://www.sparkfun.com/cart">cart</a>!
+        </p>
+      </div>
+    
+  </div><!--/.actions-wrap-->
+
+  <div class="main">
+
+  
+    <h3 class="title">
+      <a href="https://www.sparkfun.com/products/11375" itemprop="url">
+        <span itemprop="name">Hook-Up Wire - Assortment (Stranded, 22 AWG)</span>
+      </a>
+    </h3>
+
+    <span class="bubbles" style="display:none">
+      
+  <a data-toggle="notify" href="https://learn.sparkfun.com/static/bubbles/" title="in stock"><span class="sfe-icon-stock-in"><span class="visuallyhidden">In stock</span></span></a>
+    </span>
+
+    <span class="sku" itemprop="sku">
+      PRT-11375    </span>
+
+          <p class="description" style="display:none" itemprop="description">
+        An assortment of colored wires: you know it's a beautiful thing. Six different colors of stranded wire in a cardboard dispens…      </p>
+    
+  </div>
+
+      <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <div class="prices">
+                <span class="price-sale">
+          <span class="price calculated" itemprop="price" content="16.95"><span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="16.95">16.95</span></span>
+        </span>
+      </div>
+              <link itemprop="availability" href="http://schema.org/InStock">
+          </div>
+  
+  
+  <span class="star_rating" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        
+<span class="product-rating" title="4.7 stars">
+          <span class="sfe-icon-star-full" data-star-index="0"></span>
+          <span class="sfe-icon-star-full" data-star-index="1"></span>
+          <span class="sfe-icon-star-full" data-star-index="2"></span>
+          <span class="sfe-icon-star-full" data-star-index="3"></span>
+          <span class="sfe-icon-star-half" data-star-index="4"></span>
+  </span>
+<meta itemprop="ratingValue" content="4.7">
+<meta itemprop="bestRating" content="5">
+<meta itemprop="worstRating" content="1">
+    <span class="count" itemprop="reviewCount">15</span>
+  </span>
+
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="products" data-entity-id="11375">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">21</span>
+</span>    <div class="dropdown wishlist-dropdown simple ">
+  <a class="btn btn-default btn-sm  dropdown-toggle" title="Add to wish list" data-toggle="dropdown" data-product-id="11375" data-source="add_product_tile" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="glyphicon glyphicon-list"></span>
+    <span class="name">Wish List</span>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+</div>
+  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+<h3>Suggested Reading</h3>
+
+<p>It may look intimidating, but the ESP32 Thing – especially when you take advantage of its Arduino compatibility – is a perfect IoT foundation for electronics users of all experience levels. There are, however, a few concepts you should be familiar with before venturing further into this tutorial. If any of the concepts below sound foreign to you, consider reading through that tutorial first:</p>
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="5">
+
+  <a href="https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/e/3/9/9/4/51d9fbe1ce395f7a2a000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">How to Solder: Through-Hole Soldering</h3>
+      </a>
+
+      <div class="description">
+      This tutorial covers everything you need to know about through-hole soldering.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="5">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">26</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="8">
+
+  <a href="https://learn.sparkfun.com/tutorials/serial-communication">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/7/d/f/9/9/50d24be7ce395f1f6c000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">Serial Communication</h3>
+      </a>
+
+      <div class="description">
+      Asynchronous serial communication concepts: packets, signal levels, baud rates, UARTs and more!    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="8">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">41</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="36">
+
+  <a href="https://learn.sparkfun.com/tutorials/how-to-power-a-project">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/3/6/Bench_Power_Supply.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">How to Power a Project</h3>
+      </a>
+
+      <div class="description">
+      A tutorial to help figure out the power requirements of your project.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="36">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">24</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="50">
+
+  <a href="https://learn.sparkfun.com/tutorials/what-is-an-arduino">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/3/b/6/e/b/512e66bece395f492b000000.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">What is an Arduino?</h3>
+      </a>
+
+      <div class="description">
+      What is this 'Arduino' thing anyway?    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="50">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">19</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+      </div>
+          <div class="section tutorial-page">
+        <h2 id="hardware-overview">Hardware Overview</h2>
+        <p>Espressif’s ESP32 is one of the most unique microcontrollers on the market. Its laundry list of features include:</p>
+
+<ul>
+<li>Dual-core Tensilica LX6 microprocessor</li>
+<li>Up to 240MHz clock frequency</li>
+<li>520kB internal SRAM</li>
+<li>Integrated 802.11 BGN WiFi transceiver</li>
+<li>Integrated dual-mode Bluetooth (classic and BLE)</li>
+<li>2.2 to 3.6V operating range</li>
+<li>2.5 µA deep sleep current</li>
+<li>32 GPIO</li>
+<li>10-electrode capacitive touch support</li>
+<li>Hardware accelerated encryption (AES, SHA2, ECC, RSA-4096)</li>
+</ul>
+
+
+<p>The ESP32 Thing is designed to surround the ESP32 with everything necessary to run and program the microcontroller, plus a few extra goodies to take advantage of the chip’s unique features.</p>
+
+<p style="text-align:center;"> <a href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/top-annotated.jpg"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/top-annotated.jpg" alt="Annotated top diagram"></a></p>
+
+<h3>Peripherals and I/O</h3>
+
+<p>The ESP32 features your standard fare of hardware peripherals, including:</p>
+
+<ul>
+<li>18 <a href="https://learn.sparkfun.com/tutorials/analog-to-digital-conversion">analog-to-digital converter</a> (ADC) channels</li>
+<li>3 <a href="https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi">SPI</a> interfaces</li>
+<li>3 <a href="https://learn.sparkfun.com/tutorials/serial-communication">UART</a> interfaces</li>
+<li>Two <a href="https://learn.sparkfun.com/tutorials/i2c">I<sup>2</sup>C</a> interfaces</li>
+<li>16 <a href="https://learn.sparkfun.com/tutorials/pulse-width-modulation">PWM</a> outputs</li>
+<li>2 digital-to-analog converters (DAC)</li>
+<li>Two I2S interfaces</li>
+</ul>
+
+
+<p>And, thanks to the chip’s <strong>pin multiplexing</strong> feature, those peripherals can be connected to just about any of the 28 broken out I/O pins. That means <em>you</em> decide which pins are RX, TX, MISO, MOSI, SCLK, SDA, SCL, etc.</p>
+
+<p>There are, however, a few hardware features – namely the ADC and DAC – which are assigned static pins. The graphical reference below helps demonstrate where you can find those peripherals (click to embiggen!).</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-graphical-datasheet-v02.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-thing-graphical-datasheet-v02.png" alt="Graphical datasheet"></a></p>
+
+<p style="text-align:center;"><em>Click the image for a closer look.</em></p>
+
+<p>One I<sup>2</sup>C, two of the UART interfaces, and one of the SPI interfaces can be assigned to any pin your project requires.</p>
+
+<div class="alert alert-warning"><h4>Input Only Pins: 34-39</h4>
+<p>Pins 34, 35, 36, 37, 38 and 39 <em>cannot</em> be configured as outputs, but they can be used as either digital inputs, analog inputs, or for other unique purposes. Also note that they <b>do not have internal pull-up or pull-down resistors</b>, like the other I/O pins.</p>
+<p>GPIO pins 36-39 are an integral part of the ultra low noise pre-amplifier for the ADC – they are wired up to 270pF capacitors, which help to configure the sampling time and noise of the pre-amp.</p>
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/schematic-crop-34-39.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/schematic-crop-34-39.png" alt="Schematic close up of pins 34-39"></a></p>
+<p style="text-align:center;"> <em>From the <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-schematic.pdf">ESP32 Thing Schematic</a>: GPIO 36-39 are tied together with caps. Those and pins 34 and 35 are input only!</em></p>
+</div>
+
+
+<h3>Powering the ESP32 Thing</h3>
+
+<p>The two main power inputs to the ESP32 Thing are <strong>USB</strong> and a <strong>single-cell lithium-polymer (LiPo)</strong> battery. If both USB and the LiPo are plugged into the board, the onboard charge controller will charge the LiPo battery at a rate of up to 500mA.</p>
+
+<div class="alert alert-danger"><p>The ESP32's operating voltage range is 2.2 to 3.6V. Under normal operation the ESP32 Thing will power the chip at 3.3V. The I/O pins are <strong>not 5V-tolerant</strong>! If you interface the board with 5V (or higher) components, you'll need to do some <a href="https://learn.sparkfun.com/tutorials/bi-directional-logic-level-converter-hookup-guide">level shifting.</a></p></div>
+
+
+<p>The <strong>3.3V regulator</strong> on the ESP32 Thing can <strong>reliably supply up to 600mA</strong>, which should be more than enough overhead for most projects. The ESP32 can pull as much as 250mA during RF transmissions, but we’ve generally measured it to consume around 150mA – even while actively transmitting over WiFi. The output of the regulator is also broken out to the sides of the board – the pins labeled “3V3.” These pins can be used to supply external components.</p>
+
+<p style="text-align:center;"> <a href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-power-signals.jpg"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-power-signals.jpg" alt="ESP32 power inputs/outputs"></a></p>
+
+<p>In addition to USB and battery connectors, the <strong>VBAT</strong>, and <strong>VUSB</strong> pins are all broken out to both sides of the board. These pins can be used as an alternative supply input to the Thing. The maximum, allowable voltage input to VUSB is 6V, and VBAT should not be connected to anything other than a LiPo battery. Alternatively, if you have a regulated voltage source between 2.2V and 3.6V, the “3V3” lines can be used to directly supply the ESP32 and its peripherals.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="assembly-tips">Assembly Tips</h2>
+        <p>The ESP32 Thing ships without anything soldered into the header pins – ensuring that you can mold the board to best fit your project. To use the chip’s pins you’ll need to solder <em>something</em> to the I/O and power rail vias broken out to either side of the board.</p>
+
+<div class="alert alert-success">New to soldering? Check out our <a href="https://learn.sparkfun.com/tutorials/how-to-solder---through-hole-soldering">Through-Hole Soldering Tutorial</a> for a quick introduction!</div>
+
+
+<p><em>What</em> you solder to the ESP32 Thing’s I/O pins is completely up to you. The header rows are breadboard-compatible, so you may want to solder <a href="https://www.sparkfun.com/products/116">male headers</a> in. (Mildly satisfying: the ESP32 Thing’s pair of 20-pin headers means you can get the most out of our 40-pin header strips.)</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing_2.jpg"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-thing_2.jpg" alt="ESP32 Thing with male headers soldered"></a></p>
+
+<p>Then plug it into the breadboard, hanging the USB and LiPo connectors off the end, and start wiring!</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-project.jpg"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-thing-project.jpg" alt="ESP32 Thing breadboard action shot"></a></p>
+
+<p style="text-align:center;"> <em>All those wires and components, and there are still plenty of GPIO left to use!</em></p>
+
+<p>Alternatively, <a href="https://www.sparkfun.com/products/115">female headers</a> (you may need two separate strips to solder all 40 pins), <a href="https://www.sparkfun.com/products/553">right-angle headers</a>, or <a href="https://www.sparkfun.com/products/11375">stranded wire</a> are all good options, depending on your project’s needs.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="installing-the-esp32-arduino-core">Installing the ESP32 Arduino Core</h2>
+        <p>The pair of Tensilica cores in the ESP32 are Xtensa-based – not your standard ARM or AVR. Fortunately, there is still a GNU compiler available for the ESP32, which opens up a a world of possible development environment (IDE) set ups! The rest of this tutorial covers setting up the Arduino IDE with ESP32 support, and documents a few simple example sketches to help get your WiFi/BLE microcontroller off the ground.</p>
+
+<div class="alert alert-info"><p>In abstracting away a lot of the complicated overhead, the Arduino IDE for the ESP32 also eliminates access to some of the SoC's more advanced features. If you'd like to try your hand at setting up a more <b>advanced toolchain</b> for the ESP32, we recommend checking out <a href="https://github.com/espressif/esp-idf">Espressif's esp-idf GitHub repository</a>. The esp-idf – short for IoT Development Framework – is Espressif's software development kit (SDK) for the ESP32.</p></div>
+
+
+<h3>Installing the ESP32 Core</h3>
+
+<p>Espressif’s official ESP32 Arduino core is hosted <a href="https://github.com/espressif/arduino-esp32">here on GitHub</a>. They don’t have an Arduino board manager install yet (it should be coming soon), but they do have a <a href="https://github.com/espressif/arduino-esp32/blob/master/README.md#installation-instructions">simple set of installation directions</a> to help.</p>
+
+<!-- Python no longer required for Windows -- comes default on Mac and Linux
+<div class="alert alert-success"><h4>Python Required</h4>
+<p><a href="https://github.com/espressif/arduino-esp32/blob/master/tools/esptool.py">esptool</a> &ndash; Espressif's bootloader utility program, used to upload code to the ESP32 &ndash; is a Python script. That's great because it's generally OS-agnostic, but it does require you to have Python installed on your computer. Python 2.7 to be more exact.</p>
+<p>If you don't have Python installed (Mac and Linux machines should come stock with Python), visit <a href="https://www.python.org/downloads/">python.org</a> to download it &ndash; make sure you get 2.7.x, not 3.x! Then follow along with the installer's instructions to install it on your system.</p>
+<p>One more note: you'll need to <strong>add Python's base directory to your PATH environment variable</strong>. For help with that, <a href="https://docs.python.org/2.7/using/windows.html#excursus-setting-environment-variables">check out this link</a>.</p></div>
+-->
+
+
+<h4>Clone or Download the Core</h4>
+
+<p>To install the ESP32 board definitions, you’ll need download the contents of the esp32-arduino repository, and place them in a “hardware/espressif/esp32” directory in your <a href="https://www.arduino.cc/en/Guide/Environment#toc7">Arduino sketchbook directory</a>. You can either download those files using the <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git command line tool</a>, or by downloading them from GitHub.</p>
+
+<div class="alert alert-warning">Alternatively, these files can be installed in your Arduino’s base directory. On Windows, that may be <code>C:/Program Files (x86)/Arduino/hardware</code> and on Mac that may be <code>/Applications/Arduino.app/Contents/Java/hardware</code>.</div>
+
+
+<p><strong>If you have git</strong>, open a terminal, navigate to your Arduino sketchbook, and type:</p>
+
+<pre><div data-code-id="code-0" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code>mkdir hardware
+cd hardware
+mkdir espressif
+cd espressif
+git clone https://github.com/espressif/arduino-esp32.git esp32
+</code></pre><div id="code-0" class="hide">mkdir hardware
+cd hardware
+mkdir espressif
+cd espressif
+git clone https://github.com/espressif/arduino-esp32.git esp32
+</div>
+
+<p>Those commands will make a “hardware” and “espressif” directories, then download the arduino-esp32 GitHub repository into an “esp32” folder.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-arduino-command-line.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-arduino-command-line.png" alt="Example terminal commands"></a></p>
+
+<p>If you <strong>don’t have git</strong>, <a href="https://github.com/espressif/arduino-esp32/archive/master.zip">click here to download the core</a> (or click “Download” &gt; “Download ZIP” on the GitHub page), and unzip it to an espressif/esp32 directory in your Arduino sketchbook.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-folder-windows.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-folder-windows.png" alt="Windows folder installation"></a></p>
+
+<p>“boards.txt”, “platform.txt”, and the cores, doc, tools, etc. folders should all live in the esp32 directory.</p>
+
+<h4>Install the Xtensa and ESP32 Tools</h4>
+
+<p>To compile code for the ESP32, you need the Xtensa GNU compiler collection (GCC) installed on your machine. <strong>Windows users</strong> can run <strong>get.exe</strong>, found in the “esp32/tools” folder.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-get-folder-windows.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-get-folder-windows.png" alt="Location of get.exe"></a></p>
+
+<p style="text-align:center;"> <em>Windows users can run “get.exe” to download the ESP32 software tools.</em></p>
+
+<p>Mac and Linux users should run the <a href="https://github.com/espressif/arduino-esp32/blob/master/tools/get.py">tools/get.py</a> python script to download the tools. Using a terminal, navigate to the <strong>esp32/tools</strong> folder. Then type:</p>
+
+<pre><div data-code-id="code-1" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code>python get.py
+</code></pre><div id="code-1" class="hide">python get.py
+</div>
+
+<p>The “get.py” python script will download the Xtensa GNU tools and the ESP32 software development kit (SDK), and unzip them to the proper location. You should see a few new folders in the “tools” directory, including “sdk” and “xtensa-esp32-elf” once it’s done.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="arduino-example-blink">Arduino Example: Blink</h2>
+        <p>With the ESP32 Arduino core installed, you’re ready to begin programming. If you haven’t already, <strong>plug the ESP32 Thing into your computer</strong> using a micro-B USB cable.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-breadboard.jpg"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/esp32-thing-breadboard.jpg" alt="ESP32 Thing plugged into breadboard"></a></p>
+
+<div class="alert alert-info"><h4>FTDI Drivers</h4>
+<p>If you've never connected an FTDI device to your computer before, you may need to install drivers for the USB-to-serial converter. Check out our <a href="https://learn.sparkfun.com/tutorials/how-to-install-ftdi-drivers">How to Install FTDI Drivers tutorial</a> for help with the installation.</p>
+</div>
+
+
+<p>Once the board is plugged in (and drivers installed), it should be assigned a unique port identifier. On Windows machines, this will be something like “COM#”, and on Macs or Linux computers it will come in the form of “/dev/tty.usbserial-XXXXXX.”</p>
+
+<h3>Select the Board and Port</h3>
+
+<p>Once the ESP32 Arduino core is installed, you should see an “ESP32 Dev Module” option under your “Tools” &gt; “Board” menu. Select that.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/arduino-board-select.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/arduino-board-select.png" alt="Arduino board select"></a></p>
+
+<p>Then select your ESP32 Thing’s serial port under the “Tools” &gt; “Port” menu.</p>
+
+<p style="text-align:center;"> <a href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/arduino-port-select.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/arduino-port-select.png" alt="Arduino port select"></a></p>
+
+<p>You can also select the “Upload Speed”. 921600 baud – the fastest selectable rate – will get the code loaded onto your ESP32 the fastest, but may fail to upload once-in-a-while. (It’s still way worth it for the speed increase!)</p>
+
+<h3>Loading Blink</h3>
+
+<p>To make sure your toolchain and board are properly set up, we’ll upload the simplest of sketches – Blink! The LED attached to GPIO 5 is perfect for this test. Plus, with the ESP32 attached to your computer, it’s a good time to test out serial. Copy and paste the example sketch below, into a fresh Arduino sketch:</p>
+
+<pre data-language="language:c
+,c
+"><div data-code-id="code-2" class="copy-code zeroclipboard-is-hover"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="keyword">int</span> ledPin <span class="keyword operator">=</span> <span class="constant numeric">5</span>;
+
+<span class="keyword">void</span> <span class="function call">setup</span>()
+{
+    <span class="function call">pinMode</span>(ledPin, OUTPUT);
+    Serial.<span class="function call">begin</span>(<span class="constant numeric">115200</span>);
+}
+
+<span class="keyword">void</span> <span class="function call">loop</span>()
+{
+    Serial.<span class="function call">println</span>(<span class="string">"Hello, world!"</span>);
+    <span class="function call">digitalWrite</span>(ledPin, HIGH);
+    <span class="function call">delay</span>(<span class="constant numeric">500</span>);
+    <span class="function call">digitalWrite</span>(ledPin, LOW);
+    <span class="function call">delay</span>(<span class="constant numeric">500</span>);
+}
+</code></pre><div id="code-2" class="hide">int ledPin = 5;
+
+void setup()
+{
+    pinMode(ledPin, OUTPUT);
+    Serial.begin(115200);
+}
+
+void loop()
+{
+    Serial.println("Hello, world!");
+    digitalWrite(ledPin, HIGH);
+    delay(500);
+    digitalWrite(ledPin, LOW);
+    delay(500);
+}
+</div>
+
+<p>With everything setup correctly, upload the code! Once the code finishes transferring, <strong>open the <a href="https://learn.sparkfun.com/tutorials/terminal-basics">serial monitor</a></strong> and set the baud rate to <strong>115200</strong>. You should see “Hello, world”’s begin to fly by.</p>
+
+<div class="alert alert-info">If the blue LED remains dimly lit, it's probably still sitting in the bootloader. After uploading a sketch, you may need to <b>tap the RST button</b> to get your ESP32 Thing to begin running the sketch.</div>
+
+
+<p style="text-align:center;"> <a href="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/serial-port-example.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/serial-port-example.png" alt="Example serial port output"></a></p>
+
+<p>You may also notice that when the ESP32 boots up it prints out a long sequence of debug messages. These are emitted every time the chip resets – always at 115200 baud.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="arduino-example-wifi">Arduino Example: WiFi</h2>
+        <p>The ESP32 Arduino core includes a handful of WiFi examples, which demonstrate everything from <a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiScan/WiFiScan.ino">scanning for nearby networks</a> to <a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiClient/WiFiClient.ino">sending data to data.sparkfun.com</a>. You can find the examples under the <strong>File</strong> &gt; <strong>Examples</strong> &gt; <strong>WiFi</strong> menu.</p>
+
+<p>Here’s another example using the WiFi library, which demonstrates how to connect to a nearby WiFi network and poll a remote domain (http://example.com/) as a client:</p>
+
+<pre data-language="language:c
+,c
+"><div data-code-id="code-3" class="copy-code"><button class="btn btn-default btn-sm">Copy Code</button></div><code class="rainbow"><span class="comment">#include &lt;WiFi.h&gt;</span>
+
+<span class="comment">// WiFi network name and password:</span>
+<span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> networkName <span class="keyword operator">=</span> <span class="string">"YOUR_NETWORK_HERE"</span>;
+<span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> networkPswd <span class="keyword operator">=</span> <span class="string">"YOUR_PASSWORD_HERE"</span>;
+
+<span class="comment">// Internet domain to request from:</span>
+<span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> hostDomain <span class="keyword operator">=</span> <span class="string">"example.com"</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> hostPort <span class="keyword operator">=</span> <span class="constant numeric">80</span>;
+
+<span class="keyword">const</span> <span class="keyword">int</span> BUTTON_PIN <span class="keyword operator">=</span> <span class="constant numeric">0</span>;
+<span class="keyword">const</span> <span class="keyword">int</span> LED_PIN <span class="keyword operator">=</span> <span class="constant numeric">5</span>;
+
+<span class="keyword">void</span> <span class="function call">setup</span>()
+{
+  <span class="comment">// Initilize hardware:</span>
+  Serial.<span class="function call">begin</span>(<span class="constant numeric">115200</span>);
+  <span class="function call">pinMode</span>(BUTTON_PIN, INPUT_PULLUP);
+  <span class="function call">pinMode</span>(LED_PIN, OUTPUT);
+
+  <span class="comment">// Connect to the WiFi network (see function below loop)</span>
+  <span class="function call">connectToWiFi</span>(networkName, networkPswd);
+
+  <span class="function call">digitalWrite</span>(LED_PIN, LOW); <span class="comment">// LED off</span>
+  Serial.<span class="keyword">print</span>(<span class="string">"Press button 0 to connect to "</span>);
+  Serial.<span class="function call">println</span>(hostDomain);
+}
+
+<span class="keyword">void</span> <span class="function call">loop</span>()
+{
+  <span class="keyword">if</span> (<span class="function call">digitalRead</span>(BUTTON_PIN) <span class="keyword operator">=</span><span class="keyword operator">=</span> LOW)
+  { <span class="comment">// Check if button has been pressed</span>
+    <span class="keyword">while</span> (<span class="function call">digitalRead</span>(BUTTON_PIN) <span class="keyword operator">=</span><span class="keyword operator">=</span> LOW)
+      ; <span class="comment">// Wait for button to be released</span>
+
+    <span class="function call">digitalWrite</span>(LED_PIN, HIGH); <span class="comment">// Turn on LED</span>
+    <span class="function call">requestURL</span>(hostDomain, hostPort); <span class="comment">// Connect to server</span>
+    <span class="function call">digitalWrite</span>(LED_PIN, LOW); <span class="comment">// Turn off LED</span>
+  }
+}
+
+<span class="keyword">void</span> <span class="function call">connectToWiFi</span>(<span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> ssid, <span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> pwd)
+{
+  <span class="keyword">int</span> ledState <span class="keyword operator">=</span> <span class="constant numeric">0</span>;
+
+  <span class="function call">printLine</span>();
+  Serial.<span class="function call">println</span>(<span class="string">"Connecting to WiFi network: "</span> <span class="keyword operator">+</span> <span class="keyword">String</span>(ssid));
+
+  WiFi.<span class="function call">begin</span>(ssid, pwd);
+
+  <span class="keyword">while</span> (WiFi.<span class="function call">status</span>() <span class="keyword operator">!</span><span class="keyword operator">=</span> WL_CONNECTED) 
+  {
+    <span class="comment">// Blink LED while we're connecting:</span>
+    <span class="function call">digitalWrite</span>(LED_PIN, ledState);
+    ledState <span class="keyword operator">=</span> (ledState <span class="keyword operator">+</span> <span class="constant numeric">1</span>) % <span class="constant numeric">2</span>; <span class="comment">// Flip ledState</span>
+    <span class="function call">delay</span>(<span class="constant numeric">500</span>);
+    Serial.<span class="keyword">print</span>(<span class="string">"."</span>);
+  }
+
+  Serial.<span class="function call">println</span>();
+  Serial.<span class="function call">println</span>(<span class="string">"WiFi connected!"</span>);
+  Serial.<span class="keyword">print</span>(<span class="string">"IP address: "</span>);
+  Serial.<span class="function call">println</span>(WiFi.<span class="function call">localIP</span>());
+}
+
+<span class="keyword">void</span> <span class="function call">requestURL</span>(<span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword operator">*</span> host, uint8_t port)
+{
+  <span class="function call">printLine</span>();
+  Serial.<span class="function call">println</span>(<span class="string">"Connecting to domain: "</span> <span class="keyword operator">+</span> <span class="keyword">String</span>(host));
+
+  <span class="comment">// Use WiFiClient class to create TCP connections</span>
+  WiFiClient client;
+  <span class="keyword">if</span> (<span class="keyword operator">!</span>client.<span class="function call">connect</span>(host, port))
+  {
+    Serial.<span class="function call">println</span>(<span class="string">"connection failed"</span>);
+    <span class="keyword">return</span>;
+  }
+  Serial.<span class="function call">println</span>(<span class="string">"Connected!"</span>);
+  <span class="function call">printLine</span>();
+
+  <span class="comment">// This will send the request to the server</span>
+  client.<span class="keyword">print</span>((<span class="keyword">String</span>)"GET / HTTP/<span class="constant numeric">1.1</span>\r\n" <span class="keyword operator">+</span>
+               <span class="string">"Host: "</span> <span class="keyword operator">+</span> <span class="keyword">String</span>(host) <span class="keyword operator">+</span> <span class="string">"\r\n"</span> <span class="keyword operator">+</span>
+               <span class="string">"Connection: close\r\n\r\n"</span>);
+  <span class="keyword">unsigned</span> <span class="keyword">long</span> timeout <span class="keyword operator">=</span> <span class="function call">millis</span>();
+  <span class="keyword">while</span> (client.<span class="function call">available</span>() <span class="keyword operator">=</span><span class="keyword operator">=</span> <span class="constant numeric">0</span>) 
+  {
+    <span class="keyword">if</span> (<span class="function call">millis</span>() <span class="keyword operator">-</span> timeout <span class="keyword operator">&gt;</span> <span class="constant numeric">5000</span>) 
+    {
+      Serial.<span class="function call">println</span>(<span class="string">"&gt;&gt;&gt; Client Timeout !"</span>);
+      client.<span class="function call">stop</span>();
+      <span class="keyword">return</span>;
+    }
+  }
+
+  <span class="comment">// Read all the lines of the reply from server and print them to Serial</span>
+  <span class="keyword">while</span> (client.<span class="function call">available</span>()) 
+  {
+    <span class="keyword">String</span> line <span class="keyword operator">=</span> client.<span class="function call">readStringUntil</span>(<span class="string">'\r'</span>);
+    Serial.<span class="keyword">print</span>(line);
+  }
+
+  Serial.<span class="function call">println</span>();
+  Serial.<span class="function call">println</span>(<span class="string">"closing connection"</span>);
+  client.<span class="function call">stop</span>();
+}
+
+<span class="keyword">void</span> <span class="function call">printLine</span>()
+{
+  Serial.<span class="function call">println</span>();
+  <span class="keyword">for</span> (<span class="keyword">int</span> i<span class="keyword operator">=</span><span class="constant numeric">0</span>; i<span class="keyword operator">&lt;</span><span class="constant numeric">30</span>; i<span class="keyword operator">+</span><span class="keyword operator">+</span>)
+    Serial.<span class="keyword">print</span>(<span class="string">"-"</span>);
+  Serial.<span class="function call">println</span>();
+}
+</code></pre><div id="code-3" class="hide">#include &lt;WiFi.h&gt;
+
+// WiFi network name and password:
+const char * networkName = "YOUR_NETWORK_HERE";
+const char * networkPswd = "YOUR_PASSWORD_HERE";
+
+// Internet domain to request from:
+const char * hostDomain = "example.com";
+const int hostPort = 80;
+
+const int BUTTON_PIN = 0;
+const int LED_PIN = 5;
+
+void setup()
+{
+  // Initilize hardware:
+  Serial.begin(115200);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
+
+  // Connect to the WiFi network (see function below loop)
+  connectToWiFi(networkName, networkPswd);
+
+  digitalWrite(LED_PIN, LOW); // LED off
+  Serial.print("Press button 0 to connect to ");
+  Serial.println(hostDomain);
+}
+
+void loop()
+{
+  if (digitalRead(BUTTON_PIN) == LOW)
+  { // Check if button has been pressed
+    while (digitalRead(BUTTON_PIN) == LOW)
+      ; // Wait for button to be released
+
+    digitalWrite(LED_PIN, HIGH); // Turn on LED
+    requestURL(hostDomain, hostPort); // Connect to server
+    digitalWrite(LED_PIN, LOW); // Turn off LED
+  }
+}
+
+void connectToWiFi(const char * ssid, const char * pwd)
+{
+  int ledState = 0;
+
+  printLine();
+  Serial.println("Connecting to WiFi network: " + String(ssid));
+
+  WiFi.begin(ssid, pwd);
+
+  while (WiFi.status() != WL_CONNECTED) 
+  {
+    // Blink LED while we're connecting:
+    digitalWrite(LED_PIN, ledState);
+    ledState = (ledState + 1) % 2; // Flip ledState
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println();
+  Serial.println("WiFi connected!");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void requestURL(const char * host, uint8_t port)
+{
+  printLine();
+  Serial.println("Connecting to domain: " + String(host));
+
+  // Use WiFiClient class to create TCP connections
+  WiFiClient client;
+  if (!client.connect(host, port))
+  {
+    Serial.println("connection failed");
+    return;
+  }
+  Serial.println("Connected!");
+  printLine();
+
+  // This will send the request to the server
+  client.print((String)"GET / HTTP/1.1\r\n" +
+               "Host: " + String(host) + "\r\n" +
+               "Connection: close\r\n\r\n");
+  unsigned long timeout = millis();
+  while (client.available() == 0) 
+  {
+    if (millis() - timeout &gt; 5000) 
+    {
+      Serial.println("&gt;&gt;&gt; Client Timeout !");
+      client.stop();
+      return;
+    }
+  }
+
+  // Read all the lines of the reply from server and print them to Serial
+  while (client.available()) 
+  {
+    String line = client.readStringUntil('\r');
+    Serial.print(line);
+  }
+
+  Serial.println();
+  Serial.println("closing connection");
+  client.stop();
+}
+
+void printLine()
+{
+  Serial.println();
+  for (int i=0; i&lt;30; i++)
+    Serial.print("-");
+  Serial.println();
+}
+</div>
+
+<p>Make sure you fill in the <code>networkName</code> and <code>networkPswd</code> variables with the name (SSID) and password of your WiFi network! Once you’ve done that and uploaded the code, open your <strong>serial monitor</strong>.</p>
+
+<p style="text-align:center;"> <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/wifi-example-serial.png"><img src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/wifi-example-serial.png" alt="WiFi example serial terminal output"></a></p>
+
+<p>After your ESP32 connects to the WiFi network, it will wait for you to press the “0” button. Tapping that will cause the ESP32 to make an HTTP request to <a href="http://example.com/">example.com</a>. You should see a string of HTTP headers and HTML similar to the screenshot above.</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="using-the-arduino-addon">Using the Arduino Addon</h2>
+        <p>Before we leave you, here are a few tips, tricks, and gotchya’s to look out for while you’re using the ESP32 Arduino core.</p>
+
+<h3>Pin Mapping</h3>
+
+<p>The pin number you use for <code>digitalWrite([pin], [value])</code> or <code>digitalRead([pin])</code> should match those printed onto the board. You can also reference the <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-graphical-datasheet-v02.png">graphical datasheet</a>, if the tiny numbers are a strain on the eyes.</p>
+
+<p>Both I<sup>2</sup>C interfaces are supported by the <strong>Wire library</strong>. The SDA and SCL pins are assigned, by default, to pins 21 and 22.</p>
+
+<center><table style="width:33%" class="table table-striped table-bordered">
+<tbody><tr><th style="text-align:center">I<sup>2</sup>C Signal</th><th style="text-align:center">ESP32 Pin</th></tr>
+<tr style="text-align:center"><td>SDA</td><td>21</td></tr>
+<tr style="text-align:center"><td>SCL</td><td>22</td></tr>
+</tbody></table></center>
+
+
+<p>And the <strong>SPI library</strong> should support all three possible SPI interfaces. By default, here are the pin mappings for those interfaces:</p>
+
+<center><table style="width:33%" class="table table-striped table-bordered">
+<tbody><tr><th style="text-align:center">SPI Signal</th><th style="text-align:center">ESP32 Pin</th></tr>
+<tr style="text-align:center"><td>MOSI</td><td>23</td></tr>
+<tr style="text-align:center"><td>MISO</td><td>19</td></tr>
+<tr style="text-align:center"><td>SCLK</td><td>18</td></tr>
+<tr style="text-align:center"><td>SS</td><td>5</td></tr>
+</tbody></table></center>
+
+
+<p>In addition to SPI and I<sup>2</sup>C, the Arduino core also supports interrupts on any pin with the <code>attachInterrupt()</code> function.</p>
+
+<h3>Not Yet Implemented</h3>
+
+<p>The Arduino board definitions for the ESP32 are still a work in progress. There are a handful of peripherals and features that have yet to be implemented, including:</p>
+
+<ul>
+<li>Bluetooth</li>
+<li>Analog Input (<code>analogRead([pin])</code>)</li>
+<li>Analog Ouptut (<code>analogWrite([pin], [value])</code>)</li>
+<li>WiFi Server and WiFI UDP</li>
+<li>Real-Time Clock</li>
+<li>Touch-controller interface</li>
+</ul>
+
+
+<p>These peripherals are available (if, also, still in their infancy) in the <a href="https://github.com/espressif/esp-idf">IoT Development Framework</a> for the ESP32. If your application requires Bluetooth, analog input, or any of the features above, consider giving the ESP-IDF a try!</p>      </div>
+          <div class="section tutorial-page">
+        <h2 id="resources--going-further">Resources and Going Further</h2>
+        <p>The ESP32 Thing’s design is <strong>open-source</strong>! You can download, view, and modify the <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-v10.zip">Eagle files</a> (PCB design), checkout the <a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-schematic.pdf">schematic</a>, or suggest revisions on the <a href="https://github.com/sparkfun/ESP32_Thing">ESP32 Thing GitHub repository</a>.</p>
+
+<p>The ESP32 is still in its infancy, but resources are popping up all over the place for the chip. Check out some of these links for more information, documentation, and examples.</p>
+
+<ul>
+<li><a href="http://esp32.com/">ESP32.com</a> – Great forums, where you can discuss ESP32 news, get help, or show off your project.</li>
+<li><a href="http://espressif.com/en/products/hardware/esp32/resources">Espressif ESP32 Resource Page</a> – A great source for the latest datasheets, reference manuals, and software tools.</li>
+<li><a href="https://github.com/espressif">Espressif GitHub Repositories</a> – Espressif is efforting to be as open-source as possible. Among other things, you’ll find repositories for <a href="https://github.com/espressif/arduino-esp32">Arduino ESP32 support</a>, <a href="https://github.com/espressif/esp-idf">SDK’s</a>, and even a <a href="https://github.com/espressif/esp32-nesemu">proof-of-concept NES emulator</a> hosted on their GitHub page.</li>
+</ul>
+
+
+<h3>Going Further</h3>
+
+<ul>
+<li><a href="https://github.com/espressif/esp-idf">ESP-IDF – IoT Development Framework</a> – If you want to take your development environment up a step from Arduino, this should be your first step into ESP32 software development. Some notes on the IDF:
+
+<ul>
+<li>The IDF is well-documented. Check out the <a href="https://github.com/espressif/esp-idf#setting-up-esp-idf">set up guides</a> (for Windows, Mac or Linux) for help getting your environment set up. For help with the API’s and data structures, check out <a href="http://esp-idf.readthedocs.io/en/latest/">esp32.info</a>.</li>
+<li>There are a handful of <a href="https://github.com/espressif/esp-idf/tree/master/examples">example applications</a>, including a <strong>BLE Advertising</strong> example, which works as a proof-of-concept for the ESP32’s Bluetooth support.</li>
+<li>Use the <a href="https://github.com/espressif/esp-idf-template">ESP-IDF project template</a>, once you’re ready to start creating applications of your own.</li>
+</ul>
+</li>
+<li><a href="http://www.blynk.cc/">Blynk</a> – Blynk allows you to control IoT development boards with an easily configurable iOS/Android app. And it already supports the ESP32!
+
+<ul>
+<li>Download the <a href="https://github.com/blynkkk/blynk-library">Blynk Arduino Library</a> and load the <a href="https://github.com/blynkkk/blynk-library/blob/master/examples/Boards_WiFi/ESP32/ESP32.ino">ESP32 example</a> onto your ESP32 Thing. Then download the app and start blinking!</li>
+</ul>
+</li>
+</ul>
+
+
+<p>If you need some project inspiration, we’ve got plenty of tutorials to stir your mind. Check out some of these IoT-focused projects and get making!</p>
+
+
+<div class="tile-wrap">
+  <div class="tile tutorial-tile has_addl_actions  grid" data-id="478">
+
+  <a href="https://learn.sparkfun.com/tutorials/led-cloud-connected-cloud">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/4/7/8/Cloud_Screenshot.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">LED Cloud-Connected Cloud</h3>
+      </a>
+
+      <div class="description">
+      Make an RGB colored cloud light! You can also control it from your phone, or hook up to the weather!
+    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="478">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">16</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="483">
+
+  <a href="https://learn.sparkfun.com/tutorials/photon-remote-temperature-sensor">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/4/8/3/RTS_FinSysOut_Test1.JPG)"></div>
+      </div>
+    
+    
+    <h3 class="title">Photon Remote Temperature Sensor</h3>
+      </a>
+
+      <div class="description">
+      Learn how to build your own Internet-connect, solar-powered temperature collection station using the Photon from Particle.     </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="483">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">10</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="493">
+
+  <a href="https://learn.sparkfun.com/tutorials/esp8266-powered-propane-poofer">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/4/9/3/12466116_10153370524028527_1736780082453415786_o.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">ESP8266 Powered Propane Poofer</h3>
+      </a>
+
+      <div class="description">
+      Learn how Nick Poole built a WiFi controlled fire-cannon using the ESP8266 Thing Dev Board!    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="493">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">1</span>
+</span>  </div>
+
+</div>
+<div class="tile tutorial-tile has_addl_actions  grid" data-id="528">
+
+  <a href="https://learn.sparkfun.com/tutorials/iot-industrial-scale">
+          <div class="thumb-wrap">
+        <div class="thumb" style="background-image:url(https://cdn.sparkfun.com/c/264-148/assets/learn_tutorials/5/2/8/FinalScale-JumpTest1.jpg)"></div>
+      </div>
+    
+    
+    <h3 class="title">IoT Industrial Scale</h3>
+      </a>
+
+      <div class="description">
+      What does a baby elephant weigh? How much impact force does a jump have? Answer these questions and more by building your very own IoT industrial scale using the  SparkFun OpenScale.    </div>
+  
+  
+  <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="learn_tutorials" data-entity-id="528">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">3</span>
+</span>  </div>
+
+</div>
+</div>
+
+  <div class="clearfix"></div>
+
+
+
+
+
+<div class="clearfix">
+<div class="tile-wrap">
+  <div class="tile blog-tile has_addl_actions" data-id="2484">
+  <a href="https://www.sparkfun.com/news/2484" title="September 21, 2017: This week Alex designs an OLED clock using the ESP32 Thing.">
+              <div class="thumb" style="background-image:url(https://cdn.sparkfun.com//assets/home_page_posts/2/4/8/4/OLED-Clock.gif)"></div>
+        <h3 class="title">Enginursday: OLED Clock</h3>
+          <div class="metaline">
+        <span class="meta">September 21, 2017</span>
+              </div>
+      </a>
+    <div class="addl_actions">
+    <span class="fave_widget simple">
+  <a href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" class="fave_btn " title="Add to favorites" data-entity="blog_posts" data-entity-id="2484">
+    <span class="fave_yes">
+      <span class="glyphicon glyphicon-heart"></span>
+      <span class="name">Favorited</span>
+    </span>
+    <span class="fave_no">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+      <span class="name">Favorite</span>
+    </span>
+  </a>
+  <span class="fave_count">7</span>
+</span>  </div>
+</div>
+</div>
+
+  <div class="clearfix"></div>
+</div>
+      </div>
+    
+        <div class="share-link-inline">
+
+  <a class="share-link-toggle" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">
+    <span class="share-title">
+      <span class="sfe-icon-share"></span>
+      Share    </span>
+  </a>
+
+  <div class="share-link-inner dialog">
+    Use this URL to share:<br>
+    <input class="form-control input-sm" type="text" value="http://sfe.io/t507" onclick="$(this).select();">
+
+    <div class="share-social">
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;googleplus&#39;);" href="https://plus.google.com/share?url=http%3A%2F%2Fsfe.io%2Ft507" title="Share on Google+"><span class="sfe-icon-google-plus hidetext"><span>Share on Google+</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;tumblr&#39;);" href="https://www.tumblr.com/share/link?url=http%3A%2F%2Fsfe.io%2Ft507&amp;name=ESP32+Thing+Hookup+Guide" title="Share on Tumblr"><span class="sfe-icon-tumblr hidetext"><span>Share on Tumblr</span></span></a>
+
+      <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;reddit&#39;);" href="https://www.reddit.com/submit?url=http%3A%2F%2Fsfe.io%2Ft507" title="Submit to reddit"><span class="sfe-icon-reddit hidetext"><span>Submit to reddi</span></span></a>
+
+    </div>
+
+    </div>
+  
+  <div class="share-social">
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;twitter&#39;);" href="https://twitter.com/intent/tweet?text=ESP32+Thing+Hookup+Guide&amp;url=http%3A%2F%2Fsfe.io%2Ft507&amp;via=sparkfun" title="Share on Twitter"><span class="sfe-icon-twitter hidetext"><span>Share on Twitter</span></span></a>
+
+    <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;facebook&#39;);" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fsfe.io%2Ft507&amp;t=ESP32+Thing+Hookup+Guide" title="Share on Facebook"><span class="sfe-icon-facebook-nobox hidetext"><span>Share on Facebook</span></span></a>
+
+          <a rel="nofollow" onclick="return $(this).sfeutil(&#39;track_link&#39;,this,&#39;Share&#39;,&#39;clicked&#39;,&#39;pinterest&#39;);" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Fsfe.io%2Ft507&amp;media=https%3A%2F%2Fcdn.sparkfun.com%2F%2Fr%2F500-1000%2Fassets%2Flearn_tutorials%2F5%2F0%2F7%2Fesp32-thing-iso.jpg&amp;description=ESP32+Thing+Hookup+Guide" title="Pin It"><span class="sfe-icon-pinterest hidetext"><span>Pin It</span></span></a>
+    
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <div class="col-sm-4" id="nav-pages">
+    <div id="sidebar_affix" class="affix">
+
+      <div id="tutorial-pages" class="list-group">
+        <a class="list-group-item"><b>Sections</b></a>
+                          <a data-pagename="introduction" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#introduction">
+            Introduction          </a>
+                  <a data-pagename="hardware-overview" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#hardware-overview">
+            Hardware Overview          </a>
+                  <a data-pagename="assembly-tips" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#assembly-tips">
+            Assembly Tips          </a>
+                  <a data-pagename="installing-the-esp32-arduino-core" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#installing-the-esp32-arduino-core">
+            Installing the ESP32 Arduino Core          </a>
+                  <a data-pagename="arduino-example-blink" class="list-group-item active" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#arduino-example-blink">
+            Arduino Example: Blink          </a>
+                  <a data-pagename="arduino-example-wifi" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#arduino-example-wifi">
+            Arduino Example: WiFi          </a>
+                  <a data-pagename="using-the-arduino-addon" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#using-the-arduino-addon">
+            Using the Arduino Addon          </a>
+                  <a data-pagename="resources--going-further" class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#resources--going-further">
+            Resources and Going Further          </a>
+              </div>
+
+      <div class="list-group">
+        <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide/discuss">
+          Comments
+          <span class="badge">30</span>
+        </a>
+                  <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide/introduction">
+            View Paginated
+          </a>
+                <a class="list-group-item" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#" onclick="window.print(); return false;">
+          Print
+        </a>
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>Tags</b></li>
+        <li class="list-group-item"><ul class="tags-list">
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/bluetooth">Bluetooth</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/esp32">ESP32</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/hookup">Hookup</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/internet-of-things">Internet of Things</a>  </li>
+  <li>
+    <a class="tag" href="https://learn.sparkfun.com/tutorials/tags/wifi">WiFi</a>  </li>
+</ul>
+</li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item"><b>License</b></li>
+        <li class="list-group-item">
+          <span class="sfe-icon-cc">
+            <span class="visuallyhidden">Creative Commons</span>
+          </span>
+          <small>tutorials are <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="new">CC BY-SA 4.0</a></small>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  require(['tutorial', 'jquery.imagesloaded'], function() {
+    $('#tutorial').tutorial();
+  });
+</script>
+
+      </div> <!-- /container -->
+    </div> <!-- /content -->
+
+    
+<footer>
+
+<div class="social">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="sharing-ingenuity">
+          <span class="sfe-icon-flame"></span>
+          <span class="text"><span class="text-top">Start<br></span>something.</span>
+        </div>
+        <ul class="spew">
+          <li><a href="https://www.github.com/sparkfun" target="_blank" class="sfe-icon-github"><span class="visuallyhidden">GitHub</span></a></li>
+          <li><a href="https://www.youtube.com/sparkfun" target="_blank" class="sfe-icon-youtube"><span class="visuallyhidden">YouTube</span></a></li>
+          <li><a href="https://www.vimeo.com/sparkfun" target="_blank" class="sfe-icon-vimeo"><span class="visuallyhidden">Vimeo</span></a></li>
+          <li><a href="https://www.facebook.com/SparkFun" target="_blank" class="sfe-icon-facebook"><span class="visuallyhidden">Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/sparkfun/" target="_blank" class="sfe-icon-instagram"><span class="visuallyhidden">Instagram</span></a></li>
+          <li><a href="https://plus.google.com/106084846822083498483/" target="_blank" class="sfe-icon-google-plus"><span class="visuallyhidden">Google Plus</span></a></li>
+          <li><a href="https://www.flickr.com/photos/sparkfun/" target="_blank" class="sfe-icon-flickr"><span class="visuallyhidden">Flickr</span></a></li>
+          <li><a href="https://twitter.com/#!/sparkfun" target="_blank" class="sfe-icon-twitter"><span class="visuallyhidden">Twitter</span></a></li>
+          <li><a href="https://www.sparkfun.com/feeds" class="sfe-icon-feed"><span class="visuallyhidden">RSS</span></a></li>
+        </ul>
+        <div class="newsletter">
+          <!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/v2.js.download"></script>
+<script>
+  hbspt.forms.create({
+    css: '',
+    cssClass: 'hubspot-newsletter-subscribe',
+    portalId: '2224003',
+    formId: 'd2b17dd4-e1bb-406a-ba41-44c19dcd0376'
+  });
+</script><div class="hbspt-form" id="hbspt-form-1508525084391"><form novalidate="" accept-charset="UTF-8" action="https://forms.hubspot.com/uploads/form/v2/2224003/d2b17dd4-e1bb-406a-ba41-44c19dcd0376" enctype="multipart/form-data" id="hsForm_d2b17dd4-e1bb-406a-ba41-44c19dcd0376" method="POST" class="hubspot-newsletter-subscribe hs-form hs-form-private hs-form-d2b17dd4-e1bb-406a-ba41-44c19dcd0376_edb8b144-5c9a-44a7-a4b8-07834ab3c1f5" data-form-id="d2b17dd4-e1bb-406a-ba41-44c19dcd0376" data-portal-id="2224003" data-reactid=".hbspt-forms-0"><div class="hs_email field hs-form-field" data-reactid=".hbspt-forms-0.0:$0"><label class="" placeholder="Enter your " for="email-d2b17dd4-e1bb-406a-ba41-44c19dcd0376" data-reactid=".hbspt-forms-0.0:$0.0"><span data-reactid=".hbspt-forms-0.0:$0.0.0"></span></label><legend class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.0:$0.1"></legend><div class="input" data-reactid=".hbspt-forms-0.0:$0.$email"><input id="email-d2b17dd4-e1bb-406a-ba41-44c19dcd0376" class="hs-input" type="email" name="email" placeholder="" value="" data-reactid=".hbspt-forms-0.0:$0.$email.0"></div></div><div class="hs_submit" data-reactid=".hbspt-forms-0.3"><div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.3.0"></div><div class="actions" data-reactid=".hbspt-forms-0.3.1"><input type="submit" value="SUBSCRIBE TO EDUCATOR NEWSLETTER" class="hs-button primary large" data-reactid=".hbspt-forms-0.3.1.0"></div></div><input name="hs_context" type="hidden" value="{&quot;rumScriptExecuteTime&quot;:2150.665,&quot;rumServiceResponseTime&quot;:2493.8450000000003,&quot;rumFormRenderTime&quot;:234.32499999999982,&quot;rumTotalRequestTime&quot;:231.95499999999993,&quot;css&quot;:&quot;&quot;,&quot;pageUrl&quot;:&quot;https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide&quot;,&quot;pageTitle&quot;:&quot;ESP32 Thing Hookup Guide - learn.sparkfun.com&quot;,&quot;source&quot;:&quot;FormsNext-static-1.629&quot;,&quot;isHostedOnHubspot&quot;:false,&quot;timestamp&quot;:1508525085213,&quot;userAgent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36&quot;,&quot;referrer&quot;:&quot;https://www.google.co.uk/&quot;,&quot;hutk&quot;:&quot;59a06dc8d43af720c92785b6ecf6eecb&quot;,&quot;originalEmbedContext&quot;:{&quot;css&quot;:&quot;&quot;,&quot;cssClass&quot;:&quot;hubspot-newsletter-subscribe&quot;,&quot;portalId&quot;:&quot;2224003&quot;,&quot;formId&quot;:&quot;d2b17dd4-e1bb-406a-ba41-44c19dcd0376&quot;,&quot;target&quot;:&quot;#hbspt-form-1508525084391&quot;,&quot;redirectUrl&quot;:&quot;&quot;,&quot;inlineMessage&quot;:&quot;You&#39;ve been successfully signed up!&quot;},&quot;recentFieldsCookie&quot;:{},&quot;boolCheckBoxFields&quot;:&quot;&quot;,&quot;dateFields&quot;:&quot;&quot;,&quot;redirectUrl&quot;:&quot;&quot;,&quot;smartFields&quot;:{},&quot;urlParams&quot;:{},&quot;formValidity&quot;:{},&quot;correlationId&quot;:&quot;a842e2f4-ef1b-43df-a8c8-7d1080bbbb2c&quot;,&quot;disableCookieSubmission&quot;:false,&quot;usingInvisibleRecaptcha&quot;:false,&quot;isFallback&quot;:false}" data-reactid=".hbspt-forms-0.4"></form></div>
+        </div>
+      </div>
+    </div><!-- end .row -->
+  </div><!-- end .container -->
+</div><!-- end .social -->
+
+<div class="container">
+
+    <div class="row">
+
+    <div class="subfooter subfooter-about">
+      <p>
+        In 2003, CU student Nate Seidle blew a power supply in his dorm room and, in lieu of a way to order easy replacements, decided to start his own company. Since then, SparkFun has been committed to sustainably helping our world achieve electronics literacy from our headquarters in Boulder, Colorado.
+      </p>
+      <p>
+        No matter your vision, SparkFun's products and resources are designed to make the world of electronics more accessible. In addition to over 2,000 open source components and widgets, SparkFun offers curriculum, training and online tutorials designed to help demystify the wonderful world of embedded electronics. We're here to help you start something.
+      </p>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>About Us</b>
+            </li><li><a href="https://www.sparkfun.com/about_sparkfun">About SparkFun</a></li>
+	    <li><a href="http://www.sparkfuneducation.com/?__hstc=108804957.59a06dc8d43af720c92785b6ecf6eecb.1508433335756.1508516983917.1508525086626.3&amp;__hssc=108804957.1.1508525086626&amp;__hsfp=956807396" target="_blank">SparkFun Education <span class="glyphicon glyphicon-new-window"></span></a></li><a href="http://www.sparkfuneducation.com/?__hstc=108804957.59a06dc8d43af720c92785b6ecf6eecb.1508433335756.1508516983917.1508525086626.3&amp;__hssc=108804957.1.1508525086626&amp;__hsfp=956807396" target="_blank">
+	    </a><li><a href="http://www.sparkfuneducation.com/?__hstc=108804957.59a06dc8d43af720c92785b6ecf6eecb.1508433335756.1508516983917.1508525086626.3&amp;__hssc=108804957.1.1508525086626&amp;__hsfp=956807396" target="_blank"></a><a title="RSS Feeds" href="https://www.sparkfun.com/feeds">Feeds <span class="sfe-icon-feed"></span></a></li>
+            <li><a href="https://www.sparkfun.com/jobs">Jobs</a></li>
+            <li><a href="https://www.sparkfun.com/static/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Help</b></li>
+            <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+            <li><a href="https://www.sparkfun.com/support#ShippingPolicy">Shipping</a></li>
+            <li><a href="https://www.sparkfun.com/returns">Return Policy</a></li>
+            <li><a href="https://www.sparkfun.com/static/faq">FAQ</a></li>
+                      </ul>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Programs</b></li>
+	    <li><a href="https://www.sparkfun.com/sponsorships">Become a Community Partner</a>	      </li><li><ul><li><a href="https://www.sparkfun.com/cpp">Community Stories</a></li></ul></li>
+	    
+            <li><a href="https://www.sparkfun.com/project_calls">Tell Us About Your Project</a></li>
+            <li><a href="https://learn.sparkfun.com/tutorials/how-to-sell-your-widget-on-sparkfun">Sell Your Widget on SparkFun</a></li>
+            <li><a href="https://www.sparkfun.com/distributors/apply">Become a SparkFun Distributor</a></li>
+            <li><a href="https://www.sparkfun.com/volume">Large Volume Sales</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul>
+            <li><b>Community</b></li>
+            <li><a href="https://forum.sparkfun.com/">Forum</a></li>
+            <li><a href="https://www.sparkfun.com/news/263">SparkFun IRC Channel</a></li>
+            <li><a href="https://www.sparkfun.com/quiz">Take the SparkFun Quiz</a></li>
+            <li><a href="https://www.kickstarter.com/pages/sparkfun">SparkFun Kickstarter Projects</a></li>
+            <li><a href="https://www.sparkfun.com/distributors">Distributors</a></li>
+          </ul>
+        </div>
+
+      </div><!-- end .row -->
+
+    </div>
+
+    <div id="feedback" class="subfooter subfooter-woym">
+      <form id="woym_form" class="feedback" action="https://learn.sparkfun.com/feedback/mind.json" onsubmit="$(this).sfeutil(&#39;mind_feedback&#39;); return false;" method="POST">
+        <div class="error" id="error_feedback" style="display: none"></div>
+        <input type="hidden" name="sparkaptcha" id="sparkaptcha" value="0">
+
+        <div class="form-group">
+          <label for="feedback_textarea" class="control-label">What's on your mind?</label>
+          <div class="controls">
+            <textarea id="feedback_textarea" class="form-control" name="feedback_text" required=""></textarea>
+            <div class="error" id="error_feedback_text" style="display: none"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_dest" class="control-label">For which department?</label>
+          <select name="dest" class="form-control" id="feedback_dest">
+            <option value="general">General</option>
+            <option value="cust">Customer Service</option>
+            <option value="tech">Tech Support</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback_email" class="control-label">
+            Please include your email address if you'd like us to respond to a specific question.
+          </label>
+
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text" class="form-control" id="feedback_email" name="email" placeholder="email address">
+          </div>
+          <div class="error" id="error_feedback_email" style="display: none"></div>
+
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+  </div><!-- end .row -->
+  
+  <ul class="copyleft">
+    <li>SparkFun Electronics <a href="https://www.sparkfun.com/news/300">®</a></li>
+    <li><a href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=6333+Dry+Creek+Parkway,+Niwot,+CO+80503">Niwot, Colorado</a></li>
+    <li><a href="https://www.sparkfun.com/support">Customer Service</a></li>
+    <li><a href="https://www.sparkfun.com/sitemap">Site Map</a></li>
+    <li><a href="https://www.sparkfun.com/terms">Terms of Service</a></li>
+    <li><a href="https://www.sparkfun.com/privacy">Privacy Policy</a></li>
+    <li class="desktop-toggle">
+              <a href="https://www.sparkfun.com/account/mobile_toggle?redirect=%2Flearn%2Ftutorials%2Fesp32-thing-hookup-guide">Desktop Site</a>          </li>
+  </ul>
+
+</div><!-- end .container -->
+
+</footer>
+
+    <div class="nav-account">
+  <ul class="nav nav-tabs">
+    <li class="visible-xs">
+      <a class="nav-toggle-account back" href="https://learn.sparkfun.com/tutorials/esp32-thing-hookup-guide#">Your Account</a>
+    </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/login?redirect=%2Flearn%2Ftutorials%2Fesp32-thing-hookup-guide" data-toggle="modal" data-target="#login_modal" data-remote="false">Log In</a>
+      </li>
+          <li class="">
+        <a href="https://www.sparkfun.com/account/make">Register</a>
+      </li>
+      </ul>
+</div>
+
+      </div><!-- end .wrapper-inner -->
+    </div><!-- end .wrapper -->
+
+    <!-- Login Modal -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log In</h4>
+        <p class="modal-header-msg"></p>
+      </div>
+      <div class="modal-body">
+        <form role="form" action="https://www.sparkfun.com/account/login" method="post">
+          <input type="hidden" name="redirect" value="/learn/tutorials/esp32-thing-hookup-guide">
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" tabindex="1" name="user" id="login-username" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input tabindex="2" type="password" name="passwd" id="login-password" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Log In" tabindex="3" class="btn btn-action">
+          </div>
+        </form>
+        <p>
+          <a href="https://www.sparkfun.com/account/forgot_password">Forgot your password?</a>          <br>
+          No account? <a id="btn_register_account" href="https://www.sparkfun.com/account/make">Register one!</a>        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+          
+<!--  begin olark code -->
+  <script type="text/javascript" async=""> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+  /* custom configuration goes here (www.olark.com/documentation) */
+  olark.identify('4728-501-10-9212');</script>
+  <noscript>&lt;a href="https://www.olark.com/site/4728-501-10-9212/contact" title="Contact us" target="_blank"&gt;Questions? Feedback?&lt;/a&gt; powered by &lt;a href="http://www.olark.com?welcome" title="Olark live chat software"&gt;Olark live chat software&lt;/a&gt;</noscript>
+<!-- end olark code -->
+          <script type="text/javascript">
+      (function(d,s,i,r) {
+        if (d.getElementById(i)){return;}
+        var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+        n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/2224003.js';
+        e.parentNode.insertBefore(n, e);
+      })(document,"script","hs-analytics",300000);
+    </script>
+        <script type="text/javascript">
+    setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0046/4761.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+  </script>
+      
+
+
+<iframe data-olark="true" title="olark chat box" style="width: 0px; height: 0px; position: absolute; left: 0px; bottom: 0px; border: none;" src="./ESP32 Thing Hookup Guide - learn.sparkfun.com_files/saved_resource.html"></iframe><ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul><div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div data-olark="true"><div id="olark-wrapper" class="olark-hidden" data-reactid=".0"><style rel="stylesheet" type="text/css" data-reactid=".0.0">#olark-wrapper .olark-launch-button {
+  background-color: #f03528 !important;
+}
+#olark-wrapper .olark-launch-button svg path {
+  fill: #ffffff !important;
+}
+#olark-wrapper .olark-launch-button .olark-button-text {
+  color: #ffffff !important;
+}
+#olark-wrapper .olark-top-bar {
+  background-color: #f03528 !important;
+  color: #ffffff !important;
+  border-color: #ee1f11 !important;
+}
+#olark-wrapper .olark-top-bar-text {
+  color: #ffffff !important;
+}
+#olark-wrapper .olark-top-bar-arrow {
+  fill: #ffffff !important;
+}
+#olark-wrapper .olark-end-chat-button {
+  color: #ffffff !important;
+  background-color: rgba(215, 28, 15, 0.5) !important;
+}
+#olark-wrapper .olark-end-chat-button:hover {
+  background-color: #d71c0f !important;
+}
+#olark-wrapper #olark-container .olark-visitor-message:not(.olark-message-trans-bg) {
+  background-color: rgba(240, 53, 40, 0.25) !important;
+}
+#olark-wrapper #olark-container .olark-form-send-button {
+  background-color: #f03528 !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-feedback-form-button {
+  background-color: #f03528 !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-restart-button {
+  background-color: #f03528 !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-branding-panel .olark-branding-cancel-button {
+  background-color: #f03528 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+#olark-wrapper #olark-container .olark-branding-panel .olark-branding-go-button {
+  border: none !important;
+  background: rgba(240, 53, 40, 0.35) !important;
+}
+#olark-wrapper #olark-container .olark-send-transcript-container .olark-send-transcript-form.olark-inline-form-valid .olark-form-input-container {
+  border-color: #f03528 !important;
+}
+#olark-wrapper #olark-container .olark-send-transcript-container .olark-send-transcript-form.olark-inline-form-valid .olark-send-icon {
+  fill: #f03528 !important;
+}
+#olark-wrapper #olark-container .olark-visitor-message:not(.olark-message-has-border) {
+  border: none !important;
+}
+#olark-wrapper .olark-end-chat-flag {
+  fill: #f03528 !important;
+}
+#olark-wrapper #olark-container .olark-form-confirmation-icon .olark-launch-button-icon {
+  fill: #f03528 !important;
+}
+#olark-wrapper #olark-container .olark-form-input:focus {
+  border-color: #f03528 !important;
+}
+#olark-wrapper #olark-container .olark-form-message-input:focus {
+  border-color: #f03528 !important;
+}
+</style><button class="olark-launch-button olark-chat-tab olark-size-md" tabindex="0" aria-hidden="false" data-reactid=".0.2"><svg x="0px" y="0px" viewBox="0 0 27 21.9" aria-labelledby="title desc" role="img" data-reactid=".0.2.0"><title data-reactid=".0.2.0.0">Chat Icon </title><desc data-reactid=".0.2.0.1">three small dots to indicate that an agent is available to chat</desc><path fill="#ffffff" d="M23.2,0L2.6,1.7C1,1.9,0,3.2,0,4.9v8c0,1.6,0.8,3,2.4,3.1l5.3,0.5c0,0,1,1.6,0.3,3.2C7.2,21.3,6,21.9,6,21.9 c4.2,0,6.6-3.1,7.8-4.9l9.4,0.7c1.8,0.2,3.8-1.3,3.8-3.1V3.1C27,1.3,25-0.1,23.2,0z M6.4,10.1c-0.9,0-1.7-0.7-1.7-1.7 c0-0.9,0.7-1.7,1.7-1.7C7.3,6.8,8,7.5,8,8.5C8,9.4,7.3,10.1,6.4,10.1z M13.2,10.1c-0.9,0-1.7-0.7-1.7-1.7c0-0.9,0.7-1.7,1.7-1.7 c0.9,0,1.7,0.7,1.7,1.7C14.8,9.4,14.1,10.1,13.2,10.1z M19.9,10.1c-0.9,0-1.7-0.7-1.7-1.7c0-0.9,0.7-1.7,1.7-1.7 c0.9,0,1.7,0.7,1.7,1.7C21.6,9.4,20.9,10.1,19.9,10.1z" data-reactid=".0.2.0.2"></path></svg><div class="olark-notification-badge olark-hidden" data-reactid=".0.2.1"><div class="olark-notification-badge-text" data-reactid=".0.2.1.0">0</div></div><p class="olark-button-text" data-reactid=".0.2.2">How can we help you?</p></button><div id="olark-container" class="olark-hidden olark-no-branding olark-size-md" data-reactid=".0.3"><div class="olark-top-bar" data-reactid=".0.3.0"><div class="olark-top-bar-text" data-reactid=".0.3.0.0">Now Chatting</div><div class="olark-top-bar-button" role="button" tabindex="-1" aria-hidden="true" aria-label="Minimize Chat" data-reactid=".0.3.0.1"><svg viewBox="0 0 15.1 8.9" fill="#ffffff" aria-labelledby="title desc" role="img" data-reactid=".0.3.0.1.0"><title data-reactid=".0.3.0.1.0.0">Arrow Down</title><desc data-reactid=".0.3.0.1.0.1">a small down arrow to minimize chat box</desc><polygon class="olark-top-bar-arrow" points="0.2,1.4 7.6,8.9 15.1,1.4 13.7,0 7.6,6 1.6,0" data-reactid=".0.3.0.1.0.2"></polygon></svg></div></div><div class="olark-conversation-container" data-reactid=".0.3.1"><div class="olark-message-block-container olark-single-message" data-reactid=".0.3.1.0"><div class="olark-generated-message" data-reactid=".0.3.1.0.0">Please type your question in the box below and we'll be with you as soon as possible!</div></div></div><div class="olark-footer-form-container" data-reactid=".0.3.3"><form class="olark-send-chat-form" data-reactid=".0.3.3.0"><textarea class="olark-chat-input olark-message-clone" aria-label="Type here and hit &lt;enter&gt; to chat" aria-hidden="true" tabindex="-1" data-reactid=".0.3.3.0.0" style="overflow-wrap: break-word;"></textarea><textarea class="olark-chat-input" placeholder="Type here and hit &lt;enter&gt; to chat" title="Type here and hit &lt;enter&gt; to chat" aria-label="Type here and hit &lt;enter&gt; to chat" required="" aria-hidden="true" tabindex="-1" data-reactid=".0.3.3.0.1" style="height: 0px !important;"></textarea><button class="olark-chat-send-button" type="submit" tabindex="-1" aria-hidden="true" title="Type here and hit &lt;enter&gt; to chat" data-reactid=".0.3.3.0.2"><svg class="olark-send-icon" viewBox="0 0 18.9 15.2" fill="currentcolor" aria-labelledby="title desc" role="img" data-reactid=".0.3.3.0.2.0"><title data-reactid=".0.3.3.0.2.0.0">Paper Airplane Icon</title><desc data-reactid=".0.3.3.0.2.0.1">a paper airplace to indicate sending something</desc><path d="M18.1,6.8L1.4,0.3C0.7,0.1,0,0.6,0,1.3V6l11.8,1.3L0,8.6v4.7c0,0.7,0.7,1.2,1.4,1l16.7-6.5 C18.6,7.6,18.6,7,18.1,6.8z" data-reactid=".0.3.3.0.2.0.2"></path></svg></button></form></div><noscript data-reactid=".0.3.4"></noscript></div></div></div></body></html>

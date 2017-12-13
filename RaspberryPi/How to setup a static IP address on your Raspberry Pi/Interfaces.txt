@@ -1,0 +1,16 @@
+sudo ifconfig
+sudo route -n
+
+address [your chosen IP address]
+netmask [your netmask]
+network [your destination]
+broadcast [your broadcast range]
+gateway [your gateway]
+
+sudo nano /etc/network/interfaces
+
+address 192.168.0.126
+netmask 255.255.255.0
+network 192.168.0.0
+broadcast 192.168.0.255
+gateway 192.168.0.1 

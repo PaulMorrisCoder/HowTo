@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://www.linode.com/docs/security/securing-your-server/#sph_using-ssh-key-pair-authentication -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Securing Your Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.">
+    <meta name="keywords" content="security,secure,firewall,ssh,add user,quick start">
+    
+
+    <meta property="og:title" content="Securing Your Server">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.linode.com/docs/security/securing-your-server">
+    <meta property="og:description" content="This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.">
+    <meta property="og:site_name" content="Linode Guides &amp; Tutorials">
+    
+        <meta property="og:image" content="https://www.linode.com/docs/images/linode_logo_120x120.png">
+        <meta property="og:image:width" content="120">
+        <meta property="og:image:height" content="120">
+    
+
+    
+        <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:site" content="@linode">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.linode.com/docs/rss">
+    <link href="./Securing Your Server_files/home.css" rel="stylesheet" type="text/css">
+    <link href="./Securing Your Server_files/syntax.css" rel="stylesheet" type="text/css">
+    <script async="" src="./Securing Your Server_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./Securing Your Server_files/inpage_linkid.js.download" id="undefined"></script><script type="text/javascript" async="" src="./Securing Your Server_files/ga.js.download"></script><script src="./Securing Your Server_files/quant.js.download" async="" type="text/javascript"></script><script type="text/javascript" async="" src="./Securing Your Server_files/cse.js.download"></script><script src="./Securing Your Server_files/jquery.min.js.download" type="text/javascript"></script>
+
+    <link href="./Securing Your Server_files/css" rel="stylesheet" type="text/css">
+
+    
+      <link rel="canonical" href="https://www.linode.com/docs/security/securing-your-server">
+    
+
+    <link rel="shortcut icon" href="https://www.linode.com/favicon.ico">
+  <script src="./Securing Your Server_files/jsapi" type="text/javascript"></script><link type="text/css" href="./Securing Your Server_files/default+en.css" rel="stylesheet"><link type="text/css" href="./Securing Your Server_files/default.css" rel="stylesheet"><script type="text/javascript" src="./Securing Your Server_files/default+en.I.js.download"></script><style type="text/css">
+.gsc-control-cse {
+font-family: Arial, sans-serif;
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-control-cse .gsc-table-result {
+font-family: Arial, sans-serif;
+}
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+border-color: #E7E6E6;
+}
+input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+border-color: #2D8EC6;
+background-color: #2D8EC6;
+background-image: none;
+filter: none;
+}
+.gsc-tabHeader.gsc-tabhInactive {
+border-color: #E9E9E9;
+background-color: #E9E9E9;
+}
+.gsc-tabHeader.gsc-tabhActive {
+border-color: #FF9900;
+border-bottom-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-tabsArea {
+border-color: #FF9900;
+}
+.gsc-webResult.gsc-result,
+.gsc-results .gsc-imageResult {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gsc-webResult.gsc-result:hover,
+.gsc-imageResult:hover {
+border-color: #FFFFFF;
+background-color: #FFFFFF;
+}
+.gs-webResult.gs-result a.gs-title:link,
+.gs-webResult.gs-result a.gs-title:link b,
+.gs-imageResult a.gs-title:link,
+.gs-imageResult a.gs-title:link b {
+color: #2D8EC6;
+}
+.gs-webResult.gs-result a.gs-title:visited,
+.gs-webResult.gs-result a.gs-title:visited b,
+.gs-imageResult a.gs-title:visited,
+.gs-imageResult a.gs-title:visited b {
+color: #2D8EC6;
+}
+.gs-webResult.gs-result a.gs-title:hover,
+.gs-webResult.gs-result a.gs-title:hover b,
+.gs-imageResult a.gs-title:hover,
+.gs-imageResult a.gs-title:hover b {
+color: #2D8EC6;
+}
+.gs-webResult.gs-result a.gs-title:active,
+.gs-webResult.gs-result a.gs-title:active b,
+.gs-imageResult a.gs-title:active,
+.gs-imageResult a.gs-title:active b {
+color: #2D8EC6;
+}
+.gsc-cursor-page {
+color: #2D8EC6;
+}
+a.gsc-trailing-more-results:link {
+color: #2D8EC6;
+}
+.gs-webResult .gs-snippet,
+.gs-imageResult .gs-snippet,
+.gs-fileFormatType {
+color: #747474;
+}
+.gs-webResult div.gs-visibleUrl,
+.gs-imageResult div.gs-visibleUrl {
+color: #3BB878;
+}
+.gs-webResult div.gs-visibleUrl-short {
+color: #3BB878;
+}
+.gs-webResult div.gs-visibleUrl-short {
+display: none;
+}
+.gs-webResult div.gs-visibleUrl-long {
+display: block;
+}
+.gs-promotion div.gs-visibleUrl-short {
+display: none;
+}
+.gs-promotion div.gs-visibleUrl-long {
+display: block;
+}
+.gsc-cursor-box {
+border-color: #FFFFFF;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-page {
+border-color: #E9E9E9;
+background-color: #FFFFFF;
+color: #2D8EC6;
+}
+.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
+border-color: #FF9900;
+background-color: #FFFFFF;
+color: #2D8EC6;
+}
+.gsc-webResult.gsc-result.gsc-promotion {
+border-color: #336699;
+background-color: #FFFFFF;
+}
+.gsc-completion-title {
+color: #2D8EC6;
+}
+.gsc-completion-snippet {
+color: #747474;
+}
+.gs-promotion a.gs-title:link,
+.gs-promotion a.gs-title:link *,
+.gs-promotion .gs-snippet a:link {
+color: #0000FF;
+}
+.gs-promotion a.gs-title:visited,
+.gs-promotion a.gs-title:visited *,
+.gs-promotion .gs-snippet a:visited {
+color: #663399;
+}
+.gs-promotion a.gs-title:hover,
+.gs-promotion a.gs-title:hover *,
+.gs-promotion .gs-snippet a:hover {
+color: #0000FF;
+}
+.gs-promotion a.gs-title:active,
+.gs-promotion a.gs-title:active *,
+.gs-promotion .gs-snippet a:active {
+color: #0000FF;
+}
+.gs-promotion .gs-snippet,
+.gs-promotion .gs-title .gs-promotion-title-right,
+.gs-promotion .gs-title .gs-promotion-title-right * {
+color: #000000;
+}
+.gs-promotion .gs-visibleUrl,
+.gs-promotion .gs-visibleUrl-short {
+color: #008000;
+}
+.gsc-input input.gsc-input {
+background: none repeat scroll 0% 0% white !important;
+}</style><script async="true" type="text/javascript" src="./Securing Your Server_files/roundtrip.js.download"></script><script async="true" type="text/javascript" src="./Securing Your Server_files/PYYL6IEEX5AWZGO6IXQDLQ"></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out"><img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(1)"><img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(2)"></div><script type="text/javascript" src="./Securing Your Server_files/sendrolling.js.download"></script><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(3)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(4)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(5)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(6)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(7)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(8)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(9)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Securing Your Server_files/out(10)">
+</div></head>
+
+  <body class="no-subnav">
+    <header>
+      
+<nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="toggle navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="https://www.linode.com/"><img id="navbar-logo" src="./Securing Your Server_files/linode_logo_white.png"></a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-top-collapse">
+      <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="https://www.linode.com/"><span class="nav-home"></span></a></li>
+                <li><a href="https://www.linode.com/linodes">Features</a></li>
+                <li><a href="https://www.linode.com/pricing">Pricing</a></li>
+                <li><a href="https://www.linode.com/addons">Add-ons</a></li>
+
+        <li class="dropdown">
+          <a href="https://www.linode.com/docs/security/securing-your-server/#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-main-nav dropdown-mega">
+            <li class="dropdown-third">
+              <ul>
+                <li><a href="https://www.linode.com/docs/getting-started">Getting Started</a></li>
+                <li><a href="https://www.linode.com/docs/migrate-from-shared">Migrating to Linode</a></li>
+                <li><a href="https://www.linode.com/docs/hosting-website">Hosting a Website</a></li>
+                <li class="divider"></li>
+                <li class="big"><a href="https://linode.com/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third middle">
+              <ul>
+                <li><a href="https://www.linode.com/api">API</a></li>
+                <li><a href="https://www.linode.com/stackscripts">StackScripts</a></li>
+                <li><a href="https://www.linode.com/mobile">Mobile</a></li>
+                <li><a href="https://www.linode.com/cli" target="_blank">CLI</a></li>
+
+                <li class="divider"></li>
+
+                <li><a href="https://www.linode.com/chat"><i class="fa fa-bullhorn gray"></i> Chat</a></li>
+                <li><a href="https://forum.linode.com/"><i class="fa fa-comments"></i> Community Forum</a></li>
+                <li class="divider visible-xs"></li>
+              </ul>
+            </li>
+            <li class="dropdown-third">
+              <ul>
+                <li><a href="https://blog.linode.com/">Blog</a></li>
+                <li><a href="http://status.linode.com/">System Status</a></li>
+                <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+                <li><a href="https://www.linode.com/about">About Us</a></li>
+                <li class="divider"></li>
+                <li><a href="https://www.linode.com/contact"><i class="fa fa-user"></i> Contact Support</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li role="presentation" class="divider-vertical"><span>|</span></li>
+          <li class=""><a href="https://manager.linode.com/">Log in <span class="login-caret"></span></a></li>
+          <li class="visible-xs"><a href="https://manager.linode.com/session/signup">Sign up</a></li>
+          <li class="hidden-xs"><div><a id="btn-signup-top" class="btn btn-sm btn-green navbar-btn hidden-xs" href="https://manager.linode.com/session/signup">Sign up</a></div></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+      <nav class="navbar subnav jumbotron" role="navigation">
+  <div class="container">
+    <div class="subnav-divider">
+
+    </div>
+  </div>
+</nav>
+    </header>
+
+    <section class="primary first-section">
+  <div class="container">
+
+    
+
+<div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      
+        <li><a href="https://www.linode.com/docs/">Guides &amp; Tutorials</a></li>
+      
+        <li><a href="https://www.linode.com/docs/security/">Security, Upgrades &amp; Backups</a></li>
+      
+      <li class="active">Securing Your Server</li>
+    </ol>
+  </div>
+</div>
+
+
+
+    <div class="row" itemscope="" itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+  <h1 class="doc-title" itemprop="headline">Securing Your Server</h1>
+  <p class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="2016-05-16T00:00:00+00:00">Monday, May 16th, 2016</time> by Phil Zona</small>
+  
+</p>
+
+  <div class="signup-top">
+    <span>
+        Use promo code <strong>DOCS10</strong> for $10 credit on a new account.
+    </span>
+    <form action="https://manager.linode.com/session/signup" style="display: inline">
+        <button type="submit" target="_blank" class="btn btn-blue btn-sm btn-border">Try this Guide</button>
+    </form>
+</div>
+
+  <div class="library-github">
+  <i class="fa fa-github"></i>
+  <strong>Contribute on GitHub</strong>
+  <p>
+    <a href="https://github.com/linode/docs">View Project</a> |
+    <a href="https://github.com/linode/docs/blob/master/docs/security/securing-your-server.md">View File</a> |
+    <a href="https://github.com/linode/docs/edit/master/docs/security/securing-your-server.md">Edit File</a>
+  </p>
+</div>
+
+  <p>In the <a href="https://www.linode.com/docs/getting-started">Getting Started</a> guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it’s time to harden your Linode against unauthorized access.</p>
+
+  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+      <div class="wistia_video_foam_dummy" data-source-container-id="" style="border: 0px; display: block; height: 0px; margin: 0px; padding: 0px; position: static; visibility: hidden; width: auto;"></div><iframe src="./Securing Your Server_files/971o40zba8.html" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" oallowfullscreen="oallowfullscreen" msallowfullscreen="msallowfullscreen" width="847" height="477" style="width: 847px; height: 477px;"></iframe>
+    </div>
+  </div>
+  <script src="./Securing Your Server_files/E-v1.js.download" async=""></script>
+
+  <h2 id="update-your-system--frequently">Update Your System–Frequently</h2>
+
+  <p>Keeping your software up to date is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes, and many software vulnerabilities are actually patched by the time they become public.</p>
+
+  <h3 id="automatic-security-updates">Automatic Security Updates</h3>
+
+  <p>There are arguments for and against automatic updates on servers. <a href="https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F">Fedora’s Wiki</a> has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.</p>
+
+  <p>The practicality of automatic updates is something you must judge for yourself because it comes down to what <em>you</em> do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.</p>
+
+  <ul>
+    <li>
+      <p>CentOS uses <em><a href="https://fedoraproject.org/wiki/AutoUpdates#Fedora_21_or_earlier_versions">yum-cron</a></em> for automatic updates.</p>
+    </li>
+    <li>
+      <p>Debian and Ubuntu use <em><a href="https://help.ubuntu.com/lts/serverguide/automatic-updates.html">unattended upgrades</a></em>.</p>
+    </li>
+    <li>
+      <p>Fedora uses <em><a href="https://dnf.readthedocs.org/en/latest/automatic.html">dnf-automatic</a></em>.</p>
+    </li>
+  </ul>
+
+  <h2 id="add-a-limited-user-account">Add a Limited User Account</h2>
+
+  <p>Up to this point, you have accessed your Linode as the <code>root</code> user, which has unlimited privileges and can execute <em>any</em> command–even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using <code>sudo</code> to temporarily elevate your limited user’s privileges so you can administer your server.</p>
+
+  <blockquote class="note">
+    <p>Not all Linux distributions include <code>sudo</code> on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output <code>sudo: command not found</code>, install sudo before continuing.</p>
+  </blockquote>
+
+  <p>To add a new user, first <a href="https://www.linode.com/docs/getting-started#logging-in-for-the-first-time">log in to your Linode</a> via SSH.</p>
+
+  <h3 id="centos--fedora">CentOS / Fedora</h3>
+
+  <ol>
+    <li>
+      <p>Create the user, replacing <code>example_user</code> with your desired username, and assign a password:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>useradd example_user &amp;&amp; passwd example_user
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Add the user to the <code>wheel</code> group for sudo privileges:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>usermod -aG wheel example_user
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <h3 id="ubuntu">Ubuntu</h3>
+
+  <ol>
+    <li>
+      <p>Create the user, replacing <code>example_user</code> with your desired username. You’ll then be asked to assign the user a password:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>adduser example_user
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Add the user to the <code>sudo</code> group so you’ll have administrative privileges:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>adduser example_user sudo
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <h3 id="debian">Debian</h3>
+
+  <ol>
+    <li>
+      <p>Debian does not include <code>sudo</code> among their default packages. Use <code>apt-get</code> to install it:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>apt-get install sudo
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Create the user, replacing <code>example_user</code> with your desired username. You’ll then be asked to assign the user a password:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>adduser example_user
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Add the user to the <code>sudo</code> group so you’ll have administrative privileges:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>adduser example_user sudo
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <p>After creating your limited user, disconnect from your Linode:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>exit
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Log back in as your new user. Replace <code>example_user</code> with your username, and the example IP address with your Linode’s IP address:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh example_user@203.0.113.10
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Now you can administer your Linode from your new user account instead of <code>root</code>. Nearly all superuser commands can be executed with <code>sudo</code> (example: <code>sudo iptables -L -nv</code>) and those commands will be logged to <code>/var/log/auth.log</code>.</p>
+
+  <h2 id="harden-ssh-access">Harden SSH Access</h2>
+
+  <p>By default, password authentication is used to connect to your Linode via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we’ll create a key-pair and configure the Linode to not accept passwords for SSH logins.</p>
+
+  <h3 id="create-an-authentication-key-pair">Create an Authentication Key-pair</h3>
+
+  <ol>
+    <li>
+      <p>This is done on your local computer, <strong>not</strong> your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop’s keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don’t want to use one.</p>
+
+      <p><strong>Linux / OS X</strong></p>
+
+      <blockquote class="caution">
+        <p>If you’ve already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you’ve already created a key-pair, skip this step. To check for existing keys, run <code>ls ~/.ssh/id_rsa*</code>.</p>
+      </blockquote>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh-keygen -b 4096
+</pre></td></tr></tbody></table>
+</div>
+
+      <p>Press <strong>Enter</strong> to use the default names <code>id_rsa</code> and <code>id_rsa.pub</code> in <code>/home/your_username/.ssh</code> before entering your passphrase.</p>
+
+      <p><strong>Windows</strong></p>
+
+      <p>This can be done using PuTTY as outlined in our guide: <a href="https://www.linode.com/docs/security/use-public-key-authentication-with-ssh#windows-operating-system">Use Public Key Authentication with SSH</a>.</p>
+    </li>
+    <li>
+      <p>Upload the public key to your Linode. Replace <code>example_user</code> with the name of the user you plan to administer the server as, and <code>203.0.113.10</code> with your Linode’s IP address.</p>
+
+      <p><strong>Linux</strong></p>
+
+      <p>From your local computer:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>ssh-copy-id example_user@203.0.113.10
+</pre></td></tr></tbody></table>
+</div>
+
+      <p><strong>OS X</strong></p>
+
+      <p>On your Linode (while signed in as your limited user):</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mkdir -p ~/.ssh &amp;&amp; sudo chmod -R 700 ~/.ssh/ 
+</pre></td></tr></tbody></table>
+</div>
+
+      <p>From your local computer:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+</pre></td></tr></tbody></table>
+</div>
+
+      <blockquote class="note">
+
+        <p><code>ssh-copy-id</code> is available in <a href="http://brew.sh/">Homebrew</a> if you prefer it over SCP. Install with <code>brew install ssh-copy-id</code>.</p>
+      </blockquote>
+
+      <p><strong>Windows</strong></p>
+
+      <ul>
+        <li>
+          <p><strong>Option 1</strong>: This can be done using <a href="http://winscp.net/">WinSCP</a>. In the login window, enter your Linode’s public IP address as the hostname, and your non-root username and password. Click <em>Login</em> to connect.</p>
+
+          <p>Once WinSCP has connected, you’ll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you’ve saved your public key, select the public key file, and click <em>Upload</em> in the toolbar above.</p>
+
+          <p>You’ll be prompted to enter a path where you’d like to place the file on your Linode. Upload the file to <code>/home/example_user/.ssh/authorized_keys</code>, replacing <code>example_user</code> with your username.</p>
+        </li>
+        <li>
+          <p><strong>Option 2:</strong> Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Linode (as a non-root user):</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>mkdir ~/.ssh; nano ~/.ssh/authorized_keys
+</pre></td></tr></tbody></table>
+</div>
+
+          <p>The above command will open a blank file called <code>authorized_keys</code> in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press <strong>CTRL+X</strong>, then <strong>Y</strong>, then <strong>Enter</strong> to save the file.</p>
+        </li>
+      </ul>
+
+      <p>Finally, you’ll want to set permissions for the public key directory and the key file itself:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo chmod 700 -R ~/.ssh &amp;&amp; chmod 600 ~/.ssh/authorized_keys
+</pre></td></tr></tbody></table>
+</div>
+
+      <p>These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on <a href="https://www.linode.com/docs/tools-reference/modify-file-permissions-with-chmod">how to modify file permissions</a>.</p>
+    </li>
+    <li>
+      <p>Now exit and log back into your Linode. If you specified a passphrase for your private key, you’ll need to enter it.</p>
+    </li>
+  </ol>
+
+  <h3 id="ssh-daemon-options">SSH Daemon Options</h3>
+
+  <ol>
+    <li>
+      <p><strong>Disallow root logins over SSH.</strong> This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using <code>sudo</code> or changing to a root shell using <code>su -</code>.</p>
+
+      <dl class="file-excerpt">
+        <dt>/etc/ssh/sshd_config</dt>
+        <dd>
+<div class="highlight conf"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="c"># Authentication:
+</span>...
+<span class="n">PermitRootLogin</span> <span class="n">no</span>
+</pre></td></tr></tbody></table>
+</div>
+        </dd>
+      </dl>
+    </li>
+    <li>
+      <p><strong>Disable SSH password authentication.</strong> This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line <code>PasswordAuthentication</code> may need to be added, or uncommented by removing the leading <code>#</code>.</p>
+
+      <dl class="file-excerpt">
+        <dt>/etc/ssh/sshd_config</dt>
+        <dd>
+<div class="highlight conf"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c"># Change to no to disable tunnelled clear text passwords
+</span><span class="n">PasswordAuthentication</span> <span class="n">no</span>
+</pre></td></tr></tbody></table>
+</div>
+        </dd>
+      </dl>
+
+      <blockquote class="note">
+
+        <p>You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.</p>
+      </blockquote>
+    </li>
+    <li>
+      <p><strong>Listen on only one internet protocol.</strong> The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. <em>This does not disable the protocol system-wide, it is only for the SSH daemon.</em></p>
+
+      <p>Use the option:</p>
+
+      <ul>
+        <li><code>AddressFamily inet</code> to listen only on IPv4.</li>
+        <li><code>AddressFamily inet6</code> to listen only on IPv6.</li>
+      </ul>
+
+      <p>The <code>AddressFamily</code> option is usually not in the <code>sshd_config</code> file by default. Add it to the end of the file:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>echo 'AddressFamily inet' | sudo tee -a /etc/ssh/sshd_config
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Restart the SSH service to load the new configuration.</p>
+
+      <p>If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo systemctl restart sshd
+</pre></td></tr></tbody></table>
+</div>
+
+      <p>If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo service ssh restart
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <h3 id="use-fail2ban-for-ssh-login-protection">Use Fail2Ban for SSH Login Protection</h3>
+
+  <p><a href="http://www.fail2ban.org/wiki/index.php/Main_Page"><em>Fail2Ban</em></a> is an application that bans IP addresses from logging into your server after too many failed login attempts. Since legitimate logins usually take no more than three tries to succeed (and with SSH keys, no more than one), a server being spammed with unsuccessful logins indicates attempted malicious access.</p>
+
+  <p>Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.</p>
+
+  <p>For complete instructions on installing and configuring Fail2Ban, see our guide: <a href="https://www.linode.com/docs/security/using-fail2ban-for-security">Securing Your Server with Fail2ban</a>.</p>
+
+  <h2 id="remove-unused-network-facing-services">Remove Unused Network-Facing Services</h2>
+
+  <p>Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.</p>
+
+  <h3 id="determine-running-services">Determine Running Services</h3>
+
+  <p>To see your Linode’s running network services:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo netstat -tulpn
+</pre></td></tr></tbody></table>
+</div>
+
+  <blockquote class="note">
+
+    <p>If netstat isn’t included in your Linux distribution by default, install the package <code>net-tools</code> or use the <code>ss -tulpn</code> command instead.</p>
+  </blockquote>
+
+  <p>The following is an example of netstat’s output. Note that because distributions run different services by default, your output will differ:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td class="code"><pre>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      7315/rpcbind
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3277/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      3179/exim4
+tcp        0      0 0.0.0.0:42526           0.0.0.0:*               LISTEN      2845/rpc.statd
+tcp6       0      0 :::48745                :::*                    LISTEN      2845/rpc.statd
+tcp6       0      0 :::111                  :::*                    LISTEN      7315/rpcbind
+tcp6       0      0 :::22                   :::*                    LISTEN      3277/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      3179/exim4
+udp        0      0 127.0.0.1:901           0.0.0.0:*                           2845/rpc.statd
+udp        0      0 0.0.0.0:47663           0.0.0.0:*                           2845/rpc.statd
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           7315/rpcbind
+udp        0      0 192.0.2.1:123           0.0.0.0:*                           3327/ntpd
+udp        0      0 127.0.0.1:123           0.0.0.0:*                           3327/ntpd
+udp        0      0 0.0.0.0:123             0.0.0.0:*                           3327/ntpd
+udp        0      0 0.0.0.0:705             0.0.0.0:*                           7315/rpcbind
+udp6       0      0 :::111                  :::*                                7315/rpcbind
+udp6       0      0 fe80::f03c:91ff:fec:123 :::*                                3327/ntpd
+udp6       0      0 2001:DB8::123           :::*                                3327/ntpd
+udp6       0      0 ::1:123                 :::*                                3327/ntpd
+udp6       0      0 :::123                  :::*                                3327/ntpd
+udp6       0      0 :::705                  :::*                                7315/rpcbind
+udp6       0      0 :::60671                :::*                                2845/rpc.statd
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Netstat tells us that services are running for <a href="https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call">Remote Procedure Call</a> (rpc.statd and rpcbind), SSH (sshd), <a href="http://support.ntp.org/bin/view/Main/SoftwareDownloads">NTPdate</a> (ntpd) and <a href="http://www.exim.org/">Exim</a> (exim4).</p>
+
+  <h4 id="tcp">TCP</h4>
+
+  <p>See the <strong>Local Address</strong> column of the netstat readout. The process <code>rpcbind</code> is listening on <code>0.0.0.0:111</code> and <code>:::111</code> for a foreign address of <code>0.0.0.0:*</code> or <code>:::*</code>. This means that it’s accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the <code>127.0.0.1</code> address.</p>
+
+  <h4 id="udp">UDP</h4>
+
+  <p>UDP sockets are <em><a href="https://en.wikipedia.org/wiki/Stateless_protocol">stateless</a></em>, meaning they are either open or closed and every process’s connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as <em>LISTEN</em>, <em>ESTABLISHED</em> and <em>CLOSE_WAIT</em>.</p>
+
+  <p>Our netstat output shows that NTPdate is: 1) accepting incoming connections on the Linode’s public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.</p>
+
+  <h3 id="determine-which-services-to-remove">Determine Which Services to Remove</h3>
+
+  <p>If you were to do a basic TCP and UDP <a href="https://nmap.org/">nmap</a> scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By <a href="https://www.linode.com/docs/security/securing-your-server/#configure-a-firewall">configuring a firewall</a> you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.</p>
+
+  <ul>
+    <li>
+      <p>You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, <a href="https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair">RSA keys</a> and <a href="https://www.linode.com/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection">Fail2Ban</a> can help protect SSH.</p>
+    </li>
+    <li>
+      <p>NTP is necessary for your server’s timekeeping but there are alternatives to NTPdate. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with <a href="https://en.wikipedia.org/wiki/OpenNTPD">OpenNTPD</a>.</p>
+    </li>
+    <li>
+      <p>Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.</p>
+    </li>
+  </ul>
+
+  <blockquote class="note">
+
+    <p>This section focused on Debian 8. Different Linux distributions have different services enabled by default. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.</p>
+  </blockquote>
+
+  <h3 id="uninstall-the-listening-services">Uninstall the Listening Services</h3>
+
+  <p>How to remove the offending packages will differ depending on your distribution’s package manager.</p>
+
+  <p><strong>Arch</strong></p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo pacman -Rs package_name
+</pre></td></tr></tbody></table>
+</div>
+
+  <p><strong>CentOS</strong></p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo yum remove package_name
+</pre></td></tr></tbody></table>
+</div>
+
+  <p><strong>Debian / Ubuntu</strong></p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo apt-get purge package_name
+</pre></td></tr></tbody></table>
+</div>
+
+  <p><strong>Fedora</strong></p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo dnf remove package_name
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Run <code>sudo netstat -tulpn</code> again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).</p>
+
+  <h2 id="configure-a-firewall">Configure a Firewall</h2>
+
+  <p>Using a <em>firewall</em> to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping from outside your LAN. A best practice is to allow only the traffic you need, and deny everything else.</p>
+
+  <p><a href="http://www.netfilter.org/projects/iptables/index.html">Iptables</a> is the controller for netfilter, the Linux kernel’s packet filtering framework. Iptables is included in most Linux distributions by default but is considered an advanced method of firewall control. Consequently, several projects exist to control iptables in a more user-friendly way.</p>
+
+  <p><a href="http://www.firewalld.org/">FirewallD</a> for the Fedora distribution family and <a href="https://help.ubuntu.com/community/UFW">UFW</a> for the Debian family are the two common iptables controllers. This section will focus on iptables but you can see our guides on <a href="https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos">FirewallD</a> and <a href="https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw">UFW</a> if you feel they may be a better choice for you.</p>
+
+  <h3 id="view-your-current-iptables-rules">View Your Current iptables Rules</h3>
+
+  <p>IPv4:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo iptables -L -nv
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>IPv6:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo ip6tables -L -nv
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Iptables has no rules by default for both IPv4 and IPv6. As a result, on a newly created Linode you will see what is shown below–three empty chains without any firewall rules. This means that all incoming, forwarded and outgoing traffic is <em>allowed</em>. It’s important to limit inbound and forwarded traffic to only what’s necessary.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+</pre></td></tr></tbody></table>
+</div>
+
+  <h3 id="basic-iptables-rulesets-for-ipv4-and-ipv6">Basic iptables Rulesets for IPv4 and IPv6</h3>
+
+  <p>Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you’re running a web server.</p>
+
+  <p><strong>These are given only as an example!</strong></p>
+
+  <blockquote class="caution">
+
+    <p>A real production web server may require more or less configuration and these rules would not be appropriate for a file or database server, Minecraft, or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a beginning demonstration.</p>
+  </blockquote>
+
+  <p><strong>IPv4</strong></p>
+
+  <dl class="file">
+    <dt>/tmp/v4</dt>
+    <dd>
+<div class="highlight conf"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre>*<span class="n">filter</span>
+
+<span class="c"># Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">i</span> <span class="n">lo</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+-<span class="n">A</span> <span class="n">INPUT</span> ! -<span class="n">i</span> <span class="n">lo</span> -<span class="n">s</span> <span class="m">127</span>.<span class="m">0</span>.<span class="m">0</span>.<span class="m">0</span>/<span class="m">8</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="c"># Allow ping.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">icmp</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> --<span class="n">icmp</span>-<span class="n">type</span> <span class="m">8</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Allow SSH connections.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">tcp</span> --<span class="n">dport</span> <span class="m">22</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Allow HTTP and HTTPS connections from anywhere
+# (the normal ports for web servers).
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">tcp</span> --<span class="n">dport</span> <span class="m">80</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">tcp</span> --<span class="n">dport</span> <span class="m">443</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Allow inbound traffic from established connections.
+# This includes ICMP error returns.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">ESTABLISHED</span>,<span class="n">RELATED</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Log what was incoming but denied (optional but useful).
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">m</span> <span class="n">limit</span> --<span class="n">limit</span> <span class="m">5</span>/<span class="n">min</span> -<span class="n">j</span> <span class="n">LOG</span> --<span class="n">log</span>-<span class="n">prefix</span> <span class="s2">"iptables_INPUT_denied: "</span> --<span class="n">log</span>-<span class="n">level</span> <span class="m">7</span>
+
+<span class="c"># Reject all other inbound.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="c"># Log any traffic that was sent to you
+# for forwarding (optional but useful).
+</span>-<span class="n">A</span> <span class="n">FORWARD</span> -<span class="n">m</span> <span class="n">limit</span> --<span class="n">limit</span> <span class="m">5</span>/<span class="n">min</span> -<span class="n">j</span> <span class="n">LOG</span> --<span class="n">log</span>-<span class="n">prefix</span> <span class="s2">"iptables_FORWARD_denied: "</span> --<span class="n">log</span>-<span class="n">level</span> <span class="m">7</span>
+
+<span class="c"># Reject all traffic forwarding.
+</span>-<span class="n">A</span> <span class="n">FORWARD</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="n">COMMIT</span>
+</pre></td></tr></tbody></table>
+</div>
+    </dd>
+  </dl>
+
+  <p><strong>Optional:</strong> If you plan to use <a href="https://www.linode.com/docs/platform/longview/longview">Linode Longview</a> or <a href="https://www.linode.com/docs/platform/nodebalancer/getting-started-with-nodebalancers">Linode’s NodeBalancers</a>, add the respective rule after the section for allowing HTTP and HTTPS connections:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># Allow incoming Longview connections.
+-A INPUT -s longview.linode.com -m state --state NEW -j ACCEPT
+</pre></td></tr></tbody></table>
+</div>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre># Allow incoming NodeBalancer connections.
+-A INPUT -s 192.168.255.0/24 -m state --state NEW -j ACCEPT
+</pre></td></tr></tbody></table>
+</div>
+
+  <p><strong>IPv6</strong></p>
+
+  <p>If you would like to supplement your web server’s IPv4 rules with IPv6 too, this ruleset will allow HTTP/S access and all ICMP functions.</p>
+
+  <dl class="file">
+    <dt>/tmp/v6</dt>
+    <dd>
+<div class="highlight conf"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre>*<span class="n">filter</span>
+
+<span class="c"># Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">i</span> <span class="n">lo</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+-<span class="n">A</span> <span class="n">INPUT</span> ! -<span class="n">i</span> <span class="n">lo</span> -<span class="n">s</span> ::<span class="m">1</span>/<span class="m">128</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="c"># Allow ICMP
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">icmpv6</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Allow HTTP and HTTPS connections from anywhere
+# (the normal ports for web servers).
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">tcp</span> --<span class="n">dport</span> <span class="m">80</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">p</span> <span class="n">tcp</span> --<span class="n">dport</span> <span class="m">443</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">NEW</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Allow inbound traffic from established connections.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">m</span> <span class="n">state</span> --<span class="n">state</span> <span class="n">ESTABLISHED</span>,<span class="n">RELATED</span> -<span class="n">j</span> <span class="n">ACCEPT</span>
+
+<span class="c"># Log what was incoming but denied (optional but useful).
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">m</span> <span class="n">limit</span> --<span class="n">limit</span> <span class="m">5</span>/<span class="n">min</span> -<span class="n">j</span> <span class="n">LOG</span> --<span class="n">log</span>-<span class="n">prefix</span> <span class="s2">"ip6tables_INPUT_denied: "</span> --<span class="n">log</span>-<span class="n">level</span> <span class="m">7</span>
+
+<span class="c"># Reject all other inbound.
+</span>-<span class="n">A</span> <span class="n">INPUT</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="c"># Log any traffic that was sent to you
+# for forwarding (optional but useful).
+</span>-<span class="n">A</span> <span class="n">FORWARD</span> -<span class="n">m</span> <span class="n">limit</span> --<span class="n">limit</span> <span class="m">5</span>/<span class="n">min</span> -<span class="n">j</span> <span class="n">LOG</span> --<span class="n">log</span>-<span class="n">prefix</span> <span class="s2">"ip6tables_FORWARD_denied: "</span> --<span class="n">log</span>-<span class="n">level</span> <span class="m">7</span>
+
+<span class="c"># Reject all traffic forwarding.
+</span>-<span class="n">A</span> <span class="n">FORWARD</span> -<span class="n">j</span> <span class="n">REJECT</span>
+
+<span class="n">COMMIT</span>
+</pre></td></tr></tbody></table>
+</div>
+    </dd>
+  </dl>
+
+  <blockquote class="note">
+
+    <p><a href="http://linux.die.net/man/8/apt">APT</a> attempts to resolve mirror domains to IPv6 as a result of <code>apt-get update</code>. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.</p>
+
+    <p>To remedy this, uncomment the line <code>precedence ::ffff:0:0/96  100</code> in <code>/etc/gai.conf</code>.</p>
+  </blockquote>
+
+  <p>How these IPv4 and IPv6 rules are deployed differs among the various Linux distros.</p>
+
+  <h3 id="arch-linux">Arch Linux</h3>
+
+  <ol>
+    <li>
+      <p>Create the files <code>/etc/iptables/iptables.rules</code> and <code>/etc/iptables/ip6tables.rules</code>. Paste the <a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6">rulesets above</a> into their respective files.</p>
+    </li>
+    <li>
+      <p>Import the rulesets into immediate use:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo iptables-restore &lt; /etc/iptables/iptables.rules
+sudo ip6tables-restore &lt; /etc/iptables/ip6tables.rules
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Iptables does not run by default in Arch. Enable and start the systemd units:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo systemctl start iptables &amp;&amp; sudo systemctl start ip6tables
+sudo systemctl enable iptables &amp;&amp; sudo systemctl enable ip6tables
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <p>For more info on using iptables in Arch, see its Wiki entries for <a href="https://wiki.archlinux.org/index.php/Iptables">iptables</a> and a <a href="https://wiki.archlinux.org/index.php/Simple_stateful_firewall">Simple Stateful Firewall</a>.</p>
+
+  <h3 id="centos--fedora-1">CentOS / Fedora</h3>
+
+  <p><strong>CentOS 6 or Fedora 19 and below</strong></p>
+
+  <ol>
+    <li>
+      <p>Create the files <code>/tmp/v4</code> and <code>/tmp/v6</code>. Paste the <a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6">rulesets above</a> into their respective files.</p>
+    </li>
+    <li>
+      <p>Import the rules from the temporary files:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo iptables-restore &lt; /tmp/v4
+sudo ip6tables-restore &lt; /tmp/v6
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Save the rules:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo service iptables save
+sudo service ip6tables save
+</pre></td></tr></tbody></table>
+</div>
+
+      <blockquote class="note">
+
+        <p>Firewall rules are saved to <code>/etc/sysconfig/iptables</code> and <code>/etc/sysconfig/ip6tables</code>.</p>
+      </blockquote>
+    </li>
+    <li>
+      <p>Remove the temporary rule files:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo rm /tmp/{v4,v6}
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <p><strong>CentOS 7 or Fedora 20 and above</strong></p>
+
+  <p>In these distros, FirewallD is used to implement firewall rules instead of controlling iptables directly. If you would prefer to use it over iptables, see our guide: <a href="https://www.linode.com/docs/security/firewalls/introduction-to-firewalld-on-centos">Introduction to FirewallD on CentOS</a>.</p>
+
+  <ol>
+    <li>
+      <p>If you would prefer to use iptables, FirewallD must first be stopped and disabled.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo systemctl stop firewalld.service &amp;&amp; sudo systemctl disable firewalld.service
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Install <code>iptables-services</code> and enable iptables:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre>sudo yum install iptables-services
+sudo systemctl enable iptables &amp;&amp; sudo systemctl enable ip6tables
+sudo systemctl start iptables &amp;&amp; sudo systemctl start ip6tables
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Create the files <code>/tmp/v4</code> and <code>/tmp/v6</code>. Paste the <a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6">rulesets above</a> into their respective files.</p>
+    </li>
+    <li>
+      <p>Import the rulesets into immediate use:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo iptables-restore &lt; /tmp/v4
+sudo ip6tables-restore &lt; /tmp/v6
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Save each ruleset:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo service iptables save
+sudo service ip6tables save
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>Remove the temporary rule files:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo rm /tmp/{v4,v6}
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <p>For more information on using iptables and FirewallD in CentOS and Fedora, see these pages:</p>
+
+  <p>CentOS Wiki: <a href="https://wiki.centos.org/HowTos/Network/IPTables">iptables</a></p>
+
+  <p>Fedora Project Wiki: <a href="https://fedoraproject.org/wiki/FirewallD?rd=FirewallD/">FirewallD</a></p>
+
+  <p>Fedora Project Wiki: <a href="https://fedoraproject.org/wiki/How_to_edit_iptables_rules">How to Edit iptables Rules</a></p>
+
+  <p>Red Hat Security Guide: <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html">Using Firewalls</a></p>
+
+  <h3 id="debian--ubuntu">Debian / Ubuntu</h3>
+
+  <p>UFW is the iptables controller included with Ubuntu but is also available in Debian’s repositories. If you would prefer to use UFW instead of iptables, see our guide: <a href="https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw">How to Configure a Firewall with UFW</a>.</p>
+
+  <ol>
+    <li>
+      <p>Create the files <code>/tmp/v4</code> and <code>/tmp/v6</code>. Paste the <a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6">above rulesets</a> into their respective files.</p>
+    </li>
+    <li>
+      <p>Import the rulesets into immediate use:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo iptables-restore &lt; /tmp/v4
+sudo ip6tables-restore &lt; /tmp/v6
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p><a href="https://github.com/zertrin/iptables-persistent">Iptables-persistent</a> automates loading iptables rules on boot for Debian and Ubuntu. Install it from the distro repositories:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo apt-get install iptables-persistent
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+    <li>
+      <p>You’ll be asked if you want to save the current IPv4 and IPv6 rules. Answer <code>yes</code> to each prompt.</p>
+    </li>
+    <li>
+      <p>Remove the temporary rule files:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo rm /tmp/{v4,v6}
+</pre></td></tr></tbody></table>
+</div>
+    </li>
+  </ol>
+
+  <h3 id="verify-iptables-rulesets">Verify iptables Rulesets</h3>
+
+  <p>Recheck your Linode’s firewall rules with the <code>v</code> option for a verbose output:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre>sudo iptables -vL
+sudo ip6tables -vL
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>The output for IPv4 rules should show:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+    0     0 REJECT     all  --  !lo    any     loopback/8           anywhere             reject-with icmp-port-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp destination-unreachable
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp echo-request
+    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp time-exceeded
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
+    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Output for IPv6 rules will look like this:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all      lo     any     anywhere             anywhere
+    0     0 REJECT     all      !lo    any     localhost            anywhere             reject-with icmp6-port-unreachable
+    0     0 ACCEPT     ipv6-icmp    any    any     anywhere             anywhere
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:http state NEW
+    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:https state NEW
+    0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
+    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages which require network access.</p>
+
+  <h3 id="insert-replace-or-delete-iptables-rules">Insert, Replace or Delete iptables Rules</h3>
+
+  <p>Iptables rules are enforced in a top-down fashion, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with <code>iptables -A</code> or <code>ip6tables -A</code>. Instead, rules must be <em>inserted</em> with <code>iptables -I</code> or <code>ip6tables -I</code>.</p>
+
+  <p><strong>Insert</strong></p>
+
+  <p>Inserted rules need to be placed in the correct order with respect other rules in the chain. To get a numerical list of your iptables rules:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo iptables -L -nv --line-numbers
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>For example, let’s say we want to insert a rule to <a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6">the ruleset above</a> which accepts incoming <a href="https://www.linode.com/docs/platform/longview/longview">Linode Longview</a> connections. We’ll add it as rule 9 to the INPUT chain, following the web traffic rules.</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo iptables -I INPUT 9 -p tcp --dport 8080 -j ACCEPT
+</pre></td></tr></tbody></table>
+</div>
+
+  <p>If you now run <code>sudo iptables -L -nv</code> again, you’ll see the new rule in the output.</p>
+
+  <p><strong>Replace</strong></p>
+
+  <p>Replacing a rule is similar to inserting but instead uses <code>iptables -R</code>. For example, let’s say you want to reduce the logging of denied entires to only 3 per minute, down from 5 in the original ruleset. The LOG rule is the 11th in the INPUT chain:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo iptables -R INPUT 11 -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+</pre></td></tr></tbody></table>
+</div>
+
+  <p><strong>Delete</strong></p>
+
+  <p>Deleting a rule is also done using the rule number. For example, to delete the rule we just inserted for Linode Longview:</p>
+
+<div class="highlight plaintext"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>sudo iptables -D INPUT 9
+</pre></td></tr></tbody></table>
+</div>
+
+  <blockquote class="caution">
+
+    <p>Editing rules does not automatically save them! To accomplish this, revisit the area above for your distro to save your iptables edits so they’re loaded on reboots.</p>
+  </blockquote>
+
+  <h2 id="next-steps">Next Steps</h2>
+
+  <p>These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using <a href="https://linode.com/docs/security/ossec-ids-debian-7">intrusion detection</a> or installing a form of <a href="https://en.wikipedia.org/wiki/Access_control#Access_Control">access control</a>.</p>
+
+  <p>Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from <a href="https://www.linode.com/docs/migrate-to-linode/migrate-from-shared-hosting">migration from shared hosting</a> to <a href="https://www.linode.com/docs/security/linode-manager-security-controls">enabling two-factor authentication</a> to <a href="https://www.linode.com/docs/websites/hosting-a-website">hosting a website</a>.</p>
+
+  <p class="doc-license">This guide is published under a <a href="https://creativecommons.org/licenses/by-nd/4.0">CC BY-ND 4.0</a> license.</p>
+
+</div>
+<div id="doc-sidebar" class="col-sm-3 col-sm-pull-9 hidden-xs">
+  <div class="doc-sidebar-inner">
+  <form action="https://www.linode.com/docs/search" method="get" role="form">
+  <div class="input-group">
+    <label class="sr-only" for="q">Search guides and tutorials</label>
+    <input id="ss_keyword" name="q" type="text" class="form-control" placeholder="Search guides...">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-blue"><span class="glyphicon glyphicon-search"></span></button>
+    </span>
+  </div>
+</form>
+
+</div>
+
+  <div class="doc-sidebar-inner">
+    <h3 id="doc-sidebar-title">In This Guide:</h3>
+<ul class="sidebar sidebar-library" id="markdown-toc">
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#update-your-system--frequently" id="markdown-toc-update-your-system--frequently">Update Your System–Frequently</a>    <ul>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#automatic-security-updates" id="markdown-toc-automatic-security-updates">Automatic Security Updates</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#add-a-limited-user-account" id="markdown-toc-add-a-limited-user-account">Add a Limited User Account</a>    <ul>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#centos--fedora" id="markdown-toc-centos--fedora">CentOS / Fedora</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#ubuntu" id="markdown-toc-ubuntu">Ubuntu</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#debian" id="markdown-toc-debian">Debian</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#harden-ssh-access" id="markdown-toc-harden-ssh-access">Harden SSH Access</a>    <ul>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#create-an-authentication-key-pair" id="markdown-toc-create-an-authentication-key-pair">Create an Authentication Key-pair</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#ssh-daemon-options" id="markdown-toc-ssh-daemon-options">SSH Daemon Options</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection" id="markdown-toc-use-fail2ban-for-ssh-login-protection">Use Fail2Ban for SSH Login Protection</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#remove-unused-network-facing-services" id="markdown-toc-remove-unused-network-facing-services">Remove Unused Network-Facing Services</a>    <ul>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#determine-running-services" id="markdown-toc-determine-running-services">Determine Running Services</a>        <ul>
+          <li><a href="https://www.linode.com/docs/security/securing-your-server/#tcp" id="markdown-toc-tcp">TCP</a></li>
+          <li><a href="https://www.linode.com/docs/security/securing-your-server/#udp" id="markdown-toc-udp">UDP</a></li>
+        </ul>
+      </li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#determine-which-services-to-remove" id="markdown-toc-determine-which-services-to-remove">Determine Which Services to Remove</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#uninstall-the-listening-services" id="markdown-toc-uninstall-the-listening-services">Uninstall the Listening Services</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#configure-a-firewall" id="markdown-toc-configure-a-firewall">Configure a Firewall</a>    <ul>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#view-your-current-iptables-rules" id="markdown-toc-view-your-current-iptables-rules">View Your Current iptables Rules</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#basic-iptables-rulesets-for-ipv4-and-ipv6" id="markdown-toc-basic-iptables-rulesets-for-ipv4-and-ipv6">Basic iptables Rulesets for IPv4 and IPv6</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#arch-linux" id="markdown-toc-arch-linux">Arch Linux</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#centos--fedora-1" id="markdown-toc-centos--fedora-1">CentOS / Fedora</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#debian--ubuntu" id="markdown-toc-debian--ubuntu">Debian / Ubuntu</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#verify-iptables-rulesets" id="markdown-toc-verify-iptables-rulesets">Verify iptables Rulesets</a></li>
+      <li><a href="https://www.linode.com/docs/security/securing-your-server/#insert-replace-or-delete-iptables-rules" id="markdown-toc-insert-replace-or-delete-iptables-rules">Insert, Replace or Delete iptables Rules</a></li>
+    </ul>
+  </li>
+  <li><a href="https://www.linode.com/docs/security/securing-your-server/#next-steps" id="markdown-toc-next-steps">Next Steps</a></li>
+</ul>
+
+  </div>
+  <div class="library-rss">
+    <p><a href="https://www.linode.com/docs/rss"><i class="fa fa-rss-square"></i> RSS feed</a></p>
+  </div>
+
+  <div class="library-signup">
+  <form action="https://linode.us7.list-manage.com/subscribe/post?u=f9b54ed743e1629877750e3f4&amp;id=68bafea72a" method="post" class="email-signup" target="_blank" novalidate="">
+    <i class="fa fa-envelope"></i>
+    <h6>Monthly Guides Update</h6>
+    <input name="EMAIL" type="email" class="form-control input-sm" placeholder="Email address" required="">
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_f9b54ed743e1629877750e3f4_68bafea72a" tabindex="-1" value="">
+    </div>
+    <div style="display:none">
+        <input type="checkbox" value="4" name="group[13][4]" id="mce-group[13]-13-0" checked="">
+    </div>
+    <button type="submit" class="btn btn-blue btn-sm btn-border email-signup" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">Sign Up</button>
+  </form>
+</div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <footer>
+      <section class="neutral some-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3>Get paid to write for Linode.</h3>
+        <p class="lead">We're always expanding our docs. If you like to help people, can write, and want to earn some cash, learn how you can <a href="https://www.linode.com/docs/contribute">earn $250 for every guide you write</a> and we publish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <section id="pre-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7">
+        <span>Get started in the Linode Cloud today.</span>
+      </div>
+      <div class="col-sm-5 pad-xs">
+        <a id="btn-signup-bottom" class="btn btn-lg btn-full btn-green" href="https://manager.linode.com/session/signup">Create an Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="container">
+
+    <div class="row">
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/linodes">Overview</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/pricing">Plans &amp; Pricing</a></li>
+          <li><a href="https://www.linode.com/linodes">Features</a></li>
+          <li><a href="https://www.linode.com/addons">Add-Ons</a></li>
+          <li><a href="https://www.linode.com/managed">Managed</a></li>
+          <li><a href="https://www.linode.com/professional-services">Professional Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/docs">Resources</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/docs">Guides &amp; Tutorials</a></li>
+          <li><a href="https://www.linode.com/speedtest">Speed Test</a></li>
+          <li><a href="https://forum.linode.com/">Forum</a></li>
+          <li><a href="https://www.linode.com/chat">Chat</a></li>
+          <li><a href="http://status.linode.com/">System Status</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/about">Company</a></h5>
+        <ul>
+          <li><a href="https://www.linode.com/about">About Us</a></li>
+          <li><a href="https://blog.linode.com/">Blog</a></li>
+          <li><a href="https://www.linode.com/press">Press</a></li>
+          <li><a href="https://www.linode.com/referrals">Referral System</a></li>
+          <li><a href="https://www.linode.com/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5><a href="https://www.linode.com/contact">Contact Us</a></h5>
+        <ul>
+          <li><a href="tel:+18554546633">855-4-LINODE</a></li>
+          <li><a href="tel:+18554546633">(855-454-6633)</a></li>
+          <li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
+          <li><a href="mailto:support@linode.com">Email us</a></li>
+          <li>
+            <br>
+            <a target="_blank" href="https://facebook.com/linode"><i class="fa fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/linode"><i class="fa fa-twitter-square"></i></a>
+            <a target="_blank" href="https://plus.google.com/+linode/"><i class="fa fa-google-plus-square"></i></a>
+            <a target="_blank" href="https://linkedin.com/company/linode"><i class="fa fa-linkedin-square"></i></a>
+            <a target="_blank" href="https://github.com/linode/"><i class="fa fa-github-square"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-moar">
+  <div class="container">
+    <div id="footer-copyright" class="row">
+      <div class="col text-center">
+        © 2016 Linode, LLC
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/tos">Terms of Service</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/privacy">Privacy Policy</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/security">Security</a>
+      </div>
+
+      <div class="col text-center">
+        <a href="https://www.linode.com/compliance">Standards &amp; Compliance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </footer>
+
+    
+
+<script src="./Securing Your Server_files/bootstrap.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/prettify.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/jquery.ajax.queue.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/jquery.syntaxhighlighter.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/handlebars.runtime.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/search.hbs.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/underscore.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/backbone.min.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/main.js.download" type="text/javascript"></script>
+<script src="./Securing Your Server_files/search.js.download" type="text/javascript"></script>
+
+<script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+<div class="t">
+  <script type="text/javascript">
+  var _qevents = _qevents || [];
+  (function() {
+  var elem = document.createElement('script');
+  elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+  elem.async = true;
+  elem.type = "text/javascript";
+  var scpt = document.getElementsByTagName('script')[0];
+  scpt.parentNode.insertBefore(elem, scpt);
+  })();
+  _qevents.push(
+  {qacct:"p-1dJYGOmeqAblc",labels:"_fp.event.Linode Homepage"}
+  );
+  </script>
+  <noscript>
+  &lt;img src="//pixel.quantserve.com/pixel/p-1dJYGOmeqAblc.gif?labels=_fp.event.Linode+Homepage" style="display: none;" border="0" height="1" width="1" /&gt;
+  </noscript>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-177150-1']);
+    _gaq.push(['_setDomainName', 'linode.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 1071926901;
+  var google_custom_params = window.google_tag_params;
+  var google_remarketing_only = true;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="./Securing Your Server_files/conversion.js.download">;
+  </script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Securing Your Server_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+  <noscript>
+  &lt;div style="display:inline;"&gt;
+  &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1071926901/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+  &lt;/div&gt;
+  </noscript>
+
+  <script type="text/javascript">
+    adroll_adv_id = "IL4WBB7BGVAMPP6O6DBOTR";
+    adroll_pix_id = "PYYL6IEEX5AWZGO6IXQDLQ";
+    (function () {
+    var oldonload = window.onload;
+    window.onload = function(){
+      __adroll_loaded=true;
+      var scr = document.createElement("script");
+      var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+      scr.setAttribute('async', 'true');
+      scr.type = "text/javascript";
+      scr.src = host + "/j/roundtrip.js";
+      ((document.getElementsByTagName('head') || [null])[0] ||
+      document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+      if(oldonload){oldonload()}};
+    }());
+  </script>
+
+  <script type="text/javascript">
+    $("a").on('click',function(e){
+      var url = $(this).attr("href");
+      if (e.currentTarget.host != window.location.host) {
+        _gaq.push(['_trackEvent', 'Outbound Links', e.currentTarget.host, url, 0]);
+        if (e.metaKey || e.ctrlKey || e.which === 2 || this.target!=='_self') {
+          var newtab = true;
+        }
+        if (!newtab) {
+          e.preventDefault();
+          setTimeout('document.location = "' + url + '"', 100);
+        }
+      }
+    });
+	$(".link-offsite :link, .link-offsite:link, [href^='/docs/assets/']:link").attr('target','_blank');
+  </script>
+</div>
+
+
+  
+
+</body></html>

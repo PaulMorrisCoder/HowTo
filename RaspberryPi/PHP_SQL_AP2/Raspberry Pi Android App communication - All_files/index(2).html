@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://s0.2mdn.net/4944616/1478256821506/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Source_Products_728x90</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    
+    <meta name="ad.size" content="width=728,height=90">
+    
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
+    <script>
+        var clickTag = 'http://www.source';  
+    </script>
+
+<script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+
+  <body onload="init();">
+
+<div id="main_container">
+    <div id="main_content" style="visibility: visible;">
+  <div class="banner">
+
+      <div id="bg">
+        <img src="./bg.jpg" baps-image="backgroundImage">
+      </div>
+
+      <div id="blockOfWhite" style="visibility: hidden; opacity: 0;"></div>
+      <img id="innerLogo" class="hidden" src="./innerLogoShape.svg" style="height: 34px; width: 34px; visibility: hidden; opacity: 0; transform: matrix(1, 0, 0, 1, 600, 18);">
+    
+      <div class="outerHeadlineHolder">
+        <div class="innerHeadlineHolder">
+          <span id="headlineFrame2" class="hidden" baps-text="headline2" style="visibility: hidden; opacity: 0;">Discover our emerging market equity and<br>bond ETFs</span>
+        </div>
+      </div>
+
+      <div class="holder">
+        <div id="holderSub">
+          <div>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="728px" height="90px" viewBox="0 0 728 90" style="enable-background:new 0 0 728 90;" xml:space="preserve">
+              <defs>
+                <mask id="svg-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                  <image id="svg-mask-img" xlink:href="massive_png_circle_mask_3000x3000_tinypng.png" width="3000" height="3000" y="-1400" x="-1127" style="visibility: inherit; opacity: 1; transform-origin: center 50% 0px; transform: matrix(1, 0, 0, 1, 0, 0);"></image>
+                </mask>
+                <mask id="svg-mask_logo" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                  <image id="svg-mask-logo-img" xlink:href="massive_png_inner_logo_mask_3000x3000.png" width="3000" height="3000" style="visibility: hidden; opacity: 0;"></image>
+                </mask>
+              </defs>
+              <image id="svg-mask-image" mask="url(#svg-mask)" width="728" height="90" y="0" x="0" xlink:href="bg.jpg"></image>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="outerHeadlineHolderBottom">
+        <div class="innerHeadlineHolder">
+          <span id="headlineFrame1Bottom" class="hidden" baps-text="headline1" style="visibility: hidden; opacity: 0;">Searching for income?</span>
+        </div>
+      </div>
+
+      <div id="smallPrintContainer" class="hidden" style="visibility: inherit; opacity: 1;">
+        <span id="smallPrint" class="light" baps-text="legalText">Your capital is at risk–you may not get back the amount invested.</span>
+      </div>
+    
+      <div id="ctaContainer" class="hidden" style="visibility: inherit; opacity: 1;">
+        <span id="cta_text" class="light" baps-text="ctaText">Find out more<img id="cta_arrow" src="./ctaIcon.png"></span>
+      </div>
+      <!-- http://havas.work-preview.com/asset-store/Havas/storage/ -->
+
+      <img id="logo_png" class="hidden" src="./white_logo.png" style="visibility: inherit; opacity: 1;">
+
+
+      <div id="default_exit" class="btn"></div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <script src="./TweenMax.min.js.download"></script>
+    <script src="./index.js.download"></script>
+  
+</body></html>

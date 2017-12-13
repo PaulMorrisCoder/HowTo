@@ -1,0 +1,128 @@
+var mask = document.getElementById('shapeMask');
+
+var tm = TweenMax;
+var mainTimeLine = new TimelineMax({});   // yoyo:true, repeat:-1
+
+function addListeners() {
+    _id('#default_exit').addEventListener('click', default_click, false);
+}
+
+function _id(idString) {
+    var id = idString;
+    if (idString.charAt(0) == '#') {
+        id = idString.substring(1); //remove #
+    }
+    return document.getElementById(id);
+}
+
+//event handlers
+function default_click(event) {
+    window.open(clickTag, '_blank');
+}
+
+// init();
+
+function init() {
+    addListeners();
+    animate1();
+    _id("main_content").style.visibility = 'visible';
+    animate1();
+}
+
+
+
+// force3D: false
+function animate1(){
+
+	// hide headline 2
+
+	TweenMax.set( ["#headlineFrame2"], { autoAlpha:1 } ) ;
+
+	// // show headline 1
+	TweenMax.to( [ "#headlineFrame1Bottom",], 1, { autoAlpha:1} );
+
+	TweenMax.set( ["#headlineFrame2",  "#negative_svg-mask-image" ], { autoAlpha:0 } );
+
+	TweenMax.set( ["#blockOfWhite"], { autoAlpha:0.5 } );
+
+		// set up
+	TweenMax.set( [ "#svg-mask image"], {  attr: { x: -750, y:-700, width:1500, height:1500 }, autoAlpha:0 } );
+
+	// Unintuitive to animate something that's not from the top left or centre
+
+	// animate to middle - ish
+	TweenMax.to( [ "#svg-mask image"], 0.65, {  ease:"Power2.easeOut", transformOrigin:"center" ,  attr: {  x: -400, y:-600, width:1500, height:1500}, autoAlpha:1} )
+
+	// animate to edge - to allow transition of text
+	TweenMax.to( [ "#svg-mask image"], 1.3, {  delay:2, ease:"Power2.easeOut", transformOrigin:"center" ,  attr: {  x: -50, y:-1000, width:2000, height:2000 }, onComplete:animate2 } );
+
+
+}
+
+function animate2(){
+
+	TweenMax.to( ["#headlineFrame1Bottom" ], .7, { autoAlpha:0 } );
+
+	// animate spotlight towards the centre
+
+	TweenMax.to( ["#blockOfWhite"], 2, { delay:0, autoAlpha:1 } );
+	TweenMax.to( ["#headlineFrame2"], 1, { autoAlpha:1 } ) ;
+	TweenMax.to( [ "#svg-mask image"], 1, {  ease:"Power2.easeInOut",  transformOrigin:"center", attr:{  x:-1127, y:-1400, width:3000, height:3000}, onComplete:animate3} );
+
+}
+
+
+function animate3(){
+
+	TweenMax.to( [ "#svg-mask image"], 1.5,  { transformOrigin:"center" ,  attr: {  x: -1127, y:-1400, width:3000, height:3000 }, ease: "Power2.easeInOut" , onComplete:animate4 } ); //,  
+
+}
+
+function animate4(){
+
+
+	// var svgElement = document.getElementById("svg-mask-image");	
+	// svgElement.setAttribute("mask", "url(#svg-mask_logo)");	
+
+	// var svgElement_from = document.getElementById("svg-mask-img");	
+	// var svgElement_to = document.getElementById("svg-mask-logo-img");
+
+	// svgElement_to.setAttribute( "width", svgElement_from.getAttribute( "width" ));	
+	// svgElement_to.setAttribute( "height", svgElement_from.getAttribute( "height" ));	
+	// svgElement_to.setAttribute( "x", svgElement_from.getAttribute( "x" ) );	
+	// svgElement_to.setAttribute( "y", svgElement_from.getAttribute( "y" ));	
+	// svgElement_to.setAttribute( "style", svgElement_from.getAttribute( "style" ));	
+
+
+	TweenMax.to( ['#txt1'], 0.5, { autoAlpha:0 } );
+
+	//TweenMax.to( ['#logo_png'], 0.75, { delay:0, autoAlpha:1 } );
+
+	TweenMax.set( ["#innerLogo"], { autoAlpha:1, width:1200, height:1200, x:-100, y:-500 } ) ;
+
+	TweenMax.set( ["#svg-mask_logo image"], { autoAlpha:0 } ) ;
+
+	//TweenMax.to( [ "#svg-mask_logo image"], 0.85, {  delay:0,  ease:"Power2.easeInOut", transformOrigin:"center", attr:{  x: -105, y:-121, width:500	, height:800 }} ); // attr:{  x: -700, y:-625, width:1500, height:1500 }} );
+
+	TweenMax.to( [ '#blockOfWhite' ], .25, { delay:0, autoAlpha:0});
+	TweenMax.to( ["#innerLogo"], .5, { delay:.5, autoAlpha:1, width:34, height:34, x:600, y:18, autoAlpha:0 } ) ;
+	TweenMax.to(['#logo_png'], 0.75, { delay:.75, autoAlpha:1 } );
+
+	TweenMax.to( ["#ctaContainer", "#smallPrintContainer"], 1, { delay:1.2, autoAlpha:1 } );
+
+	//TweenMax.to( ["#cta_arrow"], 0.2, { delay:1.5, x:5, yoyo:true, repeat:5, onComplete:animate5 } );
+
+	TweenMax.to( [ "#headlineFrame2"], 0.25, {  delay:0.5, autoAlpha:0 }  );
+
+	TweenMax.set( ["#svg-mask_logo image" ], {  delay:0.95, autoAlpha:0 }  );
+
+}
+
+function animate5()
+{
+
+		
+
+
+}
+

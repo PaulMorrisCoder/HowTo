@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<!-- saved from url=(0112)https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi -->
+<html class=" supports-js supports-no-touch supports-csstransforms supports-csstransforms3d supports-fontface"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/analytics.js.download"></script><script async="" src="https://cdn.api.twitter.com/1/urls/count.json?url=https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi&amp;callback=jQuery111007643618551974733_1477775056195&amp;_=1477775056196"></script>
+  <!-- Google Tag Manager -->
+<script async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/trekkie.storefront.min.js.download"></script><script type="text/javascript" async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/shopify_stats.js.download"></script><script type="text/javascript" async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/widget.js.download"></script><script async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/gtm.js.download"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WQCF6C');</script>
+<!-- End Google Tag Manager -->
+  
+  <script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/eKtMADRjFZZJe6grBdCxiGaxy6DBxTaK8OylflWj/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+            
+
+  <!-- Basic page needs ================================================== -->
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="google-site-verification" content="KR-_f9oRZaSpovY3hdcv6pyFkV-FggWf_PQuBSQhgl8">
+  <meta name="google-site-verification" content="cWVNXfCubXKCvUopzGAnA9kh3YkpibqHiYkWFMa17dE">
+  <meta name="google-site-verification" content="KR-_f9oRZaSpovY3hdcv6pyFkV-FggWf_PQuBSQhgl8">
+  <meta name="google-site-verification" content="cWVNXfCubXKCvUopzGAnA9kh3YkpibqHiYkWFMa17dE">
+
+
+  
+  <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0176/3274/t/23/assets/favicon.png?17748039006802043399" type="image/png">
+  
+
+  <!-- Title and description ================================================== -->
+  <title>
+  How to setup a static IP address on your Raspberry Pi – The Pi Hut
+  </title>
+
+  
+  <meta name="description" content="So, you want to connect remotely to your Raspberry Pi? For that you’ll need its IP address! There are two main forms of IP address, dynamic and static. By defau">
+  
+
+  <!-- Social Meta Tags ================================================== -->
+  
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to setup a static IP address on your Raspberry Pi">
+  <meta property="og:url" content="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi">
+  
+
+
+  <meta property="og:description" content="So, you want to connect remotely to your Raspberry Pi? For that you’ll need its IP address! There are two main forms of IP address, dynamic and static. By defau">
+
+<meta property="og:site_name" content="The Pi Hut">
+
+
+
+<meta name="twitter:card" content="summary">
+
+
+  <meta name="twitter:site" content="@ThePiHut">
+
+
+
+  <meta name="twitter:title" content="How to setup a static IP address on your Raspberry Pi">
+  <meta name="twitter:description" content="So, you want to connect remotely to your Raspberry Pi? For that you’ll need its IP address! There are two main forms of IP address, dynamic and static. By default, your Raspberry Pi will have a dynamic IP address. This means that the IP address can change at any time">
+  
+
+
+
+  <!-- Helpers ================================================== -->
+  <link rel="canonical" href="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#be1443">
+
+  
+  <!-- Ajaxify Cart Plugin ================================================== -->
+  <link href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/ajaxify.scss.css" rel="stylesheet" type="text/css" media="all">
+  
+
+  <!-- CSS ================================================== -->
+  <link href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/timber.scss.css" rel="stylesheet" type="text/css" media="all">
+  <link href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/theme.scss.css" rel="stylesheet" type="text/css" media="all">
+
+  
+  
+  
+  <link href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/css" rel="stylesheet" type="text/css" media="all">
+
+
+  
+    
+    
+    <link href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/css(1)" rel="stylesheet" type="text/css" media="all">
+  
+
+
+
+  <!-- Header hook for plugins ================================================== -->
+  <link href="https://thepihut.com/blogs/raspberry-pi-tutorials.atom" title="Feed" rel="alternate" type="application/atom+xml">
+<script>
+//<![CDATA[
+      var Shopify = Shopify || {};
+      Shopify.shop = "the-pi-hut.myshopify.com";
+      Shopify.theme = {"name":"Classic + Interstitial Cross-sell","id":105801284,"theme_store_id":null,"role":"main"};
+
+//]]>
+</script>
+
+
+<script>
+//<![CDATA[
+    (function() {
+      function asyncLoad() {
+        var urls = ["\/\/secure.apps.shappify.com\/apps\/upsell\/upselljsscript.php?shop=the-pi-hut.myshopify.com","https:\/\/cdn.shopify.com\/s\/files\/1\/0176\/3274\/t\/14\/assets\/justuno_embed.js?7402\u0026shop=the-pi-hut.myshopify.com","https:\/\/cdn.shopify.com\/s\/files\/1\/0176\/3274\/t\/14\/assets\/justuno_conversion.js?7405\u0026shop=the-pi-hut.myshopify.com","https:\/\/s3.amazonaws.com\/maxeffi\/persistent-cart\/the-pi-hut.myshopify.com\/app.js?shop=the-pi-hut.myshopify.com","\/\/assets.backinstock.org\/widget\/3933_1476238238.js?v=5\u0026shop=the-pi-hut.myshopify.com"];
+        for (var i = 0; i < urls.length; i++) {
+          var s = document.createElement('script');
+          s.type = 'text/javascript';
+          s.async = true;
+          s.src = urls[i];
+          var x = document.getElementsByTagName('script')[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+      window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false);
+    })();
+
+//]]>
+</script>
+<script id="__st">
+//<![CDATA[
+var __st={"a":1763274,"offset":3600,"reqid":"3da009e9-bd07-454d-8077-6e70d9d750bf","pageurl":"thepihut.com\/blogs\/raspberry-pi-tutorials\/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi","s":"articles-16683276","u":"1919923e750d","p":"article","rtyp":"article","rid":16683276};
+//]]>
+</script>
+<script>
+//<![CDATA[
+      (function() {
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+        s.src = '//cdn.shopify.com/s/javascripts/shopify_stats.js?v=6';
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+      })();
+
+//]]>
+</script>
+<script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/ga_urchin_forms-668547562549a84f5dfa01ef82607987f85ecbe1c8301faf25059becfa208199.js.download" defer="defer"></script>
+      <script type="text/javascript">
+        
+      window.ShopifyAnalytics = window.ShopifyAnalytics || {};
+      window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
+      window.ShopifyAnalytics.meta.currency = 'GBP';
+      var meta = {};
+      for (var attr in meta) {
+        window.ShopifyAnalytics.meta[attr] = meta[attr];
+      }
+    
+      </script>
+
+      <script type="text/javascript">
+        window.ShopifyAnalytics.merchantGoogleAnalytics = function() {
+          
+        };
+      </script>
+
+      <script type="text/javascript" class="analytics">
+        (window.gaDevIds=window.gaDevIds||[]).push('BwiEti');
+        
+        (function () {
+          var customDocumentWrite = function(content) {
+            var jquery = null;
+
+            if (window.jQuery) {
+              jquery = window.jQuery;
+            } else if (window.Checkout && window.Checkout.$) {
+              jquery = window.Checkout.$;
+            }
+
+            if (jquery) {
+              jquery('body').append(content);
+            }
+          };
+
+          var trekkie = window.ShopifyAnalytics.lib = window.trekkie = window.trekkie || [];
+          if (trekkie.initialize) {
+            return;
+          }
+          trekkie.methods = [
+            'identify',
+            'initialize',
+            'page',
+            'ready',
+            'track',
+            'trackForm',
+            'trackLink'
+          ];
+          trekkie.factory = function(method) {
+            return function() {
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift(method);
+              trekkie.push(args);
+              return trekkie;
+            };
+          };
+          for (var i = 0; i < trekkie.methods.length; i++) {
+            var key = trekkie.methods[i];
+            trekkie[key] = trekkie.factory(key);
+          }
+          trekkie.load = function(config) {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = 'https://cdn.shopify.com/s/javascripts/trekkie.storefront.min.js?v=2016.09.01.1';
+            var first = document.getElementsByTagName('script')[0];
+            first.parentNode.insertBefore(script, first);
+            trekkie.initialize(config);
+          }
+          trekkie.load(
+            {"Trekkie":{"appName":"storefront","environment":"production","defaultAttributes":{"shopId":1763274}},"Performance":{"navigationTimingApiMeasurementsEnabled":true,"navigationTimingApiMeasurementsSampleRate":0.001},"Google Analytics":{"trackingId":"UA-34174529-1","domain":"auto","siteSpeedSampleRate":"10","enhancedEcommerce":true,"doubleClick":true,"includeSearch":true},"Facebook Pixel":{"pixelIds":["1219698774730001"],"agent":"plshopify1.2","standardEvents":{"Performed Search":"Search","Added Payment":"AddPaymentInfo"}}}
+          );
+
+          var loaded = false;
+          trekkie.ready(function() {
+            if (loaded) return;
+            loaded = true;
+
+            window.ShopifyAnalytics.lib = window.trekkie.noConflict();
+            
+      ga('require', 'linker');
+      function addListener(element, type, callback) {
+        if (element.addEventListener) {
+          element.addEventListener(type, callback);
+        }
+        else if (element.attachEvent) {
+          element.attachEvent('on' + type, callback);
+        }
+      }
+      function decorate(event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        if (target && (target.getAttribute('action') || target.getAttribute('href'))) {
+          ga(function (tracker) {
+            var linkerParam = tracker.get('linkerParam');
+            document.cookie = '_shopify_ga=' + linkerParam + '; ' + 'path=/';
+          });
+        }
+      }
+      addListener(window, 'load', function(){
+        for (var i=0; i < document.forms.length; i++) {
+          var action = document.forms[i].getAttribute('action');
+          if(action && action.indexOf('/cart') >= 0) {
+            addListener(document.forms[i], 'submit', decorate);
+          }
+        }
+        for (var i=0; i < document.links.length; i++) {
+          var href = document.links[i].getAttribute('href');
+          if(href && href.indexOf('/checkout') >= 0) {
+            addListener(document.links[i], 'click', decorate);
+          }
+        }
+      });
+    
+
+            var originalDocumentWrite = document.write;
+            document.write = customDocumentWrite;
+            try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
+            document.write = originalDocumentWrite;
+
+            
+        window.ShopifyAnalytics.lib.page(
+          null,
+          {"pageType":"article","resourceType":"article","resourceId":16683276}
+        );
+      
+            
+          });
+
+          
+      var eventsListenerScript = document.createElement('script');
+      eventsListenerScript.async = true;
+      eventsListenerScript.src = "//cdn.shopify.com/s/assets/shop_events_listener-91b4691a5a0a9b8881b8d482fa57139c6710eb703344a18c284e80917fc3ddbf.js";
+      document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
+    
+        })();
+      </script><script async="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/shop_events_listener-91b4691a5a0a9b8881b8d482fa57139c6710eb703344a18c284e80917fc3ddbf.js.download"></script>
+    
+
+
+<link rel="stylesheet" media="all" href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/additional-checkout-buttons-fdd9060422c857d772bb499fa43270a3700b9dc38f39f747b477195a30e3dd46.css">
+
+  
+
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+<script src="//cdn.shopify.com/s/files/1/0176/3274/t/23/assets/respond.min.js?17748039006802043399" type="text/javascript"></script>
+<link href="//cdn.shopify.com/s/files/1/0176/3274/t/23/assets/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="//thepihut.com/search?q=a1170be38934d7c17730bb450bdbbf7d" id="respond-redirect" rel="respond-redirect" />
+<script src="//thepihut.com/search?q=a1170be38934d7c17730bb450bdbbf7d" type="text/javascript"></script>
+<![endif]-->
+
+
+
+  <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/jquery.min.js.download" type="text/javascript"></script>
+  <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/modernizr.min.js.download" type="text/javascript"></script>
+
+  
+  
+
+<link type="text/css" rel="stylesheet" href="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/widget.css"></head>
+
+<body id="how-to-setup-a-static-ip-address-on-your-raspberry-pi" class="template-article">
+  
+    <div id="AjaxifyDrawer" class="ajaxcart ajaxcart--drawer">
+      <div id="AjaxifyCart" class="ajaxcart__content wrapper"></div>
+    </div>
+  
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQCF6C"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div class="header-bar">
+  <div class="wrapper medium-down--hide">
+    <div class="large--display-table">
+      <div class="header-bar__left large--display-table-cell">
+        
+      </div>
+
+      <div class="header-bar__right large--display-table-cell">
+        <div class="header-bar__module">
+          <a href="https://thepihut.com/cart" class="cart-toggle">
+            <span class="icon icon-cart header-bar__cart-icon" aria-hidden="true"></span>
+            Cart
+            <span class="cart-count header-bar__cart-count hidden-count">0</span>
+          </a>
+        </div>
+
+        
+          <span class="header-bar__sep" aria-hidden="true">|</span>
+          <ul class="header-bar__module header-bar__module--list">
+            
+              <li>
+                <a href="https://thepihut.com/account/login" id="customer_login_link">Log in</a>
+              </li>
+            
+          </ul>
+        
+        
+        
+          <div class="header-bar__module header-bar__search">
+            
+
+
+  <form action="https://thepihut.com/search" method="get" class="header-bar__search-form clearfix" role="search">
+    <input type="hidden" name="type" value="product">
+    <input type="search" name="q" value="" aria-label="Search our store" class="header-bar__search-input">
+    <button type="submit" class="btn icon-fallback-text header-bar__search-submit">
+      <span class="icon icon-search" aria-hidden="true"></span>
+      <span class="fallback-text">Search</span>
+    </button>
+  </form>
+
+
+          </div>
+        
+
+      </div>
+    </div>
+  </div>
+  <div class="wrapper large--hide">
+    <button type="button" class="mobile-nav-trigger" id="MobileNavTrigger">
+      <span class="icon icon-hamburger" aria-hidden="true"></span>
+      Menu
+    </button>
+    <a href="https://thepihut.com/cart" class="cart-toggle mobile-cart-toggle">
+      <span class="icon icon-cart header-bar__cart-icon" aria-hidden="true"></span>
+      Cart <span class="cart-count hidden-count">0</span>
+    </a>
+  </div>
+  <ul id="MobileNav" class="mobile-nav large--hide">
+  
+  
+  
+  <li class="mobile-nav__link" aria-haspopup="true">
+    
+      <a href="https://thepihut.com/" class="mobile-nav">
+        Store
+      </a>
+    
+  </li>
+  
+  
+  <li class="mobile-nav__link" aria-haspopup="true">
+    
+      <a href="https://thepihut.com/blogs/raspberry-pi-roundup" class="mobile-nav">
+        Blog
+      </a>
+    
+  </li>
+  
+  
+  <li class="mobile-nav__link" aria-haspopup="true">
+    
+      <a href="https://thepihut.com/blogs/raspberry-pi-tutorials" class="mobile-nav">
+        Tutorials
+      </a>
+    
+  </li>
+  
+  
+    
+      
+      
+      
+      
+      
+        <li class="mobile-nav__link" aria-haspopup="true">
+  <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi#" class="mobile-nav__sublist-trigger">
+    Handy Links
+    <span class="icon-fallback-text mobile-nav__sublist-expand">
+  <span class="icon icon-plus" aria-hidden="true"></span>
+  <span class="fallback-text">+</span>
+</span>
+<span class="icon-fallback-text mobile-nav__sublist-contract">
+  <span class="icon icon-minus" aria-hidden="true"></span>
+  <span class="fallback-text">-</span>
+</span>
+  </a>
+  <ul class="mobile-nav__sublist">
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/new-products">New Products</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/sale-items">Sale Items</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/all-of-the-things">All Products</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-zero">Raspberry Pi Zero</a>
+        </li>
+      
+    
+  
+  </ul>
+</li>
+
+
+      
+    
+      
+      
+      
+      
+      
+        <li class="mobile-nav__link" aria-haspopup="true">
+  <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi#" class="mobile-nav__sublist-trigger">
+    Raspberry Pi Store
+    <span class="icon-fallback-text mobile-nav__sublist-expand">
+  <span class="icon icon-plus" aria-hidden="true"></span>
+  <span class="fallback-text">+</span>
+</span>
+<span class="icon-fallback-text mobile-nav__sublist-contract">
+  <span class="icon icon-minus" aria-hidden="true"></span>
+  <span class="fallback-text">-</span>
+</span>
+  </a>
+  <ul class="mobile-nav__sublist">
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi">The Raspberry Pi</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-kits-and-bundles">Kits &amp; Bundles</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-power-supplies">Power Supplies</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-cases">Cases</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters">SD Cards &amp; Adapters</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-wifi">Go Wireless!</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-camera">Raspberry Pi Camera</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-hats">HATs &amp; GPIO</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-screens">Screens &amp; Displays</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/magpi">The MagPi</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/raspberry-pi-accessories">Raspberry Pi Accessories</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/camjam-edukit">CamJam EduKit</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/cables-leads">Cables &amp; Adapters</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/robotics">Robotics</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/tools-prototyping">Tools &amp; Prototyping</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/misc">Misc</a>
+        </li>
+      
+    
+  
+  </ul>
+</li>
+
+
+      
+    
+      
+      
+      
+      
+      
+        <li class="mobile-nav__link" aria-haspopup="true">
+  <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi#" class="mobile-nav__sublist-trigger">
+    More!
+    <span class="icon-fallback-text mobile-nav__sublist-expand">
+  <span class="icon icon-plus" aria-hidden="true"></span>
+  <span class="fallback-text">+</span>
+</span>
+<span class="icon-fallback-text mobile-nav__sublist-contract">
+  <span class="icon icon-minus" aria-hidden="true"></span>
+  <span class="fallback-text">-</span>
+</span>
+  </a>
+  <ul class="mobile-nav__sublist">
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/collections/microbit">BBC micro:bit</a>
+        </li>
+      
+    
+  
+  </ul>
+</li>
+
+
+      
+    
+      
+      
+      
+      
+      
+    
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+  
+    
+      
+      
+      <li class="mobile-nav__link" aria-haspopup="true">
+  <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi#" class="mobile-nav__sublist-trigger">
+    Recent Articles
+    <span class="icon-fallback-text mobile-nav__sublist-expand">
+  <span class="icon icon-plus" aria-hidden="true"></span>
+  <span class="fallback-text">+</span>
+</span>
+<span class="icon-fallback-text mobile-nav__sublist-contract">
+  <span class="icon icon-minus" aria-hidden="true"></span>
+  <span class="fallback-text">-</span>
+</span>
+  </a>
+  <ul class="mobile-nav__sublist">
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/wordpress-stats-for-the-zeroseg-a-new-episode-of-the-pipod-podcast-a-wii-u-console-and-a-disco-ball-all-in-todays-raspberry-pi-roundup">Wordpress stats for the ZeroSeg, a new episode of the PiPod Podcast, a Wii-U console and a Disco Ball - all in today's Raspberry Pi Roundup</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/sdfsdf">Cheap handheld console, Scratch 2.0 using Flash in PIXEL and a new C programming book in today's Raspberry Pi Roundup</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/pokemon-fun-pixel-tweaking-and-raspberry-pi-os-baking-in-todays-raspberry-pi-roundup">Pokemon fun, PIXEL tweaking and Raspberry Pi OS baking in today's Raspberry Pi Roundup</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/news-about-astro-pi-a-review-of-the-micro-dot-phat-and-a-system-for-good-behaviour-the-raspberry-pi-roundup">News about Astro Pi, a review of the Micro Dot pHAT and a system for good behaviour - the Raspberry Pi Roundup!</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/advent-calendar-gps-logger-a-podcast-and-power-circuitry-in-todays-raspberry-pi-roundup">Advent calendar, GPS logger, a podcast and power circuitry in today's Raspberry Pi Roundup</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-14th-october-2016">Raspberry Pi Roundup - 14th October 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-13th-october-2016">Raspberry Pi Roundup - 13th October 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-7th-october-2016">Raspberry Pi Roundup - 7th October 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-3rd-october-2016">Raspberry Pi Roundup - 3rd October 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-29th-september-2016">Raspberry Pi Roundup - 29th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-26rd-september-2016">Raspberry Pi Roundup - 26th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-23rd-september-2016">Raspberry Pi Roundup - 23rd September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-21th-september-2016">Raspberry Pi Roundup - 22nd September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-19th-september-2016">Raspberry Pi Roundup - 19th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-15th-september-2016">Raspberry Pi Roundup - 15th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-13th-september-2016">Raspberry Pi Roundup - 13th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-9th-september-2016">Raspberry Pi Roundup - 9th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-7th-september-2016">Raspberry Pi Roundup - 7th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-5th-september-2016">Raspberry Pi Roundup - 5th September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-1st-september-2016">Raspberry Pi Roundup - 1st September 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-30th-august-2016">Raspberry Pi Roundup - 30th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-19th-august-2016">Raspberry Pi Roundup - 19th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-12th-august-2016">Raspberry Pi Roundup - 12th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-10th-august-2016">Raspberry Pi Roundup - 10th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-8th-august-2016">Raspberry Pi Roundup - 8th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-5th-august-2016">Raspberry Pi Roundup - 5th August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-3rd-august-2016">Raspberry Pi Roundup - 3rd August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-1st-august-2016">Raspberry Pi Roundup - 1st August 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-27th-july-2016">Raspberry Pi Roundup - 27th July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-22nd-july-2016">Raspberry Pi Roundup - 22nd July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-14th-july-2016">Raspberry Pi Roundup - 14th July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-11th-july-2016">Raspberry Pi Roundup - 11th July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/10-things-to-do-with-a-raspberry-pi-zero">10 Awesome Raspberry Pi Zero Project Ideas</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-8th-july-2016">Raspberry Pi Roundup - 8th July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-5th-july-2016">Raspberry Pi Roundup - 5th July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-1st-july-2016">Raspberry Pi Roundup - 1st July 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-28th-june-2016">Raspberry Pi Roundup - 28th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-24th-june-2016">Raspberry Pi Roundup - 24th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-22nd-june-2016">Raspberry Pi Roundup - 22nd June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-20th-june-2016">Raspberry Pi Roundup - 20th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-17th-june-2017">Raspberry Pi Roundup - 17th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/raspberry-pi-roundup-15th-june-2016">Raspberry Pi Roundup - 15th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/118613188-raspberry-pi-roundup-13th-june-2016">Raspberry Pi Roundup - 13th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/118469316-raspberry-pi-roundup-9th-june-2016">Raspberry Pi Roundup - 9th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/118308292-raspberry-pi-roundup-6th-june-2016">Raspberry Pi Roundup - 6th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/118273732-raspberry-pi-roundup-5th-june-2016">Raspberry Pi Roundup - 5th June 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/118048196-raspberry-pi-roundup-31st-may-2016">Raspberry Pi Roundup - 31st May 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/117929796-raspberry-pi-roundup-27th-may-2016">Raspberry Pi Roundup - 27th May 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/117827332-raspberry-pi-roundup-25th-may-2016">Raspberry Pi Roundup - 25th May 2016</a>
+        </li>
+      
+    
+  
+    
+      
+      
+        <li class="mobile-nav__sublist-link">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/117708292-raspberry-pi-roundup-23rd-may-2016">Raspberry Pi Roundup - 23rd May 2016</a>
+        </li>
+      
+    
+  
+  </ul>
+</li>
+
+
+    
+  
+
+  
+    
+      <li class="mobile-nav__link">
+        <a href="https://thepihut.com/account/login" id="customer_login_link">Log in</a>
+      </li>
+      
+        <li class="mobile-nav__link">
+          <a href="https://thepihut.com/account/register" id="customer_register_link">Create account</a>
+        </li>
+      
+    
+  
+  
+  <li class="mobile-nav__link">
+    
+      <div class="header-bar__module header-bar__search">
+        
+
+
+  <form action="https://thepihut.com/search" method="get" class="header-bar__search-form clearfix" role="search">
+    <input type="hidden" name="type" value="product">
+    <input type="search" name="q" value="" aria-label="Search our store" class="header-bar__search-input">
+    <button type="submit" class="btn icon-fallback-text header-bar__search-submit">
+      <span class="icon icon-search" aria-hidden="true"></span>
+      <span class="fallback-text">Search</span>
+    </button>
+  </form>
+
+
+      </div>
+    
+  </li>
+  
+</ul>
+
+</div>
+
+  
+  <header class="site-header" role="banner">
+    <div class="wrapper">
+
+      <div class="grid--full large--display-table">
+        <div class="grid__item large--one-third large--display-table-cell">
+          
+            <div class="h1 site-header__logo large--left" itemscope="" itemtype="http://schema.org/Organization">
+          
+            
+              <a href="https://thepihut.com/" itemprop="url">
+                <img src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/logo.png" alt="The Pi Hut" itemprop="logo">
+              </a>
+            
+          
+            </div>
+          
+          
+        </div>
+        <div class="grid__item large--two-thirds large--display-table-cell medium-down--hide">
+          
+<ul class="site-nav" id="AccessibleNav">
+  
+    
+    
+    
+      <li>
+        <a href="https://thepihut.com/" class="site-nav__link">Store</a>
+      </li>
+    
+  
+    
+    
+    
+      <li>
+        <a href="https://thepihut.com/blogs/raspberry-pi-roundup" class="site-nav__link">Blog</a>
+      </li>
+    
+  
+    
+    
+    
+      <li class="site-nav--active">
+        <a href="https://thepihut.com/blogs/raspberry-pi-tutorials" class="site-nav__link">Tutorials</a>
+      </li>
+    
+  
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="delivery-countdown-bar">
+  <div class="wrapper medium-down--hide">
+    <ul>
+      
+      
+      <li><a href="https://thepihut.com/pages/site-reviews">Win a £50 Gift Card!</a></li>
+      <li><a href="https://thepihut.com/pages/delivery"><i class="fa fa-truck"></i> Delivery from just £2.50!</a></li>
+      <li class="delivery-countdown-item"><a href="https://thepihut.com/pages/delivery"><i class="fa fa-clock-o"></i> Order by 2PM for Next Day Delivery*
+        <div class="delivery-countdown">
+          <span class="hours"></span>
+          <span class="minutes"></span>
+          <span class="seconds"></span>
+      </div>
+        </a></li>
+    </ul>
+  </div>
+</div>
+
+<style type="text/css">
+  .delivery-countdown-bar ul {margin:0;text-align:center;margin-top:10px;}
+  .delivery-countdown-bar li {
+  	display:inline-block;
+    border-right: 1px solid #fff;
+    padding-right: 10px;
+    padding-left: 0px;
+    line-height: 32px;
+  }
+  
+</style>
+
+
+  <main class="wrapper main-content" role="main">
+    <div class="grid">
+      
+        <div class="grid__item large--one-fifth medium-down--hide">
+          
+
+
+
+
+
+  
+  
+  
+    <nav class="sidebar-module">
+      <div class="section-header">
+        <p class="section-header__title h4">Handy Links</p>
+      </div>
+      <ul class="sidebar-module__list">
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/new-products" class="">New Products</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/sale-items" class="">Sale Items</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/all-of-the-things" class="">All Products</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-zero" class="">Raspberry Pi Zero</a>
+  </li>
+
+
+        
+      </ul>
+    </nav>
+  
+
+  
+  
+  
+    <nav class="sidebar-module">
+      <div class="section-header">
+        <p class="section-header__title h4">Raspberry Pi Store</p>
+      </div>
+      <ul class="sidebar-module__list">
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi" class="">The Raspberry Pi</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-kits-and-bundles" class="">Kits &amp; Bundles</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-power-supplies" class="">Power Supplies</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-cases" class="">Cases</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-sd-cards-and-adapters" class="">SD Cards &amp; Adapters</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-wifi" class="">Go Wireless!</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-camera" class="">Raspberry Pi Camera</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-hats" class="">HATs &amp; GPIO</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-screens" class="">Screens &amp; Displays</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/magpi" class="">The MagPi</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/raspberry-pi-accessories" class="">Raspberry Pi Accessories</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/camjam-edukit" class="">CamJam EduKit</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/cables-leads" class="">Cables &amp; Adapters</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/robotics" class="">Robotics</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/tools-prototyping" class="">Tools &amp; Prototyping</a>
+  </li>
+
+
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/misc" class="">Misc</a>
+  </li>
+
+
+        
+      </ul>
+    </nav>
+  
+
+  
+  
+  
+    <nav class="sidebar-module">
+      <div class="section-header">
+        <p class="section-header__title h4">More!</p>
+      </div>
+      <ul class="sidebar-module__list">
+        
+          
+  <li>
+    <a href="https://thepihut.com/collections/microbit" class="">BBC micro:bit</a>
+  </li>
+
+
+        
+      </ul>
+    </nav>
+  
+
+  
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+  <div class="brand-maker-store">
+	<a href="http://www.makersify.com/" target="_blank"><img src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/header_logo@2x.png" style="
+    margin-bottom: 10px;
+    margin-top: 10px;
+      "></a>
+  
+  <p>Find a larger variety of Adafruit hardware at our sister store, Makersify!</p>
+	<ul class="nav nav-list">
+		
+      	<li><a target="_blank" style="color: #96C31E;" href="http://makersify.com/collections/sensors" title="">Sensors</a></li>
+      
+		<li><a target="_blank" style="color: #96C31E;" href="http://makersify.com/collections/boards" title="">Breakout Boards</a></li>
+		
+		<li><a target="_blank" style="color: #96C31E;" href="http://makersify.com/collections/prototyping" title="">Prototyping</a></li>
+		
+		<li><a target="_blank" style="color: #96C31E;" href="http://makersify.com/collections/components-parts" title="">Components &amp; Parts</a></li>
+      
+		<li><a target="_blank" style="color: #96C31E;" href="http://makersify.com/" title="">And much, much more…</a></li>
+		 
+	</ul>
+  	</div>
+
+
+  <nav class="sidebar-module">
+    <div class="section-header">
+      <p class="section-header__title h4">Recent Articles</p>
+    </div>
+    <ul class="sidebar-module__list">
+      
+        <li class="sidebar-module__article">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/wordpress-stats-for-the-zeroseg-a-new-episode-of-the-pipod-podcast-a-wii-u-console-and-a-disco-ball-all-in-todays-raspberry-pi-roundup">Wordpress stats for the ZeroSeg, a new episode of the PiPod Podcast, a Wii-U console and a Disco Ball - all in today's Raspberry Pi Roundup</a>
+        </li>
+      
+        <li class="sidebar-module__article">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/sdfsdf">Cheap handheld console, Scratch 2.0 using Flash in PIXEL and a new C programming book in today's Raspberry Pi Roundup</a>
+        </li>
+      
+        <li class="sidebar-module__article">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/pokemon-fun-pixel-tweaking-and-raspberry-pi-os-baking-in-todays-raspberry-pi-roundup">Pokemon fun, PIXEL tweaking and Raspberry Pi OS baking in today's Raspberry Pi Roundup</a>
+        </li>
+      
+        <li class="sidebar-module__article">
+          <a href="https://thepihut.com/blogs/raspberry-pi-roundup/news-about-astro-pi-a-review-of-the-micro-dot-phat-and-a-system-for-good-behaviour-the-raspberry-pi-roundup">News about Astro Pi, a review of the Micro Dot pHAT and a system for good behaviour - the Raspberry Pi Roundup!</a>
+        </li>
+      
+    </ul>
+  </nav>
+<div id="y-badges" class="yotpo yotpo-badge badge-init yotpo-small" data-yotpo-element-id="1"><div class="y-badge yotpo-display-wrapper"> <img src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/badges-500.png" class="y-badge-image" alt="30034"> <div class="y-badge-reviews">30034</div> <span class="y-badge-stars"><span class="yotpo-icon yotpo-icon-star pull-left"></span><span class="yotpo-icon yotpo-icon-star pull-left"></span><span class="yotpo-icon yotpo-icon-star pull-left"></span><span class="yotpo-icon yotpo-icon-star pull-left"></span><span class="yotpo-icon yotpo-icon-star pull-left"></span></span> <div class="y-badges-certified">Certified reviews</div> <div class="y-powered-by">Powered by YOTPO</div> </div></div>
+
+
+
+
+
+        </div>
+        <div class="grid__item large--four-fifths">
+          
+
+
+
+
+
+<article itemscope="" itemtype="http://schema.org/Article">
+
+  <header class="section-header">
+    <h1 class="section-header__title">How to setup a static IP address on your Raspberry Pi</h1>
+  </header>
+
+  <p>
+    <time datetime="2015-01-14">January 14, 2015</time>
+    
+    
+  </p>
+
+  <div class="rte" itemprop="articleBody">
+    <p>So, you want to connect remotely to your Raspberry Pi? For that you’ll need its IP address! There are two main forms of IP address, dynamic and static. By default, your Raspberry Pi will have a dynamic IP address. This means that the IP address can change at any time - not ideal if you want to run your Raspberry Pi headless, as you’ll need to keep checking and updating the IP address in your system. A static IP address however will not change, it assigns your Raspberry Pi a permanent address on your network - so you know exactly where it is at all times. <br><br>Setting up a static IP address on your Raspberry Pi can seem like a daunting task, but fear not, we’ll walk you through it one step at a time in this tutorial.<br><br>For this guide, we’re going to assume that you are running the latest version of the Raspbian operating system as it is the most common amongst Raspberry Pi owners. <br><br><strong>Step 1. Check your connection!</strong><br>First up we’ll need to double check that your Raspberry Pi is happily connected to your network. A great way to do this is to run <code>sudo ifconfig</code></p>
+<div style="text-align: left;"><img alt="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/ifconfig_grande.jpg" style="float: none;"></div>
+<p style="text-align: left;"><br>As you can see in the above screenshot, our Raspberry Pi is connected to our network and has been given the IP address 192.168.3.116 (yours will likely be different!)<br><br><strong>Step 2. Make some notes!</strong><br>Before we can begin applying a static IP address to your Raspberry Pi we’ll need to gather the necessary data from it! We can get a lot of this from the “ifconfig” command we ran earlier. Make a note of the following data:<br><br>Current IP Address (inet addr)<br>Broadcast Range (Bcast)<br>Subnet Mask (Mask)<br><br>so, from our example,&nbsp;I&nbsp;would get the following information.<br><br>Current IP Address = 192.168.3.116<br>Broadcast Range = 192.168.3.255<br>Subnet Mask = 255.255.255.0<br><br>Different networks will give you different data, so make sure you don't just copy our results!<br><br>With those noted down, run <code>sudo route -n</code>, this will give us information from your router.<br><br><img src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/route_large.jpg"><br><br>Make sure you note down the following information given from this command:</p>
+<ul>
+<li><span style="line-height: 1.4; font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;">Gateway</span></li>
+<li><span style="line-height: 1.4; font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;">Destination&nbsp;</span></li>
+</ul>
+<p style="text-align: left;"><br>So from the example, I&nbsp;would get the following<br>Gateway = 192.168.3.1<br>Destination = 192.168.3.0<br><br>OK, so we’ve now obtained all of the data that we need to setup our Raspberry Pi with a shiny new static IP address, it’s time to save it to a config file. <br><br><strong>Step 3. Edit the files</strong><br>Time to run <code>sudo nano /etc/network/interfaces</code> . This opens the configuration file for the network settings in the nano text editor. If you’re more confident with an alternative text editor that’s fine too!<br><br><img alt="" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/interfaces-config_large.jpg" style="float: none;"><br><br>the line that reads “iface eth0 inet dhcp” is telling the ethernet “eth0” networking interface to use “dhcp” (dynamic IP). Firstly, replace “dhcp” with “static”.<br><br>Next up, add the following lines directly below the line you just altered, filling the []’s with the date you obtained above.<br><br>address [your chosen IP address]<br>netmask [your netmask]<br>network [your destination]<br>broadcast [your broadcast range]<br>gateway [your gateway]<br><br>Don't forget to save your file!<br><br>Here’s how my&nbsp;file turned out:<br><br><img src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/interfaces-config-saved_large.jpg"><br><br><strong>Step 5. Reboot!</strong></p>
+<p style="text-align: left;">run <code>sudo reboot</code> to restart your Raspberry Pi with its new static IP address. The changes we have made will only take effect after a reboot.</p>
+  </div>
+
+  
+    <hr>
+    
+
+
+
+<div class="social-sharing normal small--text-center" data-permalink="https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi">
+
+  
+    <a target="_blank" href="https://www.facebook.com/sharer.php?u=https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi" class="share-facebook">
+      <span class="icon icon-facebook"></span>
+      <span class="share-title">Share</span>
+      
+        
+      
+    </a>
+  
+
+  
+    <a target="_blank" href="https://twitter.com/share?text=How%20to%20setup%20a%20static%20IP%20address%20on%20your%20Raspberry%20Pi&amp;url=https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi" class="share-twitter">
+      <span class="icon icon-twitter"></span>
+      <span class="share-title">Tweet</span>
+      
+        <span class="share-count">0</span>
+      
+    </a>
+  
+
+  
+
+  
+    <a target="_blank" href="https://plus.google.com/share?url=https://thepihut.com/blogs/raspberry-pi-tutorials/16683276-how-to-setup-a-static-ip-address-on-your-raspberry-pi" class="share-google">
+      <!-- Cannot get Google+ share count with JS yet -->
+      <span class="icon icon-google"></span>
+      
+        <span class="share-count is-loaded">+1</span>
+      
+    </a>
+  
+
+</div>
+
+  
+
+  
+  
+    <hr>
+    <p class="clearfix">
+      
+        <span class="left">
+          ← <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16043032-stealth-cam-how-to-disable-the-raspberry-pi-camera-led" title="">Older Post</a>
+        </span>
+      
+      
+        <span class="right">
+          <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/16982376-updating-raspbian-on-your-microsd-for-the-raspberry-pi-2" title="">Newer Post</a> →
+        </span>
+      
+    </p>
+  
+
+  
+
+</article>
+
+        </div>
+      
+    </div>
+  </main>
+
+  <footer class="site-footer small--text-center" role="contentinfo">
+
+    <div class="wrapper">
+
+      <div class="grid-uniform ">
+
+        
+        
+        
+        
+        
+        
+
+        
+
+        
+          <div class="grid__item large--one-third medium--one-third">
+            <h4>Quick Links</h4>
+            <ul class="site-footer__links">
+              
+                <li><a href="https://thepihut.com/search">Search</a></li>
+              
+                <li><a href="https://thepihut.com/pages/quick-start-guide">Quick Start Guide</a></li>
+              
+                <li><a href="https://thepihut.com/pages/faqs">FAQ</a></li>
+              
+                <li><a href="https://thepihut.com/pages/delivery">Delivery</a></li>
+              
+                <li><a href="https://thepihut.com/pages/privacy-statement">Privacy Statement</a></li>
+              
+                <li><a href="https://thepihut.com/pages/refund-policy">Policies</a></li>
+              
+                <li><a href="https://thepihut.com/pages/terms-of-service">Terms of Service</a></li>
+              
+                <li><a href="https://thepihut.com/pages/company-info">Company Info</a></li>
+              
+                <li><a href="http://thepihut.freshdesk.com/">Support Portal</a></li>
+              
+            </ul>
+          </div>
+        
+
+        
+          <div class="grid__item large--one-third medium--one-third">
+            <h4>Get Connected</h4>
+              
+              <ul class="inline-list social-icons">
+                
+                  <li>
+                    <a class="icon-fallback-text" href="https://twitter.com/ThePiHut" title="The Pi Hut on Twitter">
+                      <span class="icon icon-twitter" aria-hidden="true"></span>
+                      <span class="fallback-text">Twitter</span>
+                    </a>
+                  </li>
+                
+                
+                  <li>
+                    <a class="icon-fallback-text" href="https://www.facebook.com/The.Pi.Hut" title="The Pi Hut on Facebook">
+                      <span class="icon icon-facebook" aria-hidden="true"></span>
+                      <span class="fallback-text">Facebook</span>
+                    </a>
+                  </li>
+                
+                
+                
+                  <li>
+                    <a class="icon-fallback-text" href="https://plus.google.com/+Thepihut/posts" title="The Pi Hut on Google Plus" rel="publisher">
+                      <span class="icon icon-google" aria-hidden="true"></span>
+                      <span class="fallback-text">Google</span>
+                    </a>
+                  </li>
+                
+                
+                
+                
+                
+                
+                
+              </ul>
+          </div>
+        
+
+        
+
+        
+          <div class="grid__item large--one-third medium--one-third">
+            <h4>Newsletter</h4>
+            <p>Sign up for promotions</p>
+            
+
+<form action="https://thepihut.us7.list-manage.com/subscribe/post?u=21953420069a624b5ca93f372&amp;id=a4028431b8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="small--hide">
+  <input type="email" value="" placeholder="your-email@example.com" name="EMAIL" id="mail" aria-label="your-email@example.com" autocorrect="off" autocapitalize="off">
+  <input type="submit" class="btn" name="subscribe" id="subscribe" value="Subscribe">
+</form>
+<form action="https://thepihut.us7.list-manage.com/subscribe/post?u=21953420069a624b5ca93f372&amp;id=a4028431b8" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="large--hide medium--hide input-group">
+  <input type="email" value="" placeholder="your-email@example.com" name="EMAIL" id="mail" class="input-group-field" aria-label="your-email@example.com" autocorrect="off" autocapitalize="off">
+  <span class="input-group-btn">
+    <input type="submit" class="btn" name="subscribe" id="subscribe" value="Subscribe">
+  </span>
+</form>
+
+          </div>
+        
+      </div>
+
+      <hr>
+
+      <div class="grid">
+        <div class="grid__item large--one-half large--text-left medium-down--text-center">
+          <p class="site-footer__links">Copyright © 2016, <a href="https://thepihut.com/" title="">The Pi Hut</a>. <a target="_blank" rel="nofollow" href="https://www.shopify.co.uk/">Ecommerce Software by Shopify</a></p>
+        </div>
+        
+          <div class="grid__item large--one-half large--text-right medium-down--text-center">
+            <ul class="inline-list payment-icons">
+              
+                <li>
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-bitcoin" aria-hidden="true"></span>
+                    <span class="fallback-text">bitcoin</span>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-maestro" aria-hidden="true"></span>
+                    <span class="fallback-text">maestro</span>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-master" aria-hidden="true"></span>
+                    <span class="fallback-text">master</span>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-paypal" aria-hidden="true"></span>
+                    <span class="fallback-text">paypal</span>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="icon-fallback-text">
+                    <span class="icon icon-visa" aria-hidden="true"></span>
+                    <span class="fallback-text">visa</span>
+                  </span>
+                </li>
+              
+            </ul>
+          </div>
+        
+      </div>
+
+    </div>
+
+  </footer>
+
+  
+
+  
+    <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/jquery.flexslider.min.js.download" type="text/javascript"></script>
+    <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/slider.js.download" type="text/javascript"></script>
+  
+
+  <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/fastclick.min.js.download" type="text/javascript"></script>
+  <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/timber.js.download" type="text/javascript"></script>
+  <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/theme.js.download" type="text/javascript"></script>
+
+  
+    
+      <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/social-buttons.js.download" type="text/javascript"></script>
+    
+  
+
+  
+    <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/handlebars.min.js.download" type="text/javascript"></script>
+    
+  <script id="CartTemplate" type="text/template">
+  
+    <form action="/cart" method="post" novalidate>
+      <div class="ajaxcart__inner">
+        {{#items}}
+        <div class="ajaxcart__product">
+          <div class="ajaxcart__row" data-id="{{id}}">
+            <div class="grid">
+              <div class="grid__item large--two-thirds">
+                <div class="grid">
+                  <div class="grid__item one-quarter">
+                    <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
+                  </div>
+                  <div class="grid__item three-quarters">
+                    <a href="{{url}}" class="h4">{{name}}</a>
+                    <p>{{variation}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="grid__item large--one-third">
+                <div class="grid">
+                  <div class="grid__item one-third">
+                    <div class="ajaxcart__qty">
+                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus" data-id="{{id}}" data-qty="{{itemMinus}}">&minus;</button>
+                      <input type="text" name="updates[]" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*">
+                      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus" data-id="{{id}}" data-qty="{{itemAdd}}">+</button>
+                    </div>
+                  </div>
+                  <div class="grid__item one-third text-center">
+                    <p>{{price}}</p>
+                  </div>
+                  <div class="grid__item one-third text-right">
+                    <p>
+                      <small><a href="/cart/change?id={{id}}&amp;quantity=0" class="ajaxcart__remove" data-id="{{id}}">Remove</a></small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/items}}
+      </div>
+      <div class="ajaxcart__row text-right medium-down--text-center">
+        <span class="h3">Subtotal {{totalPrice}}</span>
+        <input type="submit" class="{{btnClass}}" name="checkout" value="Checkout">
+      </div>
+    </form>
+  
+  </script>
+  <script id="DrawerTemplate" type="text/template">
+  
+    <div id="AjaxifyDrawer" class="ajaxcart ajaxcart--drawer">
+      <div id="AjaxifyCart" class="ajaxcart__content {{wrapperClass}}"></div>
+    </div>
+  
+  </script>
+  <script id="ModalTemplate" type="text/template">
+  
+    <div id="AjaxifyModal" class="ajaxcart ajaxcart--modal">
+      <div id="AjaxifyCart" class="ajaxcart__content"></div>
+    </div>
+  
+  </script>
+  <script id="AjaxifyQty" type="text/template">
+  
+    <div class="ajaxcart__qty">
+      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus" data-id="{{id}}" data-qty="{{itemMinus}}">&minus;</button>
+      <input type="text" class="ajaxcart__qty-num" value="{{itemQty}}" min="0" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*">
+      <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--plus" data-id="{{id}}" data-qty="{{itemAdd}}">+</button>
+    </div>
+  
+  </script>
+  <script id="JsQty" type="text/template">
+  
+    <div class="js-qty">
+      <button type="button" class="js-qty__adjust js-qty__adjust--minus" data-id="{{id}}" data-qty="{{itemMinus}}">&minus;</button>
+      <input type="text" class="js-qty__num" value="{{itemQty}}" min="1" data-id="{{id}}" aria-label="quantity" pattern="[0-9]*" name="{{inputName}}" id="{{inputId}}">
+      <button type="button" class="js-qty__adjust js-qty__adjust--plus" data-id="{{id}}" data-qty="{{itemAdd}}">+</button>
+    </div>
+  
+  </script>
+
+    <script src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/ajaxify.js.download" type="text/javascript"></script>
+    <script>
+    jQuery(function($) {
+      ajaxifyShopify.init({
+        method: 'flip',
+        wrapperClass: 'wrapper',
+        formSelector: '#AddToCartForm',
+        addToCartSelector: '#AddToCart',
+        cartCountSelector: '.cart-count',
+        toggleCartButton: '.cart-toggle',
+        btnClass: 'btn',
+        moneyFormat: "\u003cspan class='money'\u003e£{{amount}}\u003c\/span\u003e"
+      });
+    });
+    </script>
+  
+
+  
+
+
+<input type="hidden" name="_pc_params" value="the-pi-hut.myshopify.com:">
+  
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: '',
+ecomm_pagetype: 'article',
+ecomm_totalvalue: '',
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 936435809;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/conversion.js.download">
+</script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","220350881711625");fbq("track","PageView");</script>
+<noscript>&lt;img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=220350881711625&amp;amp;ev=PageView&amp;amp;noscript=1"&gt;</noscript>
+
+<iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./How to setup a static IP address on your Raspberry Pi – The Pi Hut_files/saved_resource.html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no"></iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/936435809/?value=0&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+
+ 
+
+
+</body></html>

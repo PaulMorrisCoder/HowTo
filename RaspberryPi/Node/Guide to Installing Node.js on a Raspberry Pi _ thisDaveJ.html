@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/ -->
+<html lang="en-US" slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://thisdavej.com/xmlrpc.php">
+
+<title>Guide to Installing Node.js on a Raspberry Pi | thisDaveJ</title>
+
+<!-- All in One SEO Pack 2.3.11 by Michael Torbert of Semper Fi Web Design[331,418] -->
+<meta name="description" content="In this guide, we&#39;re going to get Node up and running on a Raspberry Pi. This tutorial is useful for anyone wanting to get Rasbian installed on a RasPi.">
+
+<meta name="keywords" content="raspberry pi,node.js,raspbian,installation,beginners,tutorial,apt-get,apt,debian,javascript,networking,raspi,windows">
+
+<link rel="canonical" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="thisDaveJ » Feed" href="http://thisdavej.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="thisDaveJ » Comments Feed" href="http://thisdavej.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="thisDaveJ » Beginner’s Guide to Installing Node.js on a Raspberry Pi Comments Feed" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/feed/">
+		<script id="twitter-wjs" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/widgets.js.download"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/thisdavej.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.1"}};
+			!function(a,b,c){function d(a){var c,d,e,f,g,h=b.createElement("canvas"),i=h.getContext&&h.getContext("2d"),j=String.fromCharCode;if(!i||!i.fillText)return!1;switch(i.textBaseline="top",i.font="600 32px Arial",a){case"flag":return i.fillText(j(55356,56806,55356,56826),0,0),!(h.toDataURL().length<3e3)&&(i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,65039,8205,55356,57096),0,0),c=h.toDataURL(),i.clearRect(0,0,h.width,h.height),i.fillText(j(55356,57331,55356,57096),0,0),d=h.toDataURL(),c!==d);case"diversity":return i.fillText(j(55356,57221),0,0),e=i.getImageData(16,16,1,1).data,f=e[0]+","+e[1]+","+e[2]+","+e[3],i.fillText(j(55356,57221,55356,57343),0,0),e=i.getImageData(16,16,1,1).data,g=e[0]+","+e[1]+","+e[2]+","+e[3],f!==g;case"simple":return i.fillText(j(55357,56835),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode8":return i.fillText(j(55356,57135),0,0),0!==i.getImageData(16,16,1,1).data[0];case"unicode9":return i.fillText(j(55358,56631),0,0),0!==i.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity","unicode9"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/wp-emoji-release.min.js.download" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="parent-style-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="decode-icomoon-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/icomoon.css" type="text/css" media="all">
+<link rel="stylesheet" id="decode-style-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="decode-font-stylesheet-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="enlighter-wpcustom-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/EnlighterJS.custom.css" type="text/css" media="all">
+<link rel="stylesheet" id="A2A_SHARE_SAVE-css" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/addtoany.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/jquery-migrate.min.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/addtoany.min.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/mootools-core-yc.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/EnlighterJS.min.js.download"></script>
+<link rel="https://api.w.org/" href="http://thisdavej.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://thisdavej.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://thisdavej.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How to Install or Upgrade to Node.js v7 on the Raspberry Pi" href="http://thisdavej.com/how-to-install-or-upgrade-to-node-js-v7-on-the-raspberry-pi/">
+<link rel="next" title="Upgrading to more recent versions of Node.js on the Raspberry Pi" href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/">
+<meta name="generator" content="WordPress 4.6.1">
+<link rel="shortlink" href="http://thisdavej.com/?p=146">
+<link rel="alternate" type="application/json+oembed" href="http://thisdavej.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fthisdavej.com%2Fbeginners-guide-to-installing-node-js-on-a-raspberry-pi%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://thisdavej.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fthisdavej.com%2Fbeginners-guide-to-installing-node-js-on-a-raspberry-pi%2F&amp;format=xml">
+
+<script type="text/javascript">
+var a2a_config=a2a_config||{};a2a_config.callbacks=a2a_config.callbacks||[];a2a_config.templates=a2a_config.templates||{};
+</script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/page.js.download" async="async"></script>
+
+		<!-- Decode Custom Colors CSS -->
+
+		<style type="text/css">
+
+			body, .sidebar, .sidebar-top, .menu ul ul, .header-style-ghost .site { background-color: #ffffff; }.menu-icon, .close-icon, .social-icon-fill { fill: #1e73be; }a, .no-touch a:hover, button, input[type=button], input[type=reset], input[type=submit], .no-touch .site-title a:hover, .no-touch .menu a:hover, .menu ul li.open > a, .sidebar-menu a, .menu .current-menu-item > a, .menu .current_page_item > a, .no-touch .search-entry:hover, .no-touch .search-entry:hover .entry-title, .no-touch article .date a:hover, .no-touch .format-link .entry-title a:hover, .no-touch .comment-metadata a:hover, .no-touch .decode-reply-tool-plugin .replylink:hover { color: #1e73be; }.no-touch button:hover, .no-touch input[type=button]:hover, .no-touch input[type=reset]:hover, .no-touch input[type=submit]:hover, .no-touch input[type=text]:focus, .touch input[type=text]:focus, .no-touch input[type=email]:focus, .touch input[type=email]:focus, .no-touch input[type=password]:focus, .touch input[type=password]:focus, .no-touch input[type=search]:focus, .touch input[type=search]:focus, .no-touch input[type=tel]:focus, .touch input[type=tel]:focus, .no-touch input[type=url]:focus, .touch input[type=url]:focus, .no-touch textarea:focus, .touch textarea:focus, .no-touch .site-description a:hover, .no-touch .entry-content a:hover, a .page-link, .no-touch .categories a:hover, .no-touch .tags a:hover, .no-touch .comments-link a:hover, .no-touch .edit-link a:hover, .no-touch .author-site a:hover, .no-touch .theme-info a:hover, .no-touch .site-colophon a:hover, .site-header, .menu ul ul, .menu a:focus, .site-breadcrumbs, .page-title, .post blockquote, .page blockquote, .entry-footer, .entry-header .entry-meta, .search .entry-footer, .sidebar-top, .sidebar-style-constant .sidebar.left, .sidebar-style-constant .sidebar.right, .explore-page .widget h1 { border-color: #1e73be; }.no-touch .menu ul > .menu-item-has-children > a:hover::after, .no-touch .menu ul > .page_item_has_children > a:hover::after, .menu ul li.open > a::after, .sidebar-menu ul .menu-item-has-children > a::after, .sidebar-menu ul .page_item_has_children > a::after, .menu ul > .current_page_item.menu-item-has-children > a::after, .menu ul > .current_page_item.page_item_has_children > a::after { border-top-color: #1e73be; }.no-touch .footer-menu ul > .menu-item-has-children > a:hover::after, .no-touch .footer-menu ul > .page_item_has_children > a:hover::after, .footer-menu ul > li.open > a::after, .footer-menu ul > .current_page_item.menu-item-has-children > a::after, .footer-menu ul > .current_page_item.page_item_has_children > a::after { border-bottom-color: #1e73be; }.no-touch a:active, .no-touch button:focus, .touch button:focus, .no-touch button:active, .touch button:active, .no-touch input[type=button]:focus, .touch input[type=button]:focus, .no-touch input[type=button]:active, .touch input[type=button]:active, .no-touch input[type=reset]:focus, .touch input[type=reset]:focus, .no-touch input[type=reset]:active, .touch input[type=reset]:active, .no-touch input[type=submit]:focus, .touch input[type=submit]:focus, .no-touch input[type=submit]:active, .touch input[type=submit]:active, .no-touch .site-title a:active, .no-touch .menu a:active, .no-touch .sidebar-menu a:hover, .sidebar-menu ul li.open > a, .menu .current-menu-item > a:hover, .menu .current_page_item > a:hover, .sidebar-menu ul .current-menu-item > a, .sidebar-menu ul .current_page_item > a, .no-touch .sidebar-content a:hover, .no-touch .search-entry:active, .no-touch .search-entry:active .entry-title, .no-touch article .date a:active, .no-touch .format-link .entry-title a:active, .no-touch .comment-metadata a:active, .no-touch .site-description a:active, .decode-reply-tool-plugin .replylink:active, .no-touch .decode-reply-tool-plugin .replylink:active { color: #1e73be; }.no-touch button:focus, .touch button:focus, .no-touch button:active, .touch button:active, .no-touch input[type=button]:focus, .touch input[type=button]:focus, .no-touch input[type=button]:active, .touch input[type=button]:active, .no-touch input[type=reset]:focus, .touch input[type=reset]:focus, .no-touch input[type=reset]:active, .touch input[type=reset]:active, .no-touch input[type=submit]:focus, .touch input[type=submit]:focus, .no-touch input[type=submit]:active, .touch input[type=submit]:active, .no-touch .site-description a:active, .no-touch .entry-content a:active, a .page-link:active .no-touch .categories a:active, .no-touch .tags a:active, .no-touch .comments-link a:active, .no-touch .edit-link a:active, .no-touch .author-site a:active, .no-touch .theme-info a:active, .no-touch .site-colophon a:active { border-color: #1e73be; }.no-touch .menu ul > .menu-item-has-children > a:active::after, .no-touch .menu ul > .page_item_has_children > a:active::after, .no-touch .sidebar-menu ul .menu-item-has-children > a:hover::after, .no-touch .sidebar-menu ul .page_item_has_children > a:hover::after, .sidebar-menu ul li.open > a::after, .sidebar-menu ul .current_page_item.menu-item-has-children > a::after, .sidebar-menu ul .current_page_item.page_item_has_children > a::after { border-top-color: #1e73be; }.no-touch .footer-menu ul > .menu-item-has-children > a:active::after, .no-touch .footer-menu ul > .page_item_has_children > a:active::after { border-bottom-color: #1e73be; }.no-touch input[type=text]:focus, .touch input[type=text]:focus, .no-touch input[type=email]:focus, .touch input[type=email]:focus, .no-touch input[type=password]:focus, .touch input[type=password]:focus, .no-touch input[type=search]:focus, .touch input[type=search]:focus, .no-touch input[type=tel]:focus, .touch input[type=tel]:focus, .no-touch input[type=url]:focus, .touch input[type=url]:focus, .no-touch textarea:focus, .touch textarea:focus, .no-touch .search .page-header input[type=search]:focus, .touch .search .page-header input[type=search]:focus { border-color: #1e73be; }
+			@media (min-width: 68.5em) {
+
+				.site-main {
+					max-width: none;
+				}
+
+			
+			}
+
+		</style>
+
+		<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+<script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"wpcustom","indent":2,"hover":"NULL","showLinenumbers":false,"rawButton":false,"infoButton":false,"windowButton":false,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};window.addEvent('domready', function(){if (typeof EnlighterJS == "undefined"){return;};EnlighterJS.Util.Init(EnlighterJS_Config.selector.block, EnlighterJS_Config.selector.inline, EnlighterJS_Config);});;/* ]]> */</script><link rel="icon" href="http://thisdavej.com/wp-content/uploads/2016/02/cropped-thisDaveJ-favicon-32x32.png" sizes="32x32">
+<link rel="icon" href="http://thisdavej.com/wp-content/uploads/2016/02/cropped-thisDaveJ-favicon-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="http://thisdavej.com/wp-content/uploads/2016/02/cropped-thisDaveJ-favicon-180x180.png">
+<meta name="msapplication-TileImage" content="http://thisdavej.com/wp-content/uploads/2016/02/cropped-thisDaveJ-favicon-270x270.png">
+<script type="text/javascript" charset="utf-8" async="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/button.5546439b5d743401ca910708312f6e81.js.download"></script><style type="text/css">.a2a_menu,.a2a_menu * {-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;float:none;margin:0;padding:0;position: static;height:auto;width:auto;}.a2a_menu {border-radius: 6px;display:none;direction:ltr;background:#FFF;font: 16px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;color:#000;line-height:12px;border: 1px solid #CCC;vertical-align:baseline;outline: 0; overflow:hidden;}.a2a_mini {min-width:200px;position:absolute;width: 300px;z-index:9999997;}.a2a_overlay {display: none;background: #CCC; _height: expression( ((e=document.documentElement.clientHeight)?e:document.body.clientHeight)+"px" ); _width: expression( ((e=document.documentElement.clientWidth)?e:document.body.clientWidth)+"px" ); filter: alpha(opacity=50); opacity: .7;position: fixed;_position: absolute; top: 0;right: 0;left: 0;bottom: 0;z-index: 9999998;-webkit-tap-highlight-color: rgba(0,0,0,0);transition: opacity .14s;}.a2a_full {background: #FFF;height: auto;height: calc(320px);top: 15%;_top: expression(40+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+"px"); left: 50%;margin-left: -320px; position: fixed;_position: absolute; text-align: center;width: 640px;z-index: 9999999;     transition: transform .14s, opacity .14s;}.a2a_full_header,.a2a_full_services,.a2a_full_footer {border: 0;margin: 0;padding: 12px;box-sizing: border-box;}.a2a_full_header {padding-bottom: 8px;}.a2a_full_services {height: 280px; overflow-y: scroll;padding: 0 12px;-webkit-overflow-scrolling: touch;}.a2a_full_services .a2a_i {display: inline-block;float: none;width: 181px;width: calc(33.334% - 18px);}div.a2a_full_footer {font-size: 12px;text-align: center;padding: 8px 14px;}div.a2a_full_footer a,div.a2a_full_footer a:visited {display: inline;font-size: 12px;line-height:14px;padding: 8px 14px; }div.a2a_full_footer a:hover,div.a2a_full_footer a:focus {background: none;border: 0;color: #0166FF;}div.a2a_full_footer a span.a2a_s_a2a,div.a2a_full_footer a span.a2a_w_a2a {background-size: 14px;border-radius: 3px;display: inline-block;height:14px;line-height:14px;margin: 0 3px 0 0;vertical-align: top;*vertical-align: middle; width:14px;}.a2a_modal {background: #FFF;font: 24px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;height: auto;top: 50%;_top: expression(40+((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+"px"); left: 50%;margin-left: -320px; margin-top: -36px; position: fixed;_position: absolute; text-align: center;width: 640px;z-index: 9999999;     transition: transform .14s, opacity .14s;-webkit-tap-highlight-color: rgba(0,0,0,0);}.a2a_copy_link_container {position: relative;}span.a2a_s_link#a2a_copy_link_icon,span.a2a_w_link#a2a_copy_link_icon {background-size: 48px;border-radius: 0;display: inline-block;height:48px;left: 0;line-height:48px;margin: 0 3px 0 0;position: absolute;vertical-align: top;*vertical-align: middle; width:48px;}#a2a_copy_link_text {background-color: transparent;_background-color: #FFF;border: 0;color: #2A2A2A;font: inherit;height: 48px;left: 62px;padding: 0;position: relative;width: 564px;width: calc(100% - 76px);}#a2a_copy_link_copied {background-color: #0166ff;background: linear-gradient(90deg, #0166ff 80%, #9cbfff);color: #fff;display: none;font: inherit;font-size: 16px;padding: 6px 8px;}@media print {.a2a_menu,.a2a_overlay {visibility: hidden;}}@keyframes a2aFadeIn {from { opacity: 0; }  to { opacity: 1; }}.a2a_starting {opacity: 0;}.a2a_starting.a2a_full {transform: scale(.8);}@media (max-width: 639px) {.a2a_full {border-radius: 0;top: 15%;left: 0;margin-left: auto;width: 100%;}.a2a_modal {left: 0;margin-left: 10px;width: calc(100% - 20px);}}@media (min-width: 318px) and (max-width: 437px) {.a2a_full .a2a_full_services .a2a_i {width: calc(50% - 18px);}}@media (max-width: 317px) {.a2a_full .a2a_full_services .a2a_i {width: calc(100% - 18px);}}@media (max-height: 436px) {.a2a_full {bottom: 40px;height: auto;top: 40px;}}.a2a_menu a {color:#0166FF;text-decoration:none;font: 16px sans-serif-light, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, Helvetica, "Liberation Sans", sans-serif;line-height:14px;height:auto;width:auto;outline:none;-moz-outline:none;}.a2a_menu a:visited{color:#0166FF}.a2a_menu a:hover,.a2a_menu a:active,.a2a_menu a:focus{color: #2A2A2A;border-color: #EEE;border-style: solid;background-color: #EEE;text-decoration: none;}.a2a_menu span.a2a_s_find {background-size: 24px;height:24px;left: 8px;position:absolute;top: 7px;width:24px;}.a2a_menu span.a2a_s_find svg {background-color: #FFF;}.a2a_menu span.a2a_s_find svg path {fill: #CCC;}#a2a_menu_container{display:inline-block} #a2a_menu_container{_display:inline} .a2a_menu_find_container {border: 1px solid #CCC;border-radius: 6px;padding: 2px 24px 2px 0;position: relative;text-align: left;}.a2a_cols_container .a2a_col1{overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}.a2a_menu input,.a2a_menu input[type="text"],input.a2a_copy_link_text,input.a2a_copy_link_text[type="text"] { display:block;background-image:none;box-shadow:none;line-height:100%;margin:0;outline:0;overflow:hidden;padding:0;-moz-box-shadow:none;-webkit-box-shadow:none;-webkit-appearance:none} .a2a_menu_find_container input.a2a_menu_find {background-color: transparent;_background-color: #FFF;border: 0;color: #2A2A2A;font: inherit;font-size: 16px;height: 28px;line-height: 20px;left: 38px;outline: 0;padding: 2px 0;position: relative;width: 99%;}.a2a_clear{clear:both} .a2a_img {background:url(https://static.addtoany.com/menu/icons.36.png);border:0;line-height:16px}.a2a_img,.a2a_svg {background-repeat:no-repeat;display:block;overflow:hidden;}.a2a_img{height:16px;line-height:16px;width:16px;}.a2a_svg{height:32px;line-height:32px;width:32px;background-color:rgba(0,0,0,.01);}a.a2a_i,i.a2a_i{display:block;float:left;border:1px solid #FFF;line-height:24px;padding:6px 8px;text-align:left;white-space:nowrap;overflow: hidden;text-overflow: ellipsis;width:132px;}a.a2a_i span,a.a2a_more span {display: inline-block;overflow: hidden;vertical-align: top;*vertical-align: middle; }a.a2a_i .a2a_img,a.a2a_i .a2a_svg {margin: 0 6px 0 0;}a.a2a_i .a2a_svg,a.a2a_more .a2a_svg {background-size: 24px;height:24px;line-height:24px;width:24px;}a.a2a_sss:hover {border-left: 1px solid #CCC;}a.a2a_menu_show_more_less{border-bottom:1px solid #FFF;border-left:0;border-right:0;line-height:24px;margin:6px 0 0;padding:6px}a.a2a_menu_show_more_less span{display:inline-block;height:24px;margin:0 6px 0 0;} .a2a_kit .a2a_svg { background-repeat: repeat; }.a2a_default_style a{float:left;line-height:16px;padding:0 2px}.a2a_default_style a:hover .a2a_img,.a2a_default_style a:hover .a2a_svg,.a2a_floating_style a:hover .a2a_img,.a2a_floating_style a:hover .a2a_svg {opacity: .7;}.a2a_default_style .a2a_count,.a2a_default_style .a2a_svg,.a2a_floating_style .a2a_svg,.a2a_vertical_style .a2a_count,.a2a_menu .a2a_svg {border-radius:4px ;}.a2a_default_style .a2a_img, .a2a_default_style .a2a_dd, .a2a_default_style .a2a_svg,.a2a_default_style .a2a_counter img { float: left;}.a2a_default_style .a2a_img_text{margin-right:4px}.a2a_default_style .a2a_divider{border-left:1px solid #000;display:inline;float:left;height:16px;line-height:16px;margin:0 5px}.a2a_kit a{cursor:pointer}.a2a_floating_style { background-color: #fff; border-radius: 6px; padding: 4px; position: fixed; z-index: 9999995;    animation: a2aFadeIn .2s ease-in;}.a2a_vertical_style a { clear: left;display: block;overflow: hidden;padding: 4px;text-decoration: none; }.a2a_floating_style.a2a_default_style { bottom: 0; }.a2a_floating_style.a2a_default_style a { padding: 4px; }.a2a_count {background-color: #fff;border: 1px solid #ccc;box-sizing: border-box;color: #2a2a2a;display: block;float: left;font: 12px Arial,Helvetica,sans-serif;height: 16px;margin-left: 4px;position: relative;text-align: center;width: 50px;}.a2a_count:before,.a2a_count:after {border: solid transparent;border-width: 4px 4px 4px 0;content: "";height: 0;left: 0;line-height: 0;margin: -4px 0 0 -4px;position: absolute;top: 50%;width: 0;}.a2a_count:before {border-right-color: #ccc;}.a2a_count:after {border-right-color: #fff;margin-left: -3px;}.a2a_count span {    animation: a2aFadeIn .14s ease-in;}.a2a_vertical_style .a2a_counter img {display: block;}.a2a_vertical_style .a2a_count {float: none;margin-left: 0;margin-top: 6px; }.a2a_vertical_style .a2a_count:before,.a2a_vertical_style .a2a_count:after {border: solid transparent;border-width: 0 4px 4px 4px;content: "";height: 0;left: 50%;line-height: 0;margin: -4px 0 0 -4px;position: absolute;top: 0;width: 0;}.a2a_vertical_style .a2a_count:before {border-bottom-color: #ccc;}.a2a_vertical_style .a2a_count:after {border-bottom-color: #fff;margin-top: -3px;}.a2a_nowrap{white-space:nowrap}.a2a_note{margin:0 auto;padding:9px;font-size:12px;text-align:center}.a2a_note .a2a_note_note{margin:0;color:#2A2A2A}.a2a_wide a{display:block;margin-top:3px;border-top:1px solid #EEE;text-align:center}.a2a_label {position: absolute !important;clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px);overflow: hidden; }iframe.a2a_shim {background-color: transparent;border: 0;bottom: 0;filter: alpha(opacity=0); height: 100%;left: 0;right: 0;top: 0;position: absolute;width: 100%;z-index: 9999996;_height: expression( ((e=document.documentElement.clientHeight)?e:document.body.clientHeight)+"px" ); _width: expression( ((e=document.documentElement.clientWidth)?e:document.body.clientWidth)+"px" ); }.a2a_dd img {border:0;-ms-touch-action:manipulation;}.a2a_button_facebook_like iframe {max-width: none;}iframe[id^="PIN_"][id$="_nag"] {display: none !important;}.a2a_i_a2a{background-position:0 0!important}.a2a_i_a2a_sm{background-position:0 -17px!important}.a2a_i_agregator{background-position:0 -34px!important}.a2a_i_amazon{background-position:0 -51px!important}.a2a_i_aol{background-position:0 -68px!important}.a2a_i_app_net{background-position:0 -85px!important}.a2a_i_baidu{background-position:0 -102px!important}.a2a_i_balatarin{background-position:0 -119px!important}.a2a_i_behance{background-position:0 -136px!important}.a2a_i_bibsonomy{background-position:0 -153px!important}.a2a_i_bitty{background-position:0 -170px!important}.a2a_i_blinklist{background-position:0 -187px!important}.a2a_i_blogger{background-position:0 -204px!important}.a2a_i_blogmarks{background-position:0 -221px!important}.a2a_i_bookmark{background-position:0 -238px!important}.a2a_i_bookmarks_fr{background-position:0 -255px!important}.a2a_i_box{background-position:0 -272px!important}.a2a_i_buddymarks{background-position:0 -289px!important}.a2a_i_buffer{background-position:0 -306px!important}.a2a_i_care2{background-position:0 -323px!important}.a2a_i_chrome{background-position:0 -340px!important}.a2a_i_citeulike{background-position:0 -357px!important}.a2a_i_dailyrotation{background-position:0 -374px!important}.a2a_i_default{background-position:0 -391px!important}.a2a_i_delicious{background-position:0 -408px!important}.a2a_i_designfloat{background-position:0 -425px!important}.a2a_i_diary_ru{background-position:0 -442px!important}.a2a_i_diaspora{background-position:0 -459px!important}.a2a_i_digg{background-position:0 -476px!important}.a2a_i_dihitt{background-position:0 -493px!important}.a2a_i_diigo{background-position:0 -510px!important}.a2a_i_dzone{background-position:0 -527px!important}.a2a_i_email{background-position:0 -544px!important}.a2a_i_evernote{background-position:0 -561px!important}.a2a_i_facebook{background-position:0 -578px!important}.a2a_i_fark{background-position:0 -595px!important}.a2a_i_feed{background-position:0 -612px!important}.a2a_i_feedblitz{background-position:0 -629px!important}.a2a_i_feedbucket{background-position:0 -646px!important}.a2a_i_feedly{background-position:0 -663px!important}.a2a_i_feedmailer{background-position:0 -680px!important}.a2a_i_find{background-position:0 -697px!important}.a2a_i_firefox{background-position:0 -714px!important}.a2a_i_flickr{background-position:0 -731px!important}.a2a_i_flipboard{background-position:0 -748px!important}.a2a_i_folkd{background-position:0 -765px!important}.a2a_i_foursquare{background-position:0 -782px!important}.a2a_i_github{background-position:0 -799px!important}.a2a_i_gmail{background-position:0 -816px!important}.a2a_i_google{background-position:0 -833px!important}.a2a_i_google_classroom{background-position:0 -850px!important}.a2a_i_google_plus{background-position:0 -867px!important}.a2a_i_hatena{background-position:0 -884px!important}.a2a_i_instapaper{background-position:0 -901px!important}.a2a_i_itunes{background-position:0 -918px!important}.a2a_i_jamespot{background-position:0 -935px!important}.a2a_i_kakao{background-position:0 -952px!important}.a2a_i_kik{background-position:0 -969px!important}.a2a_i_kindle{background-position:0 -986px!important}.a2a_i_klipfolio{background-position:0 -1003px!important}.a2a_i_known{background-position:0 -1020px!important}.a2a_i_line{background-position:0 -1037px!important}.a2a_i_link{background-position:0 -1054px!important}.a2a_i_linkedin{background-position:0 -1071px!important}.a2a_i_livejournal{background-position:0 -1088px!important}.a2a_i_mail_ru{background-position:0 -1105px!important}.a2a_i_mendeley{background-position:0 -1122px!important}.a2a_i_meneame{background-position:0 -1139px!important}.a2a_i_miro{background-position:0 -1156px!important}.a2a_i_mixi{background-position:0 -1173px!important}.a2a_i_myspace{background-position:0 -1190px!important}.a2a_i_netlog{background-position:0 -1207px!important}.a2a_i_netvibes{background-position:0 -1224px!important}.a2a_i_netvouz{background-position:0 -1241px!important}.a2a_i_newsalloy{background-position:0 -1258px!important}.a2a_i_newsisfree{background-position:0 -1275px!important}.a2a_i_newsvine{background-position:0 -1292px!important}.a2a_i_nujij{background-position:0 -1309px!important}.a2a_i_odnoklassniki{background-position:0 -1326px!important}.a2a_i_oknotizie{background-position:0 -1343px!important}.a2a_i_oldreader{background-position:0 -1360px!important}.a2a_i_outlook_com{background-position:0 -1377px!important}.a2a_i_pinboard{background-position:0 -1394px!important}.a2a_i_pinterest{background-position:0 -1411px!important}.a2a_i_plurk{background-position:0 -1428px!important}.a2a_i_pocket{background-position:0 -1445px!important}.a2a_i_podnova{background-position:0 -1462px!important}.a2a_i_print{background-position:0 -1479px!important}.a2a_i_printfriendly{background-position:0 -1496px!important}.a2a_i_protopage{background-position:0 -1513px!important}.a2a_i_pusha{background-position:0 -1530px!important}.a2a_i_qzone{background-position:0 -1547px!important}.a2a_i_reddit{background-position:0 -1564px!important}.a2a_i_rediff{background-position:0 -1581px!important}.a2a_i_renren{background-position:0 -1598px!important}.a2a_i_segnalo{background-position:0 -1615px!important}.a2a_i_share{background-position:0 -1632px!important}.a2a_i_sina_weibo{background-position:0 -1649px!important}.a2a_i_sitejot{background-position:0 -1666px!important}.a2a_i_skype{background-position:0 -1683px!important}.a2a_i_slashdot{background-position:0 -1700px!important}.a2a_i_sms{background-position:0 -1717px!important}.a2a_i_snapchat{background-position:0 -1734px!important}.a2a_i_stumbleupon{background-position:0 -1751px!important}.a2a_i_stumpedia{background-position:0 -1768px!important}.a2a_i_svejo{background-position:0 -1785px!important}.a2a_i_symbaloo{background-position:0 -1802px!important}.a2a_i_telegram{background-position:0 -1819px!important}.a2a_i_thefreedictionary{background-position:0 -1836px!important}.a2a_i_thefreelibrary{background-position:0 -1853px!important}.a2a_i_tumblr{background-position:0 -1870px!important}.a2a_i_twiddla{background-position:0 -1887px!important}.a2a_i_twitter{background-position:0 -1904px!important}.a2a_i_typepad{background-position:0 -1921px!important}.a2a_i_viadeo{background-position:0 -1938px!important}.a2a_i_viber{background-position:0 -1955px!important}.a2a_i_vimeo{background-position:0 -1972px!important}.a2a_i_vk{background-position:0 -1989px!important}.a2a_i_wanelo{background-position:0 -2006px!important}.a2a_i_webnews{background-position:0 -2023px!important}.a2a_i_wechat{background-position:0 -2040px!important}.a2a_i_whatsapp{background-position:0 -2057px!important}.a2a_i_winksite{background-position:0 -2074px!important}.a2a_i_wordpress{background-position:0 -2091px!important}.a2a_i_wykop{background-position:0 -2108px!important}.a2a_i_xing{background-position:0 -2125px!important}.a2a_i_y18{background-position:0 -2142px!important}.a2a_i_yahoo{background-position:0 -2159px!important}.a2a_i_yim{background-position:0 -2176px!important}.a2a_i_yoolink{background-position:0 -2193px!important}.a2a_i_youmob{background-position:0 -2210px!important}.a2a_i_youtube{background-position:0 -2227px!important}.a2a_i_yummly{background-position:0 -2244px!important}</style><link rel="stylesheet" href="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/icons.18.svg.css"></head>
+
+<body class="single single-post postid-146 single-format-standard custom-background sidebar-style-closing sidebar-style-right">
+	
+<div id="page" class="hfeed site">
+	
+	<a class="skip-link screen-reader-text" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#content">Skip to content</a>
+	
+				
+				<button id="sidebar-link" class="sidebar-link SidebarLink right" title="Show sidebar">
+				<svg width="100%" height="100%" viewBox="0 0 240 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					<g class="menu-icon" fill-rule="evenodd">
+						<path d="M0,160 L0,200 L240,200 L240,160 L0,160 Z M0,160"></path>
+						<path d="M0,80 L0,120 L240,120 L240,80 L0,80 Z M0,80"></path>
+						<path d="M0,0 L0,40 L240,40 L240,0 L0,0 Z M0,0"></path>
+					</g>
+				</svg>
+			</button>
+					<header id="masthead" class="site-header" role="banner">
+				
+		<div class="site-branding">
+				
+													<a class="site-logo-link" href="http://thisdavej.com/" title="thisDaveJ" rel="home">
+							<img class="site-logo" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/logo.png" height="225" width="443" alt="">
+						</a>
+									
+						
+						
+		</div><!-- .site-branding -->
+
+
+		
+		
+		<nav id="header-menu" class="menu horizontal-menu header-menu" role="navigation"><ul><li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home current-post-parent menu-item-16"><a href="http://thisdavej.com/">Home</a></li>
+<li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11"><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#">Categories</a>
+<ul class="sub-menu">
+	<li id="menu-item-77" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="http://thisdavej.com/category/iot/">IoT</a></li>
+	<li id="menu-item-133" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-133"><a href="http://thisdavej.com/category/node-js/">Node.js</a></li>
+	<li id="menu-item-357" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-357"><a href="http://thisdavej.com/category/raspberry-pi/">Raspberry Pi</a></li>
+	<li id="menu-item-1137" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1137"><a href="http://thisdavej.com/category/visual-studio-code/">Visual Studio Code</a></li>
+	<li id="menu-item-118" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-118"><a href="http://thisdavej.com/category/windows/">Windows</a></li>
+</ul>
+</li>
+<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="http://thisdavej.com/about/">About</a></li>
+<li id="menu-item-469" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-469"><a href="http://thisdavej.com/feed/">RSS</a></li>
+<li id="menu-item-470" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-470"><a href="https://twitter.com/thisDaveJ"><small><small>Follow</small></small><br>@thisDaveJ</a></li>
+</ul></nav><!-- #header-menu -->		
+				
+	</header><!-- #masthead -->
+	
+			
+		
+	<div id="content" class="site-content">
+		
+<div id="primary" class="content-area">
+	<main id="main" class="site-main" role="main">
+
+	
+		
+
+
+
+
+
+		
+	<article id="post-146" class="post-146 post type-post status-publish format-standard hentry category-node-js category-raspberry-pi tag-javascript tag-networking tag-node-js tag-raspi tag-windows">
+
+		
+		
+
+		<header class="entry-header">
+
+			
+			<h1 class="entry-title">Beginner’s Guide to Installing Node.js on a Raspberry Pi</h1>
+
+			
+		</header><!-- .entry-header -->
+
+		
+
+		<div class="entry-content">
+
+			<p><img class="size-full wp-image-141 alignright" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/LTM-logo.png" alt="Learning through Making (LTM) logo" width="97" height="90"></p>
+<blockquote><p>This article has been updated to cover the installation of the&nbsp;latest version of Node at the time of this writing which is Node 7.x.</p></blockquote>
+<p>In this installment of our LTM (Learning through Making) series of Node.js tutorials, we’re going to get Node up and running on a Raspberry Pi 3 or Pi 2. With the Raspberry Pi 3, you won’t need to buy a separate USB Wi-Fi adapter. I’m focusing on the Raspberry Pi 3/Pi 2 rather than older versions such as the Raspberry Pi B+ since these are the latest models at the time of this writing. &nbsp;The Raspberry Pi 3, for example, sports a 1.2 GHz quad-core ARMv8 chip with 1 GB of RAM versus the Raspberry Pi 1 Model B+’s 700 MHz single-core ARMv6 chip with 512 MB RAM.</p>
+<p>The instructions provided here are for installing Node.js on a Pi 3 (ARMv8) or Pi 2 (ARMv7) rather than other models based on the ARMv6 chip such as the Raspberry Pi 1 Model B, Raspberry Pi Model B+ or the Raspberry Pi Zero. &nbsp;A majority of this installation guide should still prove useful for other Raspberry Pi systems besides the Pi 3 and Pi 2; however, the final steps focused on the installation of Node.js will not work for these systems based on the older ARMv6 architecture.</p>
+<p>This tutorial is useful for anyone wishing to successfully install&nbsp;a Raspberry Pi 3/Pi 2 system, even if they are not interested in Node.js since the Node.js installation&nbsp;happens&nbsp;in the&nbsp;final steps of the tutorial. &nbsp;But, why would you not want to install Node.js? <img draggable="false" class="emoji" alt="🙂" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/1f642.svg"> &nbsp;Let’s get started!<span id="more-146"></span></p>
+<h3>Table of Contents</h3>
+<nav id="TOC">
+<ul>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#hardware-needed">Hardware Needed</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#create-image">Write Raspbian Image to SD Card</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#prep-hardware">Prep the Hardware</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#configure">Configure the RasPi</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#wifi">Configure Wi-Fi</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#apply-updates">Apply Raspbian Updates</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#remote-desktop">Prepare Remote Desktop</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#windows-file-share">Create Windows File Share on the RasPi (Optional)</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#install-node">Install Node.js</a></li>
+<li><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#next-time">Next Time</a></li>
+</ul>
+</nav>
+<h3 id="hardware-needed"><img class="size-full wp-image-344 alignright" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/raspiPhotoHome.jpeg" alt="Raspberry Pi" width="100" height="54">Hardware Needed</h3>
+<p>If you don’t currently own&nbsp;a Raspberry Pi, the easiest way to get started is to buy a starter kit such as this one on Amazon:</p>
+<ul>
+<li><a href="http://www.amazon.com/gp/product/B01C6Q2GSY/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B01C6Q2GSY&amp;linkCode=as2&amp;tag=thisdavej-20&amp;linkId=VRAGHJ2RQIMQQTVG">CanaKit Raspberry Pi 3 Complete Starter Kit – 32 GB Edition</a>&nbsp;(Note: my affiliate info&nbsp;is included on Amazon links so you can, if you desire, support these tutorials while paying nothing extra.)</li>
+</ul>
+<p>We’ll&nbsp;need the following items to get rolling:</p>
+<ul>
+<li>Raspberry Pi 3 Model B or Pi 2&nbsp;Model B &nbsp;(these are the official names for the Raspberry Pi 3 and Pi 2. &nbsp;<strong>Don’t let the “B” confuse you since there is also an older Raspberry Pi Model B which is now effectively the “Raspberry Pi 1 Model B”</strong>.)</li>
+<li>MicroSD card (I recommend a class 10 card that is 16 GB or higher. &nbsp;I like this <a href="http://www.amazon.com/gp/product/B00IVPU786/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00IVPU786&amp;linkCode=as2&amp;tag=thisdavej-20&amp;linkId=CXW5WB6NJTW2VVAE">Samsung 32GB Class 10 microSD card</a>.)</li>
+<li>MicroSD to SD memory card adapter (so you can use the SD card reader on&nbsp;your laptop/desktop to write to the microSD card. &nbsp;Many microSD card vendors include this SD adapter with the purchase as shown here.)<br>
+<img class="alignnone size-full wp-image-152" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/SD-card-adapter.jpg" alt="SD card adapter" width="212" height="150"></li>
+<li>Micro USB power supply (2.5A or greater recommended) to power the RasPi.</li>
+<li>(RasPi 2 only)&nbsp;USB WiFi adapter (or Ethernet cable if preferred. &nbsp;I have tested this <a href="http://www.amazon.com/gp/product/B003MTTJOY/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B003MTTJOY&amp;linkCode=as2&amp;tag=thisdavej-20&amp;linkId=RZGOFLPTQIH5ASNB">Edimax USB WiFi adapter</a> on Raspbian and it works great out of the box. &nbsp;There’s a reason this is a best seller on Amazon.) &nbsp;This is not needed for the RasPi 3 since it includes built-in Wi-Fi.</li>
+<li>Windows laptop/desktop (Linux or Mac works great too, but this tutorial is geared more toward Windows machines so some readers&nbsp;will need to adapt)</li>
+<li>HDMI monitor/USB keyboard/mouse (You can borrow these from another system temporarily and then run your RasPi in a headless mode as I will explain later.)</li>
+</ul>
+<p>Once you have gathered the needed hardware, we are ready to&nbsp;bring our RasPi machine to life!</p>
+<h3 id="create-image">Write Raspbian Image to SD Card</h3>
+<p>We will be running Raspbian which is a free operating system based on Debian Linux and optimized for the RasPi. &nbsp;Here we go:</p>
+<ul>
+<li>Download the latest Raspbian image from <a href="https://www.raspberrypi.org/downloads/raspbian/">https://www.raspberrypi.org/downloads/raspbian/</a>. &nbsp;Be sure to download the full version rather than the “lite” version. &nbsp;The download is a zip file that is about 1.5 GB so it may take some time to download depending on the speed of your Internet connection.</li>
+<li>Insert the microSD card into the SD adapter as shown in the Samsung sample picture above.</li>
+<li>Insert the SD adapter in the SD card reader on your laptop/desktop. &nbsp;Make sure it is seated well in the connection.</li>
+<li>Launch Windows Explorer and verify that the SD card registers as a drive on your system. &nbsp;Make a note of the drive letter as you will need it soon.</li>
+<li>Download and install <a href="https://www.etcher.io/">Etcher</a>. &nbsp;Etcher is a cross-platform (Windows, OS X, Linux) tool for flashing&nbsp;images to SD cards. &nbsp;It&nbsp;has many nice features including a simple user interface, the ability to flash&nbsp;an&nbsp;image without unzipping the zip file, and a&nbsp;validation step to verify the SD card image was written correctly to the SD card.
+<ul>
+<li>(As an alternative for Windows users, you can use <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>&nbsp;since it also provides the ability to read&nbsp;an SD card and create an image file which is handy for creating snapshots&nbsp;of Raspberry Pi systems that can flashed&nbsp;back to an SD card later if needed. &nbsp;For Win32 Disk Imager, you will need to first unzip the downloaded zip file before&nbsp;burning the .img file to the appropriate drive letter containing your SD card.)</li>
+</ul>
+</li>
+<li>Launch Etcher. &nbsp;Be patient as Etcher takes a number of seconds&nbsp;to launch. &nbsp;When launched, the interface will look something like this:<br>
+<img class="alignnone size-full wp-image-965" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/etcher1.png" alt="etcher" width="802" height="412" srcset="http://thisdavej.com/wp-content/uploads/2016/06/etcher1.png 802w, http://thisdavej.com/wp-content/uploads/2016/06/etcher1-300x154.png 300w, http://thisdavej.com/wp-content/uploads/2016/06/etcher1-768x395.png 768w" sizes="(max-width: 802px) 100vw, 802px"></li>
+<li>Click the <em>Select image</em> button and navigate to the Raspbian zip file that&nbsp;you downloaded. &nbsp;(It does NOT&nbsp;need to be unzipped before flashing.)</li>
+<li>Click the <em>Select drive</em> button to specify&nbsp;the target device location of the SD card.<br>
+<span style="color: #ff0000;">WARNING</span>: Be sure you choose the right target device or you will write the image to another drive on your system and this will not be good.</li>
+<li>Click the <em>Flash!&nbsp;</em>button to write the image to your&nbsp;SD card.</li>
+<li>If you are running Windows,&nbsp;&nbsp;you may be&nbsp;presented with a security prompt&nbsp;regarding making changes to your device. If so, click <em>Yes</em>&nbsp;to proceed.</li>
+<li>After the image is written to the SD card and verified,&nbsp;Etcher will automatically dismount your SD card so it can be safely removed.</li>
+<li>Remove the SD adapter from your laptop/desktop, and remove the microSD card from the SD adapter.</li>
+</ul>
+<h3 id="prep-hardware">Prep the Hardware</h3>
+<p>The <a href="http://techbrickcafe.blogspot.com/2015/10/raspberry-pi-2-model-b-single-board.html" target="_blank">Tech Brick Café</a> has a nice overview picture of the various parts of the RasPi 2&nbsp;<a href="http://1.bp.blogspot.com/-v9M2cZM4BJo/Vi4l_fie0sI/AAAAAAAAAAw/9aa1y3-hhVQ/s400/Raspberry_pi_2_2.PNG" target="_blank">here</a>&nbsp;(RasPi 3 looks very similar) that may help you in this section. &nbsp;Let’s get this little SBC (single board computer) ready to boot!&nbsp;Here are the steps:</p>
+<ul>
+<li>Insert the microSD card into the RasPi. &nbsp;(Turn the RasPi upside down. &nbsp;The microSD card slot is located on the side opposite of the USB ports. &nbsp;This <a href="https://www.youtube.com/watch?v=PCcXa4UFeLg" target="_blank">short video</a> explains the process well.)</li>
+<li>Connect the USB keyboard and mouse</li>
+<li>Connect the HDMI cable</li>
+<li>Connect the USB Wi-Fi adapter (or Ethernet connection if you are not using Wi-Fi) &nbsp;This step is not necessary if you are using a Raspberry Pi 3 which has on-board Wi-Fi.</li>
+<li>Connect the power supply (You will see the RasPi lights come on and power up.)</li>
+<li>You should now see Raspbian booting on the screen. &nbsp;Hooray!</li>
+</ul>
+<h3 id="configure">Configure the RasPi</h3>
+<p>We first need to make a few changes to the RasPi to for the purpose of optimization and personalizing it for our use. &nbsp;To get started, launch&nbsp;<em>Raspberry Pi Configuration</em>&nbsp;which is located in the Menu under <em>Preferences.</em><br>
+<img class="alignnone size-full wp-image-999" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rc_gui.png" alt="RasPi configuration GUI" width="500" height="577" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rc_gui.png 500w, http://thisdavej.com/wp-content/uploads/2016/06/rc_gui-260x300.png 260w" sizes="(max-width: 500px) 100vw, 500px"><br>
+This will launch the Raspberry Pi Configuration utility, a handy graphical version of the console-based&nbsp;<em>raspi-config</em> program that was used&nbsp;for many years to configure the RasPi (and is actually still used behind the scenes by this graphical version). &nbsp;This will launch the following window:<br>
+<img class="alignnone wp-image-907 size-full" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rcg1.png" alt="rcg1" width="482" height="413" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rcg1.png 482w, http://thisdavej.com/wp-content/uploads/2016/06/rcg1-300x257.png 300w" sizes="(max-width: 482px) 100vw, 482px"><br>
+Let’s start configuring!</p>
+<ul>
+<li>Expand Filesystem – click this button to expand the filesystem. &nbsp;This ensures that all of the SD card storage is available to Raspbian.</li>
+<li>(Optional) Change Password – from a security perspective, it’s a good idea to change the default password for the “pi” user. &nbsp;Just make sure you don’t forget it. <img draggable="false" class="emoji" alt="😉" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/1f609.svg"></li>
+<li>Hostname – if you prefer less typing when connecting remotely (explained later), you can change the host name from “raspberrypi” to something shorter such as “raspi”.</li>
+</ul>
+<h4>Localization</h4>
+<p>The Raspberry Pi is the&nbsp;brilliant brainchild from our friends in the UK. &nbsp;If you are not from the UK, you will need to change some of the localization settings. &nbsp;For example,&nbsp;some of the keys on your keyboard may not work as expected. &nbsp;Here are the changes I made to make my RasPi feel at home in San Diego:</p>
+<p>First, click on the <em>Localisation</em> tab:<br>
+<img class="alignnone wp-image-908 size-full" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rcg2.png" alt="localization" width="482" height="413" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rcg2.png 482w, http://thisdavej.com/wp-content/uploads/2016/06/rcg2-300x257.png 300w" sizes="(max-width: 482px) 100vw, 482px"><br>
+Click the <em>Set Locale</em> button to change your locale&nbsp;as appropriate and then click <em>OK</em>. &nbsp;Mine looks like this after making the changes:<br>
+<img class="alignnone wp-image-909 size-full" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rcg3.png" alt="localization details" width="482" height="413" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rcg3.png 482w, http://thisdavej.com/wp-content/uploads/2016/06/rcg3-300x257.png 300w" sizes="(max-width: 482px) 100vw, 482px"><br>
+Click the <em>Set Timezone</em> button to set your timezone and then click <em>OK</em>.<br>
+<img class="alignnone wp-image-914 size-full" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rcg4-1.png" alt="set timezone" width="482" height="413" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rcg4-1.png 482w, http://thisdavej.com/wp-content/uploads/2016/06/rcg4-1-300x257.png 300w" sizes="(max-width: 482px) 100vw, 482px"><br>
+Click the <em>Set Keyboard button</em> to set your keyboard as appropriate and then click <em>OK</em>. &nbsp;Here’s mine:<br>
+<img class="alignnone size-full wp-image-915" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rc_keyboard.png" alt="set keyboard" width="430" height="500" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rc_keyboard.png 430w, http://thisdavej.com/wp-content/uploads/2016/06/rc_keyboard-258x300.png 258w" sizes="(max-width: 430px) 100vw, 430px"><br>
+Finally, click the <em>Set WiFi Country</em> button and change as needed. &nbsp;This dialog box presents a large&nbsp;list of countries. Use the arrow keys on your keyboard to scroll through the list to find your country and then click <em>OK</em>.<br>
+<img class="alignnone wp-image-916 size-full" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/wifi-country.png" alt="wifi country" width="482" height="413" srcset="http://thisdavej.com/wp-content/uploads/2016/06/wifi-country.png 482w, http://thisdavej.com/wp-content/uploads/2016/06/wifi-country-300x257.png 300w" sizes="(max-width: 482px) 100vw, 482px"><br>
+After completing these configuration&nbsp;steps,&nbsp;click <em>OK</em> to exit the <em>Raspberry Pi Configuration</em> program. &nbsp;The RasPi will then let you know that it needs to reboot to activate the changes you just made. &nbsp;Reboot it now.</p>
+<h3 id="wifi">Configure Wi-Fi</h3>
+<p>After the RasPi reboots, we are ready to&nbsp;get Wi-Fi up and running to get on the network.</p>
+<ul>
+<li>Click on the network icon in the top right of the screen as shown in the screenshot. The network icon will look different than the icon in the screenshot before Wi-Fi is configured; however, it will should be located between the Bluetooth icon and the speaker (volume control) icon.<br>
+<img class="alignnone size-full wp-image-1003" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/wifi.png" alt="wifi" width="350" height="373" srcset="http://thisdavej.com/wp-content/uploads/2016/06/wifi.png 350w, http://thisdavej.com/wp-content/uploads/2016/06/wifi-282x300.png 282w" sizes="(max-width: 350px) 100vw, 350px"></li>
+<li>After clicking the network icon, select your&nbsp;network SSID (Wi-Fi network). &nbsp;If you don’t see your Wi-Fi network, be patient. You may see a “Scanning APs” message in the menu; however, your Wi-Fi network SSID should eventually appear in the menu after it is located. &nbsp;When your network SSID appears, click&nbsp;on it.</li>
+<li>You will be prompted for your pre shared key (Wi-Fi) network password. &nbsp;Enter it and select <em>OK</em>.</li>
+<li>Wait for the&nbsp;icon to&nbsp;transform from a network icon to the Wi-Fi icon shown in the screenshot above. &nbsp;From this point, you should be connected to your Wi-Fi network.</li>
+<li>Test your Wi-Fi network connection by launching the terminal.<br>
+<img class="alignnone size-full wp-image-1005" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/terminal.png" alt="terminal" width="350" height="303" srcset="http://thisdavej.com/wp-content/uploads/2016/06/terminal.png 350w, http://thisdavej.com/wp-content/uploads/2016/06/terminal-300x260.png 300w" sizes="(max-width: 350px) 100vw, 350px"></li>
+<li>From the terminal, issue a ping command to verify your network connection is working:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ ping google.com</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ ping google.com</span></li></ul><pre style="display: none;">$ ping google.com</pre></div>
+</li>
+</ul>
+<p>We’re now ready to move on and ensure our system is up to date with security patches</p>
+<h3 id="apply-updates">Apply Raspbian Updates</h3>
+<p>We will first run the apt “update” command. &nbsp;This command will not actually update any software on the system, but will download the latest package lists from the software repositories so that Raspbian will be aware of all new software available along with dependencies. &nbsp;Issue the following&nbsp;command at the “$” prompt:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt update</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt update</span></li></ul><pre style="display: none;">$ sudo apt update</pre></div>
+<p>Next, run the following command to upgrade any packages installed on your system that need upgrades:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt full-upgrade</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt full-upgrade</span></li></ul><pre style="display: none;">$ sudo apt full-upgrade</pre></div>
+<p>This is important to keep your RasPi&nbsp;system&nbsp;synchronized with security updates, etc. These two commands should be&nbsp;issued together and run periodically.</p>
+<h3 id="remote-desktop">Prepare Remote Desktop</h3>
+<p>We want to run our RasPi remotely without requiring&nbsp;a dedicated HDMI monitor and USB keyboard/mouse. &nbsp;This is known as&nbsp;headless mode. We will be using the xrdp package to accomplish this goal. Newer versions of Raspbian (starting with versions that ship with&nbsp;the PIXEL desktop environment) ship with RealVNC for remote connections. &nbsp;Unfortunately, RealVNC does not work well&nbsp;in headless mode since it degrades to&nbsp;a very low resolution, and there is quite a bit of&nbsp;ceremony required to change the resolution. The xrdp solution&nbsp;automatically scales our desktop resolution and makes our life much easier. &nbsp;Let’s do it:</p>
+<ul>
+<li>Before we can install xrdp, we must first install the tightvncserver package. &nbsp;The tightvncserver installation will also remove the RealVNC server software that ships with newer versions of Raspbian since tightvncserver (xrdp) will not work if RealVNC is installed. &nbsp;(Thanks to Ryan Hanley for this tip!) Enter&nbsp;the following command in&nbsp;the terminal:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt install -y tightvncserver</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt install -y tightvncserver</span></li></ul><pre style="display: none;">$ sudo apt install -y tightvncserver</pre></div>
+<p>The “-y” option will automatically answer yes to the default questions which is what we want in this context.</p></li>
+<li>Next, invoke&nbsp;the following command to install xrdp:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt install -y xrdp</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt install -y xrdp</span></li></ul><pre style="display: none;">$ sudo apt install -y xrdp</pre></div>
+</li>
+<li>Finally, we need to install the samba&nbsp;package&nbsp;so we will be able to access the RasPi by its host name from Windows machines on the network rather than by it’s IP address which can change since the RasPi receives its IP address via DHCP. &nbsp;(For OS X users, you can install Bonjour and then access your Raspberry Pi by host name. &nbsp;For example, if your host name is “raspi”, you can access it on OS X as “raspi.local”.) &nbsp;OK, let’s install Samba:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt install -y samba</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt install -y samba</span></li></ul><pre style="display: none;">$ sudo apt install -y samba</pre></div>
+</li>
+<li>After this installation completes, you should be able to ping the RasPi Hostname (configured in&nbsp;<em>Raspberry Pi Configuration</em>&nbsp;program&nbsp;above) from a Windows machine:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">C:\&gt; ping raspi</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">C:\&gt; ping raspi</span></li></ul><pre style="display: none;">C:\&gt; ping raspi</pre></div>
+</li>
+<li>You are now ready to launch a remote desktop connection!</li>
+<li>From your&nbsp;Windows machine, hit the <em>Windows</em> key, and type “Remote Desktop Connection” to bring up the Remote Desktop program. &nbsp;Click it in to invoke it. &nbsp;(OS X users can use <a href="https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417">Microsoft Remote Desktop</a> which&nbsp;is available for free in the Mac App Store.)</li>
+<li>Type the host name of your RasPi (“raspi” in my case) in the <em>Computer</em>&nbsp;textbox.<br>
+<img class="alignnone size-full wp-image-997" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rdp.png" alt="Windows Remote Desktop" width="407" height="474" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rdp.png 407w, http://thisdavej.com/wp-content/uploads/2016/06/rdp-258x300.png 258w" sizes="(max-width: 407px) 100vw, 407px"></li>
+<li>Next, click the <em>Display</em> tab. Move the <em>Display configuration</em> slider all the way to the right to “Full Screen” to ensure our remote desktop connection will fill our screen. &nbsp;It may already be set to “Full Screen”.<br>
+<img class="alignnone size-full wp-image-995" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/rdp2.png" alt="Remote desktop display tab" width="407" height="474" srcset="http://thisdavej.com/wp-content/uploads/2016/06/rdp2.png 407w, http://thisdavej.com/wp-content/uploads/2016/06/rdp2-258x300.png 258w" sizes="(max-width: 407px) 100vw, 407px"></li>
+<li>&nbsp;Click the <em>Connect</em> button near the bottom of the dialog box.</li>
+<li>You will then be prompted with the xrdp login screen:<br>
+<img class="alignnone size-full wp-image-174" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/xrdpLogin.png" alt="xrdpLogin" width="424" height="238" srcset="http://thisdavej.com/wp-content/uploads/2016/02/xrdpLogin.png 424w, http://thisdavej.com/wp-content/uploads/2016/02/xrdpLogin-300x168.png 300w" sizes="(max-width: 424px) 100vw, 424px"></li>
+<li>Enter your credentials and log into the RasPi.
+<ul>
+<li>username: pi</li>
+<li>password: raspberry (unless you changed it in the&nbsp;<em>Raspberry Pi Configuration</em> program&nbsp;earlier in the tutorial.)</li>
+</ul>
+</li>
+</ul>
+<p>Amazing! &nbsp;We are connected remotely to the RasPi and we no longer need the dedicated HDMI monitor and USB keyboard/mouse.&nbsp;Let’s go ahead and shut down the RasPi for a minute so we can free up our monitor and keyboard/mouse:</p>
+<ul>
+<li>Launch a terminal session and enter the following command to cleanly shut down your system:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo poweroff</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo poweroff</span></li></ul><pre style="display: none;">$ sudo poweroff</pre></div>
+</li>
+<li>Wait a minute for the RasPi to fully power down.</li>
+<li>Unplug the power cable, HDMI cable, and the USB keyboard and mouse.</li>
+<li>Plug the power cable back in and the RasPi should be on its way back up without all of those extra cables!</li>
+<li>After giving the RasPi a minute or so to boot, connect to it once again using the Windows Remote Desktop program.</li>
+</ul>
+<h3 id="windows-file-share">Create Windows File Share on the RasPi (Optional)</h3>
+<p>We can create a Windows file share on the RasPi so that we can copy files from our Windows machine directly onto the RasPi. &nbsp;This can come in handy in many contexts. &nbsp;This is also useful for OS X users since you will be able to&nbsp;connect to your Raspberry Pi file share from Finder under “Shared”. &nbsp;Here’s how we do it:</p>
+<ul>
+<li>Launch a terminal session.</li>
+<li>Create a directory called “share” in your home directory as follows:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ mkdir ~/share</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ mkdir ~/share</span></li></ul><pre style="display: none;">$ mkdir ~/share</pre></div>
+</li>
+<li>Issue the following command to launch the Leafpad editor.
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo leafpad /etc/samba/smb.conf &amp;</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo leafpad /etc/samba/smb.conf &amp;</span></li></ul><pre style="display: none;">$ sudo leafpad /etc/samba/smb.conf &amp;</pre></div>
+</li>
+<li>We could have also used the console-based “nano” editor, but Leafpad provides a GUI which is more suitable for beginners. &nbsp;The ampersand on the end of the command launches Leafpad as a background process so we are returned to a shell prompt in the terminal. &nbsp;Also, the smb.conf is part of the Samba package we installed early and this is why it exists on our system.</li>
+<li>&nbsp;Scroll down to the very bottom of the smb.conf configuration file and add the following:
+<pre class="EnlighterJSRAW" data-enlighter-language="ini" style="display: none;">[PiShare]
+ comment=Raspi Share
+ path=/home/pi/share
+ browseable=Yes
+ writeable=Yes
+ only guest=No
+ create mask=0740
+ directory mask=0750
+ public=no</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="kw4">[PiShare]</span><span class=""></span></li><li class=" even"><span class=""></span><span class="kw1"> comment=</span><span class="">Raspi Share</span></li><li class=" odd"><span class=""></span><span class="kw1"> path=</span><span class="">/home/pi/share</span></li><li class=" even"><span class=""></span><span class="kw1"> browseable=</span><span class="kw2">Yes</span><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw1"> writeable=</span><span class="kw2">Yes</span><span class=""></span></li><li class=" even"><span class=""> only guest=</span><span class="kw2">No</span><span class=""></span></li><li class=" odd"><span class=""> create mask=</span><span class="nu0">0740</span><span class=""></span></li><li class=" even"><span class=""> directory mask=</span><span class="nu0">0750</span><span class=""></span></li><li class=" odd"><span class=""></span><span class="kw1"> public=</span><span class="kw2">no</span></li></ul><pre style="display: none;">[PiShare]
+ comment=Raspi Share
+ path=/home/pi/share
+ browseable=Yes
+ writeable=Yes
+ only guest=No
+ create mask=0740
+ directory mask=0750
+ public=no</pre></div>
+</li>
+<li>&nbsp;Save the changes to the smb.conf configuration file and exit the Leafpad editor. &nbsp;(Raspbian will automagically restart the SMB (Samba) services based on the changes you made to the configuration file.)</li>
+<li>Back in a terminal session, we need to create an SMB (Samba) user so we can connect securely from Windows. &nbsp;We will create a user named “pi”, but this will be an SMB (Windows user) rather than the Raspbian “pi” user. Here’s how we do it:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo smbpasswd -a pi</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo smbpasswd -a pi</span></li></ul><pre style="display: none;">$ sudo smbpasswd -a pi</pre></div>
+<p>You will be prompted to enter and re-enter a password. &nbsp;Document this password somewhere for future reference.</p></li>
+</ul>
+<p>We are ready to connect to our newly created RasPi file share from Windows!</p>
+<ul>
+<li>Back on your Windows machine, type the Windows key and “R” (Win-R) to launch a run box for typing in commands.</li>
+<li>Enter two backslashes followed by the name of your RasPi machine (i.e. your Hostname) and hit enter. &nbsp;For example:
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">\\raspi</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">\\raspi</span></li></ul><pre style="display: none;">\\raspi</pre></div>
+</li>
+<li>When prompted for credentials, enter the following:
+<ul>
+<li>Username: The format to enter here in Windows parlance is the domain\username. &nbsp;For us, our domain will be our RasPi hostname and our user name will be “pi”. &nbsp;Therefore, we will enter: raspi\pi<br>
+If your Hostname is not raspi, you will obviously enter that instead.</li>
+<li>Password: (enter the password you created with the smbpasswd command above)</li>
+</ul>
+</li>
+<li>Voilà! &nbsp;We should now be connected. &nbsp;Double click the <em>PiShare</em> folder to launch the&nbsp;file share you just created. &nbsp;You will also see a folder called <em>pi</em> that provides read-only access to your entire home directory.</li>
+<li>You can test your newly created file share by creating a text file on the Windows side and verifying that it shows up in the <em>/home/pi/share</em> directory on the RasPi side.</li>
+<li>In Windows, you can also map a drive to the file share you just created as follows:
+<ul>
+<li>Launch Windows Explorer.</li>
+<li>Click on the <em>Map network drive</em> button in the ribbon menu at the top and select <em>Map network drive</em>.</li>
+<li>Enter the drive letter (for example “P” for “pi” drive), the share folder path, and select&nbsp;<em>Reconnect at sign-in</em>:<br>
+<img class="alignnone size-full wp-image-969" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/mapdrive1.png" alt="map drive" width="614" height="454" srcset="http://thisdavej.com/wp-content/uploads/2016/06/mapdrive1.png 614w, http://thisdavej.com/wp-content/uploads/2016/06/mapdrive1-300x222.png 300w, http://thisdavej.com/wp-content/uploads/2016/06/mapdrive1-203x150.png 203w" sizes="(max-width: 614px) 100vw, 614px"></li>
+<li>Enter the&nbsp;password&nbsp;you created with the smbpasswd command above&nbsp;(if prompted) and select <em>Remember my credentials</em>:<br>
+<img class="alignnone size-full wp-image-970" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/mapdrive2.png" alt="map drive" width="456" height="352" srcset="http://thisdavej.com/wp-content/uploads/2016/06/mapdrive2.png 456w, http://thisdavej.com/wp-content/uploads/2016/06/mapdrive2-300x232.png 300w" sizes="(max-width: 456px) 100vw, 456px"></li>
+<li>You should now see&nbsp;a “P” drive (or other drive letter you selected) when viewing through Windows Explorer!</li>
+</ul>
+</li>
+</ul>
+<h3 id="install-node">Install Node.js</h3>
+<p>You now have an amazing general purpose Raspberry Pi system that can be used for a variety of tasks and inter-operates well in&nbsp;the Windows world (it even looks like a Windows machine to the other Windows machines!) – and can play nicely&nbsp;in the Mac and Linux world too. &nbsp;Let’s go ahead and install Node.js so we will be ready to do some fun projects in the future. &nbsp;Here are the steps:</p>
+<p>Our friends at <a href="https://nodesource.com/">NodeSource</a> host and maintain some excellent Node.js binary distributions. &nbsp;We will leverage a command they have written to add another package repository to our RasPi so that we will be able to “apt install” a modern version of Node.js from their repository. &nbsp;This is beneficial since the Debian/Raspbian versions may not always be up to date. &nbsp;By adding the NodeSource repository, we will also be able to receive updates rather than just installing a standalone (.deb) file version of Node that cannot be updated easily.</p>
+<blockquote><p>Note: As described at the beginning of this article, this final section of the tutorial related to the installation of Node.js requires a Pi system based on the newer ARMv7 or ARMv8 chip such as the Pi 2 or Pi 3. &nbsp;NodeSource provides Node.js binaries for these newer ARMv7+ architectures, but not for Raspberry Pi systems based on the older ARMv6 architecture such as the Raspberry Pi Model B/B+ or the Raspberry Pi Zero.</p>
+<p>Read the writing carefully on your Raspberry Pi circuit board to confirm is says something like “Raspberry Pi 3 Model B” or “Raspberry Pi 2 Model B”. If in doubt, run the following command in the terminal:</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="null" style="display: none;">$ uname -m</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ uname -m</span></li></ul><pre style="display: none;">$ uname -m</pre></div>
+<p>If the result returned starts with “armv6”, you are running a Raspberry Pi based on the older ARMv6 chipset and the next Node.js installation step will not work; otherwise, you are ready for the next step.</p></blockquote>
+<p>Here we go in the final stretch! &nbsp;Let’s proceed with an installation of the latest version of Node at the moment which is Node 7.2.0.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -</span></li></ul><pre style="display: none;">$ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -</pre></div>
+<p>The previous command updates our Debian apt package repository to include the NodeSource packages.</p>
+<blockquote><p>Note: It’s generally a good idea from a security perspective to know what commands you are invoking on your system, especially since the command above invokes the script as the root user. &nbsp;If you want the technical details behind this script, you can launch the URL (<a href="https://deb.nodesource.com/setup_7.x">https://deb.nodesource.com/setup_7.x</a>) in your browser and review the code. &nbsp;The script carries out some ceremony to determine the Linux distribution you are running and instructs the Debian apt package system to add the NodeSource package repository as a trusted source for obtaining Debian packages. &nbsp;This enables us to install Node.js now and <a href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/">upgrade to more recent versions of Node.js when they become&nbsp;available</a>.</p></blockquote>
+<p>Now that we have added the NodeSource package repository, we can move on and install Node.js!</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ sudo apt install nodejs</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ sudo apt install nodejs</span></li></ul><pre style="display: none;">$ sudo apt install nodejs</pre></div>
+<p>We can then test and see what version of Node we are running and launch the Node REPL as we discussed in the&nbsp;<a href="http://thisdavej.com/learning-through-making-getting-started-with-node-js/">previous article</a> as a quick test to confirm the installation was successful.</p>
+<pre class="EnlighterJSRAW" data-enlighter-language="shell" style="display: none;">$ node -v
+v7.2.0
+$ node
+&gt; 1 + 3
+4
+&gt; # We can hit Ctrl-C twice to exit the REPL and get back to the bash (shell) prompt.</pre><div class="EnlighterJSWrapper wpcustomEnlighterJSWrapper"><ul class="wpcustomEnlighterJS EnlighterJS"><li class=" odd"><span class="">$ node -v</span></li><li class=" even"><span class="">v7.2.0</span></li><li class=" odd"><span class="">$ node</span></li><li class=" even"><span class="">&gt; 1 + 3</span></li><li class=" odd"><span class="">4</span></li><li class=" even"><span class="">&gt;</span><span class="co1"> # We can hit Ctrl-C twice to exit the REPL and get back to the bash (shell) prompt.</span></li></ul><pre style="display: none;">$ node -v
+v7.2.0
+$ node
+&gt; 1 + 3
+4
+&gt; # We can hit Ctrl-C twice to exit the REPL and get back to the bash (shell) prompt.</pre></div>
+<h3 id="next-time">Next Time</h3>
+<p>In a future post,&nbsp;we will leverage the goodness of the npm (Node Package Manager) community and build a simple, but highly functional Web server without any code. &nbsp;This can be accomplished using the Raspberry Pi system you just created here or on a Windows/Linux/Mac machine as I outlined in a&nbsp;<a href="http://thisdavej.com/learning-through-making-getting-started-with-node-js/">previous article</a>. &nbsp;Hope to see you then!</p>
+<p><a href="https://twitter.com/thisDaveJ">Follow @thisDaveJ</a>&nbsp;(Dave Johnson) on Twitter to stay up to date on the latest tutorials and tech articles.</p>
+<h4>Related Articles</h4>
+<p><a href="http://thisdavej.com/learning-through-making-getting-started-with-node-js/">Learning through Making – Getting Started with Node.js<br>
+</a><a href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/">Upgrading to more recent versions of Node.js on the Raspberry Pi</a><a href="http://thisdavej.com/learning-through-making-getting-started-with-node-js/"><br>
+</a><a href="http://thisdavej.com/create-a-web-server-in-node-without-any-code/">Create a Web Server in Node without any Code<br>
+</a><a href="http://thisdavej.com/make-your-raspberry-pi-web-server-available-on-the-internet-with-node-js/">Make Your Raspberry Pi Web Server Available on the Internet with Node.js</a></p>
+<div class="addtoany_share_save_container addtoany_content_bottom"><div class="a2a_kit addtoany_list" data-a2a-url="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/" data-a2a-title="Beginner’s Guide to Installing Node.js on a Raspberry Pi" style="line-height: 16px;"><a class="a2a_button_facebook" href="http://thisdavej.com/#facebook" title="Facebook" rel="nofollow" target="_blank"><img src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/facebook.png" width="16" height="16" alt="Facebook"></a><a class="a2a_button_twitter" href="http://thisdavej.com/#twitter" title="Twitter" rel="nofollow" target="_blank"><img src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/twitter.png" width="16" height="16" alt="Twitter"></a><a class="a2a_button_google_plus" href="http://thisdavej.com/#google_plus" title="Google+" rel="nofollow" target="_blank"><img src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/google_plus.png" width="16" height="16" alt="Google+"></a><a class="a2a_button_reddit" href="http://thisdavej.com/#reddit" title="Reddit" rel="nofollow" target="_blank"><img src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/reddit.png" width="16" height="16" alt="Reddit"></a><a class="a2a_button_linkedin" href="http://thisdavej.com/#linkedin" title="LinkedIn" rel="nofollow" target="_blank"><img src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/linkedin.png" width="16" height="16" alt="LinkedIn"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share#url=http%3A%2F%2Fthisdavej.com%2Fbeginners-guide-to-installing-node-js-on-a-raspberry-pi%2F&amp;title=Beginner%E2%80%99s%20Guide%20to%20Installing%20Node.js%20on%20a%20Raspberry%20Pi" style="background:url(http://thisdavej.com/wp-content/plugins/add-to-any/favicon.png) no-repeat scroll 4px 0px;padding:0 0 0 25px;display:inline-block;height:16px;vertical-align:middle"><span>Share</span></a></div></div>
+		</div>
+
+		
+
+		
+		
+
+		<footer class="entry-footer">
+
+			
+			
+
+			
+			
+
+			<div class="entry-meta">
+
+				<p class="tags">Tagged as: <a href="http://thisdavej.com/tag/javascript/" rel="tag">javascript</a>, <a href="http://thisdavej.com/tag/networking/" rel="tag">networking</a>, <a href="http://thisdavej.com/tag/node-js/" rel="tag">node.js</a>, <a href="http://thisdavej.com/tag/raspi/" rel="tag">raspi</a>, <a href="http://thisdavej.com/tag/windows/" rel="tag">windows</a></p>
+
+				<p class="categories">Categorized in: <a href="http://thisdavej.com/category/node-js/" rel="category tag">Node.js</a>, <a href="http://thisdavej.com/category/raspberry-pi/" rel="category tag">Raspberry Pi</a></p>
+
+				
+					<p class="date"><span class="posted-on"><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/" rel="bookmark"><i class="icon-calendar"></i><time class="entry-date published" datetime="2016-10-26T21:58:42+00:00">October 26, 2016</time><time class="updated screen-reader-text" datetime="2016-11-23T21:52:07+00:00">November 23, 2016</time></a></span><span class="byline"> <span class="author vcard"><a class="url fn n" href="http://thisdavej.com/author/suthisdavej/"><i class="icon-user"></i>Dave Johnson</a></span></span><span clas="post-comments"><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comments"><i class="icon-comment"></i>33 Comments</a></span></p>
+
+				
+			</div>
+
+		</footer><!-- .entry-footer -->
+
+		
+
+		
+	</article><!-- #post-146 -->
+
+		
+
+
+		
+		 
+	<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			33 thoughts on “<span>Beginner’s Guide to Installing Node.js on a Raspberry Pi</span>”		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-6" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href="http://www.recantha.co.uk/blog/?p=14273" rel="external nofollow" class="url">Beginner’s guide to installing Node.js on a Raspberry Pi – Raspberry Pi Pod</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-7" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href="https://0ddn1x.wordpress.com/2016/03/08/node-js-on-raspberry-pi/" rel="external nofollow" class="url">Node.js on Raspberry Pi | 0ddn1x: tricks with *nix</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-10" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href="http://thepipodcast.com/the-pi-podcast-17-liz-upton/" rel="external nofollow" class="url">The Pi Podcast #17 – Liz Upton |</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-23" class="pingback odd alt thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href="https://marionoioso.com/2016/06/08/connect-sensor-tag-to-watson-iot-platform-using-a-raspberry-pi-as-gateway/" rel="external nofollow" class="url">Connect Sensor Tag to Watson IoT platform using a Raspberry PI as gateway - Internet of Ideas</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-32" class="pingback even thread-even depth-1">
+			<div class="comment-body">
+				Pingback: <a href="https://beanalytics.wordpress.com/2016/08/05/node-js-raspberry-pi-beginners-guide/" rel="external nofollow" class="url">Node.js? Raspberry Pi? Beginners Guide! – Be Analytics</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-63" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-63" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/b8add37db7c1536ebb7cbe424ac65428" srcset="http://2.gravatar.com/avatar/b8add37db7c1536ebb7cbe424ac65428?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Philip</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-63">
+							<time datetime="2016-08-27T16:44:25+00:00">
+								August 27, 2016 at 4:44 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Please clarify what the large script from NodeSource exactly does or remove the reference. Until then I advice against this method as it involves executing a script from an unknown source that until proven otherwise must be assumed to be damaging.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=63#respond" onclick="return addComment.moveForm( &quot;div-comment-63&quot;, &quot;63&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Philip">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-64" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2">
+			<article id="div-comment-64" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-64">
+							<time datetime="2016-08-27T18:48:42+00:00">
+								August 27, 2016 at 6:48 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Philip, thanks for taking the time to provide feedback regarding security!  I agree with your assessment and added a paragraph to address your concerns.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=64#respond" onclick="return addComment.moveForm( &quot;div-comment-64&quot;, &quot;64&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-75" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-75" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/afe95eb45b2dc69797357868b89b80c7" srcset="http://1.gravatar.com/avatar/afe95eb45b2dc69797357868b89b80c7?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-75">
+							<time datetime="2016-09-01T07:55:43+00:00">
+								September 1, 2016 at 7:55 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great article and well written.<br>
+Just wanted to add after I followed your instructions and installed node, the version returned is : 0.10.29!!<br>
+I had to do another “apt-get update” and “apt-get dist-upgrade” to fix the issue.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=75#respond" onclick="return addComment.moveForm( &quot;div-comment-75&quot;, &quot;75&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-78" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2 parent">
+			<article id="div-comment-78" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-78">
+							<time datetime="2016-09-01T17:30:07+00:00">
+								September 1, 2016 at 5:30 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi John, thanks for your positive feedback and for letting me know about the issue you experienced.  I ran through my entire tutorial from square one with the current version of Raspbian and could not reproduce your issue.  The Node version returned was 6.x.  I’m not sure what happened in your case since running the NodeSource “setup_6.x” script via curl will run “apt-get update” near the end of the script.  This would ensure that when you subsequently ran “sudo apt-get install -y nodejs”, it should have installed Node 6.x instead of 0.10.29.  Perhaps the “apt-get update” command in the script failed for some reason in your case due to Internet connectivity or some other reason.  In any case, I’m glad you ultimately were able to get Node 6.x up and running on your RPi!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=78#respond" onclick="return addComment.moveForm( &quot;div-comment-78&quot;, &quot;78&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-80" class="comment odd alt depth-3 parent">
+			<article id="div-comment-80" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/afe95eb45b2dc69797357868b89b80c7" srcset="http://1.gravatar.com/avatar/afe95eb45b2dc69797357868b89b80c7?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-80">
+							<time datetime="2016-09-01T22:51:19+00:00">
+								September 1, 2016 at 10:51 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Dave,<br>
+You are probably right. It was also odd to me. but anyway it was fixed by re-updating!<br>
+Just one simple question, accept my apology if it seems silly. what is the different between apt-get install node and wget <a href="https://nodejs.org/dist/" rel="nofollow">https://nodejs.org/dist/</a>… ?<br>
+I am trying to make node as a service by following this website “http://yannickloriot.com/2016/04/install-mongodb-and-node-js-on-a-raspberry-pi/”, and of course without installing nodejs again and it fails!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=80#respond" onclick="return addComment.moveForm( &quot;div-comment-80&quot;, &quot;80&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to John">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-82" class="comment byuser comment-author-suthisdavej bypostauthor even depth-4 parent">
+			<article id="div-comment-82" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-82">
+							<time datetime="2016-09-02T10:06:07+00:00">
+								September 2, 2016 at 10:06 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi John, not a silly question. The Node installation method I recommend in my article above (using the NodeSource script and apt-get install) sets you up for longer term success since you can easily update Node as new versions are released.  See my article on <a href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/">Upgrading to more recent versions of Node.js on the Raspberry Pi</a> for how this works.  In the article you referenced, the “wget” method installs Node, but you must carry out extra steps to symlink the binary and, most importantly, Node cannot be as easily upgraded.</p>
+<p>I recommend <a href="https://www.axllent.org/docs/view/nodejs-service-with-systemd/" rel="nofollow">this article</a> for installing Node as a service since it uses the newer systemd init system and the task can be accomplished with a much simpler script.  It also automatically restarts if there is a failure with your Node script.  You will need to change one line of code in the nodeserver.service file to make it work with the steps you have completed with my tutorial since the path to the Node binary is different:</p>
+<p>ExecStart=/usr/bin/node /home/pi/share/node/app.js</p>
+<p>The path to your “app.js” file may be different too.  If so, adjust this path accordingly.  Finally, in that tutorial, there are places you will need to prefix the commands with “sudo” such as “sudo systemctl enable nodeserver.service”</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=82#respond" onclick="return addComment.moveForm( &quot;div-comment-82&quot;, &quot;82&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-83" class="comment odd alt depth-5 parent">
+			<article id="div-comment-83" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/afe95eb45b2dc69797357868b89b80c7" srcset="http://1.gravatar.com/avatar/afe95eb45b2dc69797357868b89b80c7?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-83">
+							<time datetime="2016-09-02T22:04:29+00:00">
+								September 2, 2016 at 10:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Dave,<br>
+You saved me tons of time and effort. Thank you very much for your great article and your responses.</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-87" class="comment byuser comment-author-suthisdavej bypostauthor even depth-5">
+			<article id="div-comment-87" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-87">
+							<time datetime="2016-09-03T07:44:07+00:00">
+								September 3, 2016 at 7:44 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>John, glad to hear it.  Thanks for letting me know!</p>
+				</div><!-- .comment-content -->
+
+							</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-98" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-98" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/db6efd39eb721eb9f56ec26cc675c902" srcset="http://1.gravatar.com/avatar/db6efd39eb721eb9f56ec26cc675c902?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Aniket</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-98">
+							<time datetime="2016-09-06T06:54:53+00:00">
+								September 6, 2016 at 6:54 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Awesome guide Dave! Especially the remote connectivity from Windows m/c</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=98#respond" onclick="return addComment.moveForm( &quot;div-comment-98&quot;, &quot;98&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Aniket">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-198" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-198" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/1734c8994ddb6b5681d4ebc94bc05326" srcset="http://1.gravatar.com/avatar/1734c8994ddb6b5681d4ebc94bc05326?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Jahan Abdul</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-198">
+							<time datetime="2016-09-27T20:13:38+00:00">
+								September 27, 2016 at 8:13 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I have recently starting playing with the Razz and am loving it. I have 2 and may buy another. A coworker stumbled onto your site and shared the link with me, and it is my good fortune. Thank you for this article, and for the others I haven’t read yet.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=198#respond" onclick="return addComment.moveForm( &quot;div-comment-198&quot;, &quot;198&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Jahan Abdul">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-199" class="comment byuser comment-author-suthisdavej bypostauthor odd alt depth-2">
+			<article id="div-comment-199" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-199">
+							<time datetime="2016-09-27T20:35:50+00:00">
+								September 27, 2016 at 8:35 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks for your positive feedback, Jahan.  I’m glad my article has been useful to you and that you are having fun with the Raspberry Pi!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=199#respond" onclick="return addComment.moveForm( &quot;div-comment-199&quot;, &quot;199&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-212" class="pingback even thread-odd thread-alt depth-1">
+			<div class="comment-body">
+				Pingback: <a href="https://hdisk.wordpress.com/2016/10/02/node-js/" rel="external nofollow" class="url">Node.js – My Memo</a> 			</div>
+</li><!-- #comment-## -->
+		<li id="comment-223" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-223" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/7ca7d5742775750105a2914e0a692fcd" srcset="http://1.gravatar.com/avatar/7ca7d5742775750105a2914e0a692fcd?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn"><a href="http://ryanhanley.net/" rel="external nofollow" class="url">Ryan Hanley</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-223">
+							<time datetime="2016-10-05T00:45:05+00:00">
+								October 5, 2016 at 12:45 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great article. It saved me a lot of time when all I want is a quick web server. One thing, the remote desktop failed Dutton connecting but after digging I found that I needed tightvnc installed on my pi b+ before installing xrdp. Thanks again. So useful!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=223#respond" onclick="return addComment.moveForm( &quot;div-comment-223&quot;, &quot;223&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Ryan Hanley">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-224" class="comment even depth-2">
+			<article id="div-comment-224" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/7ca7d5742775750105a2914e0a692fcd" srcset="http://1.gravatar.com/avatar/7ca7d5742775750105a2914e0a692fcd?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn"><a href="http://ryanhanley.net/" rel="external nofollow" class="url">Ryan Hanley</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-224">
+							<time datetime="2016-10-05T00:46:07+00:00">
+								October 5, 2016 at 12:46 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>*during</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=224#respond" onclick="return addComment.moveForm( &quot;div-comment-224&quot;, &quot;224&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Ryan Hanley">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-226" class="comment byuser comment-author-suthisdavej bypostauthor odd alt depth-2">
+			<article id="div-comment-226" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-226">
+							<time datetime="2016-10-05T11:57:49+00:00">
+								October 5, 2016 at 11:57 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Ryan, that’s great to hear that my guide was useful to you. Thanks for the heads up and the solution to this problem!  The latest version of Raspbian with the PIXEL desktop ships with RealVNC which conflicts with xrdp.  By installing tightvncserver first, it removes RealVNC and paves the way for a successful xrdp installation. Your problem was not limited to the B+, but all pi models. Thanks for letting me know!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=226#respond" onclick="return addComment.moveForm( &quot;div-comment-226&quot;, &quot;226&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-287" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-287" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/a1d253d590d0fdab24862a1bac08cced" srcset="http://1.gravatar.com/avatar/a1d253d590d0fdab24862a1bac08cced?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">George Swan</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-287">
+							<time datetime="2016-10-24T13:33:32+00:00">
+								October 24, 2016 at 1:33 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>My understanding is that  node version 0.10.29 installed with Raspbian  Jessie  is tailored to run on the pi and should not be ‘upgraded’. independently of the Rasbian installation package.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=287#respond" onclick="return addComment.moveForm( &quot;div-comment-287&quot;, &quot;287&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to George Swan">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-290" class="comment byuser comment-author-suthisdavej bypostauthor odd alt depth-2">
+			<article id="div-comment-290" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-290">
+							<time datetime="2016-10-24T17:24:55+00:00">
+								October 24, 2016 at 5:24 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi George, thanks for joining the conversation. The Node ecosystem is moving very fast. For example, Node 0.10 reaches end of life status at the end of this month (October 2016).  I am running Node v6.x on the Raspberry Pi with no issues.  When I installed it, the only side effect was that it uninstalled Node-RED which depends on Node 0.10.x.  For those using Node-RED, a more modern version can be installed using a manual install following the directions <a href="http://nodered.org/docs/hardware/raspberrypi#manual-install" rel="nofollow">here</a>.  Most of the Node packages in the Raspbian repository can be installed with npm which is, in my opinion, a much better approach than using Node packages that are frozen in time.</p>
+<p>I recommend installing and running more recent versions of Node.js on the RasPi (following the steps in my guide above) rather than using the Node.js 0.10.x version that ships with Raspbian—in order to stay up to date with security updates and in order to be positioned to build (and use) awesome software based on Node.js.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=290#respond" onclick="return addComment.moveForm( &quot;div-comment-290&quot;, &quot;290&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-314" class="comment even thread-even depth-1">
+			<article id="div-comment-314" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/17e996e1bbf467e0b15196ffdc185317" srcset="http://1.gravatar.com/avatar/17e996e1bbf467e0b15196ffdc185317?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn"><a href="http://wilsonmar.github.io/" rel="external nofollow" class="url">Wilson</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-314">
+							<time datetime="2016-10-31T14:28:05+00:00">
+								October 31, 2016 at 2:28 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Should we (could we) remove the Node.js 0.10.x version that ships with Raspian, both to recover space and to avoid issues?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=314#respond" onclick="return addComment.moveForm( &quot;div-comment-314&quot;, &quot;314&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Wilson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-315" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-315" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/17e996e1bbf467e0b15196ffdc185317" srcset="http://1.gravatar.com/avatar/17e996e1bbf467e0b15196ffdc185317?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn"><a href="http://wilsonmar.github.io/" rel="external nofollow" class="url">Wilson</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-315">
+							<time datetime="2016-10-31T14:29:17+00:00">
+								October 31, 2016 at 2:29 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Should we delete the version of Node installed with Jessie so space is recovered?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=315#respond" onclick="return addComment.moveForm( &quot;div-comment-315&quot;, &quot;315&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Wilson">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-316" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2">
+			<article id="div-comment-316" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-316">
+							<time datetime="2016-10-31T17:07:42+00:00">
+								October 31, 2016 at 5:07 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Wilson, thanks for your question! AFAIK, the Raspbian Jessie base image ships with nodejs-legacy (and possibly nodejs). Both of these packages, if present, are removed when the NodeSource nodejs package is installed (following the instructions above).  Let me know if your experience is different.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=316#respond" onclick="return addComment.moveForm( &quot;div-comment-316&quot;, &quot;316&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-327" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-327" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/e8d1ef07cc38056d68fe85e454bc9bcd" srcset="http://2.gravatar.com/avatar/e8d1ef07cc38056d68fe85e454bc9bcd?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Wouter</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-327">
+							<time datetime="2016-11-02T04:22:25+00:00">
+								November 2, 2016 at 4:22 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi, very helpfull. Concerning the optional samba share, which I find very usefull, wouldn’t it be better (safer) to change value 0777 in create mask and  directory mask to 755, (or even 770 or 700)?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=327#respond" onclick="return addComment.moveForm( &quot;div-comment-327&quot;, &quot;327&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Wouter">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-333" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2">
+			<article id="div-comment-333" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-333">
+							<time datetime="2016-11-03T07:19:58+00:00">
+								November 3, 2016 at 7:19 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thank you for bringing this to my attention. I agree with your assessment. The create mask and directory mask impact the default permissions assigned when creating files and directories from the Samba share.  I changed as follows:<br>
+create mask – 0777 to 0740 (user all, group read, other none)<br>
+directory mask – 0777 to 0750 (user all, group read and execute (so can cd into directories), other none)</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=333#respond" onclick="return addComment.moveForm( &quot;div-comment-333&quot;, &quot;333&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-341" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-341" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/e8d1ef07cc38056d68fe85e454bc9bcd" srcset="http://2.gravatar.com/avatar/e8d1ef07cc38056d68fe85e454bc9bcd?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Wouter</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-341">
+							<time datetime="2016-11-04T12:33:40+00:00">
+								November 4, 2016 at 12:33 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Perfect!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=341#respond" onclick="return addComment.moveForm( &quot;div-comment-341&quot;, &quot;341&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Wouter">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-344" class="comment even thread-even depth-1">
+			<article id="div-comment-344" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/4ed55b91349685f0a60caf57a9784d18" srcset="http://1.gravatar.com/avatar/4ed55b91349685f0a60caf57a9784d18?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Wouter van der Most</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-344">
+							<time datetime="2016-11-05T03:07:21+00:00">
+								November 5, 2016 at 3:07 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>And as this guide can also be used as generic installation guide for the RPI you can consider also adding a section for creating a static IP such as this on: <a href="https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update" rel="nofollow">https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update</a><br>
+(although installing Samba/Bonjour already solve most IP change issues)</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=344#respond" onclick="return addComment.moveForm( &quot;div-comment-344&quot;, &quot;344&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Wouter van der Most">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+		<li id="comment-350" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-350" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/80cb629f7f8629812d41aa03871f60b2" srcset="http://2.gravatar.com/avatar/80cb629f7f8629812d41aa03871f60b2?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn"><a href="http://ericbetts.org/" rel="external nofollow" class="url">Eric Betts</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-350">
+							<time datetime="2016-11-05T15:54:49+00:00">
+								November 5, 2016 at 3:54 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>When I attempt to run the suggested curl command, I get output that ARMv6 hardware is not currently supported.  Checking the nodesource github, I found a repo that looks like it backs these scripts, but the setup_7.x script within it includes the architecture check, so I’m confused as to how this would have worked, or what I may have missed.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=350#respond" onclick="return addComment.moveForm( &quot;div-comment-350&quot;, &quot;350&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Eric Betts">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-351" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2">
+			<article id="div-comment-351" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-351">
+							<time datetime="2016-11-05T16:13:17+00:00">
+								November 5, 2016 at 4:13 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Eric, what model of the Raspberry Pi are you running? (For example, Pi 2 Model B.)  Also, if you issue <code>uname -m</code> from the terminal, what does it return?  The <a href="https://deb.nodesource.com/setup_7.x" rel="nofollow">setup_7.x</a> appears to present this error if <code>uname -m</code> yields a value that starts with “armv6”.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=351#respond" onclick="return addComment.moveForm( &quot;div-comment-351&quot;, &quot;351&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-352" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-352" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/5037422da47250af9e377654ef75f444" srcset="http://2.gravatar.com/avatar/5037422da47250af9e377654ef75f444?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Chris</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-352">
+							<time datetime="2016-11-06T07:35:30+00:00">
+								November 6, 2016 at 7:35 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks for the great article.  I was following along, but whenever I attempt to run the install script I get the following error</p>
+<p>“## You appear to be running on ARMv6 hardware. Unfortunately this is not currently supported by the NodeSource Linux distributions. Please use the ‘linux-armv6l’ binary tarballs available directly from nodejs.org for Node.js v4 and later.”</p>
+<p>Any recommendations?   I’d like to be able to upgrade in the future, and know that the wget method won’t allow for that.</p>
+<p>Thanks!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=352#respond" onclick="return addComment.moveForm( &quot;div-comment-352&quot;, &quot;352&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Chris">Reply</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-354" class="comment byuser comment-author-suthisdavej bypostauthor even depth-2">
+			<article id="div-comment-354" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/890b2d52c872c0d8f9f91c508d9e849d" srcset="http://2.gravatar.com/avatar/890b2d52c872c0d8f9f91c508d9e849d?s=128&amp;d=mm&amp;r=g 2x" class="avatar avatar-64 photo" height="64" width="64">						<b class="fn">Dave Johnson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#comment-354">
+							<time datetime="2016-11-06T15:16:55+00:00">
+								November 6, 2016 at 3:16 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Chris, thanks very much for your feedback!  The NodeSource Node.js script requires a Raspberry Pi based on the ARMv7+ architecture such as the Pi 3 or Pi 2 and will not work with the Raspberry Pi 1 Model B/B+ or the Pi Zero. I updated my article above to include these clarifications.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/?replytocom=354#respond" onclick="return addComment.moveForm( &quot;div-comment-354&quot;, &quot;354&quot;, &quot;respond&quot;, &quot;146&quot; )" aria-label="Reply to Dave Johnson">Reply</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+		
+		
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/#respond" style="display:none;">Cancel reply</a></small></h3>				<form action="http://thisdavej.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">
+					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" aria-required="true" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="146" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="6a1885f6d3"></p><p style="display: none;"></p>				<input type="hidden" id="ak_js" name="ak_js" value="1480110570829"></form>
+					</div><!-- #respond -->
+			
+		
+	
+</div><!-- #comments -->
+	
+	
+	</main><!-- #main -->
+	
+	
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="http://thisdavej.com/how-to-install-or-upgrade-to-node-js-v7-on-the-raspberry-pi/" rel="prev">How to Install or Upgrade to Node.js v7 on the Raspberry Pi</a></div><div class="nav-next"><a href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/" rel="next">Upgrading to more recent versions of Node.js on the Raspberry Pi</a></div></div>
+	</nav>
+</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+	
+	<footer id="colophon" class="site-footer" role="contentinfo">
+	
+	
+		<div class="site-colophon">
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/follow_button.f7908d4abf5ce27173c69bdbb93aedb6.en.html" style="position: static; visibility: visible; width: 125px; height: 20px;" data-screen-name="thisDaveJ"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script><br>
+<p style="font-size:1.25em;"><b>Support these free tutorials by buying something on Amazon with <a href="http://www.amazon.com/?tag=thisdavej-20">this link</a>.</b></p><br>
+		<p>©2016 Dave Johnson - using  <a href="http://scotthsmith.com/projects/decode/">Decode</a> theme</p>
+	</div><!-- .site-colophon -->
+		
+		
+	</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+
+	
+<div id="sidebar" class="sidebar right">
+	<div id="sidebar-top" class="sidebar-top SidebarTop clearfix">
+		<button id="sidebar-close" class="sidebar-close SidebarClose" title="Hide sidebar">
+			<svg width="100%" height="100%" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<path class="close-icon" d="M0,172.881356 L72.8813559,100 L1.0658141e-14,27.1186441 L27.1186441,-2.84217094e-14 L100,72.8813559 L172.881356,0 L200,27.1186441 L127.118644,100 L200,172.881356 L172.881356,200 L100,127.118644 L27.1186441,200 Z M0,172.881356" fill="#444444"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="sidebar-content">
+
+		
+		<div class="widget-area" role="complementary">
+	
+				<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://thisdavej.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+					<li>
+				<a href="http://thisdavej.com/node-js-playing-sounds-to-provide-notifications/">Node.js: Playing Sounds to Provide Notifications</a>
+						</li>
+					<li>
+				<a href="http://thisdavej.com/creating-node-js-microservices-with-ease-using-stdlib/">Creating Node.js Microservices with Ease Using Stdlib</a>
+						</li>
+					<li>
+				<a href="http://thisdavej.com/build-an-amazing-html-editor-using-visual-studio-code/">Build an Amazing HTML Editor Using Visual Studio Code</a>
+						</li>
+					<li>
+				<a href="http://thisdavej.com/upgrading-to-more-recent-versions-of-node-js-on-the-raspberry-pi/">Upgrading to more recent versions of Node.js on the Raspberry Pi</a>
+						</li>
+					<li>
+				<a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/">Beginner’s Guide to Installing Node.js on a Raspberry Pi</a>
+						</li>
+				</ul>
+		</aside>		<aside id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="http://thisdavej.com/2016/11/">November 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/10/">October 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/09/">September 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/08/">August 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/07/">July 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/06/">June 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/04/">April 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/03/">March 2016</a></li>
+	<li><a href="http://thisdavej.com/2016/02/">February 2016</a></li>
+		</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul>
+	<li class="cat-item cat-item-1"><a href="http://thisdavej.com/category/iot/">IoT</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://thisdavej.com/category/node-js/">Node.js</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://thisdavej.com/category/raspberry-pi/">Raspberry Pi</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://thisdavej.com/category/visual-studio-code/">Visual Studio Code</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://thisdavej.com/category/windows/">Windows</a>
+</li>
+		</ul>
+</aside><aside id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="http://thisdavej.com/tag/apt/" class="tag-link-27 tag-link-position-1" title="1 topic" style="font-size: 8pt;">apt</a>
+<a href="http://thisdavej.com/tag/arduino/" class="tag-link-9 tag-link-position-2" title="1 topic" style="font-size: 8pt;">Arduino</a>
+<a href="http://thisdavej.com/tag/audio/" class="tag-link-34 tag-link-position-3" title="1 topic" style="font-size: 8pt;">audio</a>
+<a href="http://thisdavej.com/tag/command-line/" class="tag-link-12 tag-link-position-4" title="3 topics" style="font-size: 12.1176470588pt;">command-line</a>
+<a href="http://thisdavej.com/tag/dataviz/" class="tag-link-28 tag-link-position-5" title="1 topic" style="font-size: 8pt;">dataviz</a>
+<a href="http://thisdavej.com/tag/debian/" class="tag-link-25 tag-link-position-6" title="1 topic" style="font-size: 8pt;">debian</a>
+<a href="http://thisdavej.com/tag/education/" class="tag-link-10 tag-link-position-7" title="5 topics" style="font-size: 14.5882352941pt;">education</a>
+<a href="http://thisdavej.com/tag/html/" class="tag-link-35 tag-link-position-8" title="1 topic" style="font-size: 8pt;">html</a>
+<a href="http://thisdavej.com/tag/iot/" class="tag-link-31 tag-link-position-9" title="4 topics" style="font-size: 13.4901960784pt;">iot</a>
+<a href="http://thisdavej.com/tag/javascript/" class="tag-link-15 tag-link-position-10" title="9 topics" style="font-size: 17.6078431373pt;">javascript</a>
+<a href="http://thisdavej.com/tag/linux/" class="tag-link-26 tag-link-position-11" title="1 topic" style="font-size: 8pt;">linux</a>
+<a href="http://thisdavej.com/tag/markdown/" class="tag-link-30 tag-link-position-12" title="2 topics" style="font-size: 10.4705882353pt;">markdown</a>
+<a href="http://thisdavej.com/tag/microservices/" class="tag-link-37 tag-link-position-13" title="1 topic" style="font-size: 8pt;">microservices</a>
+<a href="http://thisdavej.com/tag/networking/" class="tag-link-20 tag-link-position-14" title="2 topics" style="font-size: 10.4705882353pt;">networking</a>
+<a href="http://thisdavej.com/tag/node/" class="tag-link-24 tag-link-position-15" title="8 topics" style="font-size: 16.9215686275pt;">node</a>
+<a href="http://thisdavej.com/tag/node-js/" class="tag-link-14 tag-link-position-16" title="20 topics" style="font-size: 22pt;">node.js</a>
+<a href="http://thisdavej.com/tag/nodemailer/" class="tag-link-33 tag-link-position-17" title="1 topic" style="font-size: 8pt;">nodemailer</a>
+<a href="http://thisdavej.com/tag/npm/" class="tag-link-21 tag-link-position-18" title="3 topics" style="font-size: 12.1176470588pt;">npm</a>
+<a href="http://thisdavej.com/tag/raspi/" class="tag-link-18 tag-link-position-19" title="13 topics" style="font-size: 19.6666666667pt;">raspi</a>
+<a href="http://thisdavej.com/tag/stdlib/" class="tag-link-36 tag-link-position-20" title="1 topic" style="font-size: 8pt;">stdlib</a>
+<a href="http://thisdavej.com/tag/tutorial/" class="tag-link-22 tag-link-position-21" title="13 topics" style="font-size: 19.6666666667pt;">tutorial</a>
+<a href="http://thisdavej.com/tag/vscode/" class="tag-link-23 tag-link-position-22" title="8 topics" style="font-size: 16.9215686275pt;">vscode</a>
+<a href="http://thisdavej.com/tag/windows/" class="tag-link-19 tag-link-position-23" title="8 topics" style="font-size: 16.9215686275pt;">windows</a>
+<a href="http://thisdavej.com/tag/yaml/" class="tag-link-32 tag-link-position-24" title="1 topic" style="font-size: 8pt;">yaml</a></div>
+</aside>				
+	</div><!-- .widget-area -->
+		
+	</div>
+</div><!-- #sidebar -->
+
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/form.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/decode.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/comment-reply.min.js.download"></script>
+<script type="text/javascript" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/wp-embed.min.js.download"></script>
+
+
+
+<!-- Dynamic page generated in 0.529 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2016-11-25 06:59:21 -->
+
+<!-- super cache --><div style="position: static;"><div class="a2a_overlay" id="a2apage_overlay"></div><div id="a2apage_modal" class="a2a_menu a2a_modal" role="dialog" tabindex="-1" aria-label="Copy link" style="display:none"><div class="a2a_copy_link_container"><span id="a2a_copy_link_icon" class="a2a_svg a2a_s_link" onclick="a2a.gEl(&#39;a2a_copy_link_text&#39;).click()"></span><input id="a2a_copy_link_text" type="text" title="Copy link"><div id="a2a_copy_link_copied">Copied!</div></div></div><div class="a2a_menu a2a_full" id="a2apage_full" role="dialog" tabindex="-1" aria-label="Share"><div class="a2a_full_header"><div id="a2apage_find_container" class="a2a_menu_find_container"><input id="a2apage_find" class="a2a_menu_find" type="text" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" title="Find any service"><span id="a2apage_find_icon" class="a2a_svg a2a_s_find" onclick="a2a.focus_find()"><svg focusable="false" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24" height="24" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill="#CCCCCC" d="M19.7 18.2l-4.5-4.5c0.7-1.1 1.2-2.3 1.2-3.6 0-3.5-2.8-6.3-6.3-6.3 -3.5 0-6.3 2.8-6.3 6.3 0 3.5 2.8 6.3 6.3 6.3 1.4 0 2.6-0.4 3.6-1.2l4.5 4.5c0.6 0.6 1.3 0.7 1.7 0.2C20.4 19.5 20.3 18.8 19.7 18.2zM10.1 14.6c-2.5 0-4.5-2.1-4.5-4.5 0-2.5 2.1-4.5 4.5-4.5 2.5 0 4.5 2.1 4.5 4.5C14.6 12.5 12.6 14.6 10.1 14.6z"></path></svg></span></div></div><div class="a2a_full_services" id="a2apage_full_services" role="presentation"><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#facebook" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#twitter" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_plus" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span>Google+ </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#pinterest" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#email" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#linkedin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#reddit" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_reddit"></span>Reddit </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#tumblr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tumblr"></span>Tumblr </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#wordpress" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wordpress"></span>WordPress </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_gmail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#whatsapp" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_whatsapp"></span>WhatsApp </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#stumbleupon" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_stumbleupon"></span>StumbleUpon </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#aim" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aim"></span>AIM </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#amazon_wish_list" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_amazon"></span>Amazon Wish List </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#aol_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#app_net" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_app_net"></span>App.net </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#baidu" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_baidu"></span>Baidu </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#balatarin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_balatarin"></span>Balatarin </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#bibsonomy" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bibsonomy"></span>BibSonomy </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#bitty_browser" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bitty"></span>Bitty Browser </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#blinklist" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blinklist"></span>Blinklist </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#blogger_post" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blogger"></span>Blogger Post </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#blogmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_blogmarks"></span>BlogMarks </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#bookmarks_fr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_bookmarks_fr"></span>Bookmarks.fr </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#box_net" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_box"></span>Box.net </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#buddymarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_buddymarks"></span>BuddyMarks </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#buffer" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_buffer"></span>Buffer </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#care2_news" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_care2"></span>Care2 News </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#citeulike" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_citeulike"></span>CiteULike </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#copy_link" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_link"></span>Copy Link </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#delicious" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_delicious"></span>Delicious </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#design_float" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_designfloat"></span>Design Float </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#diary_ru" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diary_ru"></span>Diary.Ru </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#diaspora" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diaspora"></span>Diaspora </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#digg" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_digg"></span>Digg </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#dihitt" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_dihitt"></span>diHITT </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#diigo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_diigo"></span>Diigo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#douban" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_douban"></span>Douban </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#draugiem" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_draugiem"></span>Draugiem </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#dzone" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_dzone"></span>DZone </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#evernote" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_evernote"></span>Evernote </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#facebook_messenger" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook_messenger"></span>Facebook Messenger </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#fark" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_fark"></span>Fark </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#flipboard" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_flipboard"></span>Flipboard </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#folkd" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_folkd"></span>Folkd </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google"></span>Google Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_classroom" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_classroom"></span>Google Classroom </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#hacker_news" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_y18"></span>Hacker News </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#hatena" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_hatena"></span>Hatena </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#instapaper" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_instapaper"></span>Instapaper </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#jamespot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_jamespot"></span>Jamespot </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#kakao" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kakao"></span>Kakao </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#kik" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kik"></span>Kik </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#kindle_it" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_kindle"></span>Kindle It </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#known" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_known"></span>Known </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#line" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_line"></span>Line </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#livejournal" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_livejournal"></span>LiveJournal </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#mail_ru" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mail_ru"></span>Mail.Ru </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#mendeley" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mendeley"></span>Mendeley </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#meneame" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_meneame"></span>Meneame </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#mixi" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_mixi"></span>Mixi </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#myspace" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_myspace"></span>MySpace </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#netlog" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_netlog"></span>Netlog </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#netvouz" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_netvouz"></span>Netvouz </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#newsvine" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_newsvine"></span>NewsVine </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#nujij" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_nujij"></span>NUjij </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#odnoklassniki" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_odnoklassniki"></span>Odnoklassniki </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#oknotizie" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_oknotizie"></span>Oknotizie </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#outlook_com" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#pinboard" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinboard"></span>Pinboard </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#plurk" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_plurk"></span>Plurk </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#pocket" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pocket"></span>Pocket </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#print" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_print"></span>Print </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#printfriendly" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_printfriendly"></span>PrintFriendly </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#protopage_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_protopage"></span>Protopage Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#pusha" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pusha"></span>Pusha </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#qzone" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_qzone"></span>Qzone </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#rediff" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_rediff"></span>Rediff MyPage </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#renren" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_renren"></span>Renren </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#segnalo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_segnalo"></span>Segnalo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#sina_weibo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sina_weibo"></span>Sina Weibo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#sitejot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sitejot"></span>SiteJot </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#skype" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_skype"></span>Skype </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#slashdot" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_slashdot"></span>Slashdot </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#sms" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_sms"></span>SMS </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#stumpedia" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_stumpedia"></span>Stumpedia </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#svejo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_svejo"></span>Svejo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#symbaloo_feeds" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_symbaloo"></span>Symbaloo Feeds </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#telegram" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_telegram"></span>Telegram </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#trello" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_trello"></span>Trello </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#tuenti" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tuenti"></span>Tuenti </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#twiddla" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twiddla"></span>Twiddla </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#typepad_post" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_typepad"></span>TypePad Post </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#viadeo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_viadeo"></span>Viadeo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#viber" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_viber"></span>Viber </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#vk" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_vk"></span>VK </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#wanelo" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wanelo"></span>Wanelo </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#webnews" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_webnews"></span>Webnews </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#wechat" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wechat"></span>WeChat </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#wykop" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_wykop"></span>Wykop </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#xing" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_xing"></span>XING </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yahoo_bookmarks" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Bookmarks </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yahoo_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yahoo_messenger" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yim"></span>Yahoo Messenger </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yoolink" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yoolink"></span>Yoolink </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#youmob" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_youmob"></span>YouMob </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yummly" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yummly"></span>Yummly </a><i class="a2a_i"></i><i class="a2a_i"></i></div><div class="a2a_full_footer"><a href="https://www.addtoany.com/" title="Share Buttons" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>AddToAny</a></div></div><div id="a2apage_dropdown" class="a2a_menu a2a_mini" onmouseover="a2a.onMouseOver_stay()" onmouseout="a2a.onMouseOut_delay()" tabindex="-1" aria-label="Share" style="display:none"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display:none"><div id="a2apage_title" class="a2a_menu_title"></div></div><div class="a2a_mini_services" id="a2apage_mini_services"><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#facebook" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_facebook"></span>Facebook </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#twitter" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_twitter"></span>Twitter </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_plus" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_google_plus"></span>Google+ </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#pinterest" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_pinterest"></span>Pinterest </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#email" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#linkedin" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_linkedin"></span>LinkedIn </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#reddit" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_reddit"></span>Reddit </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#tumblr" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_tumblr"></span>Tumblr </a></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"></div><div id="a2apage_2_col1" style="display:none"><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#google_gmail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_gmail"></span>Google Gmail </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#aol_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_aol"></span>AOL Mail </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#outlook_com" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_outlook_com"></span>Outlook.com </a><a rel="nofollow" class="a2a_i" href="http://thisdavej.com/#yahoo_mail" target="_blank"><span class="a2a_svg a2a_s__default a2a_s_yahoo"></span>Yahoo Mail </a><a rel="nofollow" class="a2a_i a2a_emailer" href="http://thisdavej.com/#email_form" target="_blank" id="a2apage_any_email"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Any email </a><a rel="nofollow" class="a2a_i a2a_emailer a2a_email_client" href="http://thisdavej.com/#email_form" target="" id="a2apage_email_client"><span class="a2a_svg a2a_s__default a2a_s_email"></span>Email app</a></div><div class="a2a_clear"></div></div><div class="a2apage_wide a2a_wide"><a href="http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/" id="a2apage_show_more_less" class="a2a_menu_show_more_less a2a_more" title="Show all"><span class="a2a_svg a2a_s__default a2a_s_a2a"></span>More…</a></div></div><div style="height: 1px; width: 1px; position: absolute; z-index: 100000; top: 0px; visibility: hidden;"><iframe id="a2apage_sm_ifr" height="1" width="1" title="AddToAny Utility Frame" transparency="true" allowtransparency="true" frameborder="0" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/sm14.html" style="height: 1px; width: 1px; border: 0px; left: 0px; top: 0px; position: absolute; z-index: 100000; display: none;"></iframe></div></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./Guide to Installing Node.js on a Raspberry Pi _ thisDaveJ_files/saved_resource.html"></iframe></body></html>

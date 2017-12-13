@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!-- saved from url=(0144)http://s0.2mdn.net/ads/richmedia/studio/pv2/45419350/20161020100145718/index.html?e=69&renderingType=2&leftOffset=0&topOffset=0&c=HkDEO8sptF&t=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Apple</title>
+		
+		
+		<meta name="ad.size" content="width=300,height=250">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<style>
+			*{margin:0px;padding:0px;}
+			body{
+				margin:0;
+				padding:0;
+				overflow:hidden;
+				background-color: #fafafa;
+			}
+			#banner{
+				position:relative;
+				display:block;
+				cursor:hand;
+				cursor:pointer;
+			}
+			canvas{
+				display:block;
+				position:absolute;
+				top:0px;
+				left:0px;
+				cursor:hand;
+				cursor:pointer;
+			}
+			#stageParticle, #stageText, #banner{
+				width:300px;
+				height:250px;
+			}
+			#logo_ee{
+				display:none;
+				position:absolute;
+				right:10px;
+				top:10px;
+				width:33px;
+			}
+			#bg-exit{
+				display:block;
+				position:absolute;
+				left:10px;
+				top:10px;
+				width:300px;
+				height:250px;
+				cursor:hand;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>	
+		<div id="banner">
+			<canvas id="stage" width="300" height="250"></canvas>	
+			<canvas id="stageBtn" width="300" height="250"></canvas>	
+			<canvas id="stageParticle" width="600" height="500"></canvas>	
+			<canvas id="stageText" width="600" height="500"></canvas>
+			<img id="logo_ee" src="./logo_ee.png" style="display: block; opacity: 1;">
+		</div>
+		<div id="bg-exit"></div>
+
+		<!-- script -->
+		<script src="./Enabler_01_138.js.download"></script>
+			
+		<script>			
+			var i,j,k,tm;
+			
+			var logoPhoneImage = new Image();
+			var logoFrame1 = new Image();
+			var logoFrame2 = new Image();
+			var logoFrame3 = new Image();
+			var logoFrame4 = new Image();
+			
+			//-
+			document.getElementById('bg-exit').addEventListener('click', bgExitHandler, false);
+			
+			//-
+			Enabler.setProfileId(1091953);
+			var devDynamicContent = {};
+
+			devDynamicContent.ZoomOUT_Master_Feed_01= [{}];
+			devDynamicContent.ZoomOUT_Master_Feed_01[0]._id = 0;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Price = "\u00A399";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_1_image = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_1_image.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_1_image.Url = "phone_0.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_2_image = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_2_image.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_2_image.Url = "phone_1.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_3_image = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_3_image.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_3_image.Url = "phone_2.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_4_image = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_4_image.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_4_image.Url = "phone_3.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_5_image = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_5_image.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_5_image.Url = "phone_0.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_text = "SNAP UP<n>THE SUPERB<n><>iPhone SE<>";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_text_Ypos = -42;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_small_text = "test"; 
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo.Url = "https://s0.2mdn.net/ads/richmedia/studio/44771868/11561_20160810074745839_speedtest1.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_text = "ON THE 4G<n>NETWORK<n>THAT'S <>50%<n>FASTER<n><>THAN O2<n>VODAFONE<n>AND THREE";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_text_Ypos = -100;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_small_text = "test";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo.Url = "https://s0.2mdn.net/ads/richmedia/studio/44771868/11561_20160810074745839_speedtest1.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_text = "AND SAVE A<n><>WHOPPING<n>\u00A399<> UPFRONT";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_text_Ypos = -42;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_small_text = "<>test<>";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo.Url = "https://s0.2mdn.net/ads/richmedia/studio/45233135/11561_20160905160416265_EMPTY.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_text = "2GB<n>NO UPFRONT<n>COST";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_text_Ypos = -42;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_small_text = "\u00A330.99 per month";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo.Url = "https://s0.2mdn.net/ads/richmedia/studio/44771868/11561_20160810074745839_speedtest1.png";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_text = "iPHONE SE<n><>SAVE \u00A399<>";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_text_Ypos = -42;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_small_text = "<>test<><n>test<>";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_CTA_text = "BUY NOW >";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_CTA_text_size=1;
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_bottom_text = "Another No Brainer from EE";
+			
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo = {};
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo.Type = "file";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo.Url = "https://s0.2mdn.net/ads/richmedia/studio/45166713/11561_20160901020724722_iphone_SE_logo.png";
+			devDynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo_width = "120";
+			
+			//- dynamicContent
+			Enabler.setDevDynamicContent(devDynamicContent);
+			
+			//-
+			var dynamicContentPrice;
+			
+			var numLoadJs=0;
+			var aScript=[
+				'https://s0.2mdn.net/ads/studio/cached_libs/tweenlite_1.18.0_56fa823cfbbef1c2f4d4346f0f0e6c3c_min.js',
+				'https://s0.2mdn.net/ads/studio/cached_libs/easepack_1.18.0_ed5816e732515f56d96a67f6a2a15ccb_min.js',
+				'https://s0.2mdn.net/ads/studio/cached_libs/cssplugin_1.18.0_71489205621d46cbe88348eeb8fe493f_min.js',
+				'storm.js'
+			];
+			
+			//- POLIT LOAD
+			window.onload = function() {
+				LoadJS(aScript[numLoadJs], CompleteLoadScript, document.body);				
+			}
+			var LoadJS = function(url, implementationCode, location){
+				var scriptTag = document.createElement('script');
+				scriptTag.src = url;
+
+				scriptTag.onload = implementationCode;
+				scriptTag.onreadystatechange = implementationCode;
+
+				location.appendChild(scriptTag);
+			};
+			function CompleteLoadScript(){
+				numLoadJs++;
+				if(aScript.length!=numLoadJs){					
+					LoadJS(aScript[numLoadJs], CompleteLoadScript, document.body);
+				}else{
+					if (Enabler.isInitialized()) {
+						EnablerInitHandler();
+					} else {
+						Enabler.addEventListener(studio.events.StudioEvent.INIT, EnablerInitHandler);
+					}
+				}
+			}
+			
+			//- EnablerInitHandler
+			function EnablerInitHandler(){				
+				LoadLogoPhone();
+			}
+			function LoadLogoPhone(){				
+				logoPhoneImage.onload = function(){					
+					LoadLogo_1();	
+				};
+				logoPhoneImage.src = dynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo.Url;
+			}			
+			
+			//-
+			function LoadLogo_1(){	
+				if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo.Url!=""){
+					logoFrame1.onload = function(){					
+						LoadLogo_2();
+					};	
+					logoFrame1.src = dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo.Url;
+				}else{
+					LoadLogo_2();
+				}
+			}	
+			function LoadLogo_2(){				
+				if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo.Url!=""){
+					logoFrame2.onload = function(){					
+						LoadLogo_3();
+					};	
+					logoFrame2.src = dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo.Url;
+				}else{
+					LoadLogo_3();  
+				}
+			}				
+			function LoadLogo_3(){				
+				if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo.Url!=""){
+					logoFrame3.onload = function(){					
+						LoadLogo_4();
+					};	
+					logoFrame3.src = dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo.Url;
+				}else{
+					LoadLogo_4();  
+				}
+			}
+			function LoadLogo_4(){				
+				if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo.Url!=""){
+					logoFrame4.onload = function(){					
+						LoadFontRubik();
+					};	
+					logoFrame4.src = dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo.Url;
+				}else{
+					LoadFontRubik();  
+				}
+			}
+
+			//-					
+			function LoadFontRubik(){
+				if(RubrikRegularLoadType==2){
+					AppStart();
+				}else{
+					RubrikRegular["data_"+RubrikRegularLoadType+"_"+RubrikRegularInfo.charAt(RubrikRegularLoad)]= new Image();
+					RubrikRegular["data_"+RubrikRegularLoadType+"_"+RubrikRegularInfo.charAt(RubrikRegularLoad)].onload = function() {
+						RubrikRegularLoad++;
+						if(RubrikRegularLoad==RubrikRegularInfo.length){
+							RubrikRegularLoad=0;
+							RubrikRegularLoadType++;
+						}
+						LoadFontRubik();						
+					};
+					RubrikRegular["data_"+RubrikRegularLoadType+"_"+RubrikRegularInfo.charAt(RubrikRegularLoad)].src = RubrikRegular[RubrikRegularLoadType+"_"+RubrikRegularInfo.charAt(RubrikRegularLoad)];
+				}
+			}
+			
+			function AppStart() {			
+				dynamicContentPrice = dynamicContent.ZoomOUT_Master_Feed_01[0].Price;
+				
+				Storm.init({
+					elementId:"stage",
+					width:document.getElementById("stage").width,
+					height:document.getElementById("stage").height,
+					retina:false,
+					names:[
+						"bg_0",
+						"bg_1",
+						"dot",
+						"phone_0",
+						"phone_1",
+						"phone_2",
+						"phone_3",
+						"phone_4"
+					],
+					graphics:[
+							"bg_0.jpg",
+							"bg_1.png",
+							"dot.png",
+							dynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_1_image.Url,
+							dynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_2_image.Url,
+							dynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_3_image.Url,
+							dynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_4_image.Url,
+							dynamicContent.ZoomOUT_Master_Feed_01[0].Main_product_5_image.Url
+						],
+					complete: function(){					
+						document.getElementById('logo_ee').style.display="block";
+						
+						Storm.obj["mcMain"]=	({x:Storm.stageWidth/2, y:Storm.stageHeight/2});
+						Storm.obj["mcCamera"]=	({});
+			
+						Storm.obj["mcBg_0"]=		({bitmap:Storm.bitmaps["bg_0"], x:-40, y:-50, scaleX:0.8, scaleY:0.8});			
+						Storm.obj["mcBg_1"]=		({bitmap:Storm.bitmaps["bg_1"], x:-22+4+100, y:-10});						
+
+						Storm.obj["mcBg_2"]=		({particles:Storm.bitmaps["dot"], quantity:250, x:-222-10+4+100, y:-7});
+						Storm.obj["mcBg_3"]=		({particles:Storm.bitmaps["dot"], quantity:250, x:-222-10+4+100, y:-7});
+						
+						Storm.obj["mcF1_T0"]=		({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_text, chaosRadius:20, color:"#ffffff", x:-28-105, y:-5, scaleX:0.9, scaleY:0.9, lineHeight:6, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF1_T00"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_small_text, color:"#ffffff", type:0, align:"left", x:-28-105, scaleX:0.95, scaleY:0.95, lineHeight:15, stroke:"#01a09d", lineWidth:5});
+						
+						Storm.obj["mcF1_T1"]=		({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_text, chaosRadius:20, color:"#ffffff",  x:-28-105, y:-5, scaleX:0.9, scaleY:0.9, lineHeight:6, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF1_T2"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_small_text, color:"#ffffff", type:0, align:"left", x:-28-105, scaleX:0.95, scaleY:0.95, lineHeight:15, stroke:"#01a09d", lineWidth:5});
+						
+						Storm.obj["mcF1_T3"]=		({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_text, chaosRadius:20, color:"#ffffff",  x:-28-105, y:-5, scaleX:0.9, scaleY:0.9, lineHeight:6, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF1_T4"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_small_text, color:"#ffffff", type:0,  align:"left", x:-28-105, scaleX:0.95, scaleY:0.95, lineHeight:15, stroke:"#01a09d", lineWidth:5});
+						
+						Storm.obj["mcF1_T5"]=		({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_text, chaosRadius:20, color:"#ffffff",  x:-28-105, y:-5, scaleX:0.9, scaleY:0.9, lineHeight:6, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF1_T6"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_small_text, color:"#ffffff", type:0,  align:"left", x:-28-105, scaleX:0.95, scaleY:0.95, lineHeight:15, stroke:"#01a09d", lineWidth:5});
+						
+						Storm.obj["mcPhone_0"]=		({bitmap:Storm.bitmaps["phone_0"], x:88, y:-5});			
+						Storm.obj["mcPhone_1"]=		({bitmap:Storm.bitmaps["phone_1"], x:88, y:-5});			
+						Storm.obj["mcPhone_2"]=		({bitmap:Storm.bitmaps["phone_2"], x:88, y:-5});			
+						Storm.obj["mcPhone_3"]=		({bitmap:Storm.bitmaps["phone_3"], x:88, y:-5});			
+						Storm.obj["mcPhone_4"]=		({bitmap:Storm.bitmaps["phone_4"], x:-88, y:-5});	
+						
+						Storm.obj["mcLogoPhone"]=	({bitmap:logoPhoneImage, isRetina:true, x:Storm.obj["mcPhone_4"].x, y:106});	
+						Storm.obj["mcLogoPhone"].scaleX=Storm.obj["mcLogoPhone"].scaleY=dynamicContent.ZoomOUT_Master_Feed_01[0].Phone_logo_width/logoPhoneImage.width;
+						
+						if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_logo.Url!=""){
+							Storm.obj["mcLogo_Frame1"]=	({bitmap:logoFrame1, isRetina:true, x:-Storm.stageWidth*0.5+60/2+18, y:Storm.stageHeight*0.5-60*logoFrame1.height/logoFrame1.width*0.5-18});																					
+							Storm.obj["mcLogo_Frame1"].scaleX=Storm.obj["mcLogo_Frame1"].scaleY=60/logoFrame1.width;
+						}else{
+							Storm.obj["mcLogo_Frame1"]=	{};
+						}
+						if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_logo.Url!=""){	
+							Storm.obj["mcLogo_Frame2"]=	 ({bitmap:logoFrame2, isRetina:true, x:-Storm.stageWidth*0.5+60/2+18, y:Storm.stageHeight*0.5-60*logoFrame2.height/logoFrame2.width*0.5-18});										
+							Storm.obj["mcLogo_Frame2"].scaleX=Storm.obj["mcLogo_Frame2"].scaleY=60/logoFrame2.width;
+						}else{
+							Storm.obj["mcLogo_Frame2"]=	{};
+						}
+						if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_logo.Url!=""){
+							Storm.obj["mcLogo_Frame3"]=	({bitmap:logoFrame3, isRetina:true, x:-Storm.stageWidth*0.5+60/2+18, y:Storm.stageHeight*0.5-60*logoFrame3.height/logoFrame3.width*0.5-18});																					
+							Storm.obj["mcLogo_Frame3"].scaleX=Storm.obj["mcLogo_Frame3"].scaleY=60/logoFrame3.width;
+						}else{
+							Storm.obj["mcLogo_Frame3"]=	{};
+						}
+						if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_logo.Url!=""){	
+							Storm.obj["mcLogo_Frame4"]=	 ({bitmap:logoFrame4, isRetina:true, x:-Storm.stageWidth*0.5+60/2+18, y:Storm.stageHeight*0.5-60*logoFrame4.height/logoFrame4.width*0.5-18});										
+							Storm.obj["mcLogo_Frame4"].scaleX=Storm.obj["mcLogo_Frame4"].scaleY=60/logoFrame4.width;
+						}else{
+							Storm.obj["mcLogo_Frame4"]=	{};
+						}
+						
+						Storm.obj["mcF5_T0"]=		({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_text, chaosRadius:20, color:"#ffffff", minSpace:true, x:-28, y:-5-23, scaleX:0.9, scaleY:0.9, lineHeight:6, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF5_T1"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_small_text, color:"#ffe600", type:0, align:"left", x:-28, scaleX:0.95, scaleY:0.95, lineHeight:15, stroke:"#01a09d", lineWidth:5});
+						Storm.obj["mcF5_T2"]=		({text:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_bottom_text, color:"#ffffff", type:0, align:"left", x:-27, scaleX:0.68, scaleY:0.68, lineHeight:15, stroke:"#55c5cc", lineWidth:5});
+						
+						Storm.obj["mcCTA"]=			({x:-25+134/2});						
+						Storm.obj["mcCTA_bg"]=		({graphics:"rect", fill:"#ffe600", width:134, height:36, x:0, y:-12});			
+						Storm.obj["mcCTA_text"]=	({textParticle:dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_CTA_text, isBg:"none", chaosRadius:0, scaleX:0.65*dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_CTA_text_size, scaleY:0.65*dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_CTA_text_size, color:"#797e7c", lineHeight:8, align:"center", y:-12});
+
+						//-							
+						Storm.obj["mcBorder"]=		({graphics:"rect", stroke:"#000000", width:Storm.stageWidth, height:Storm.stageHeight, x:0, y:0});	
+						
+						//- Create ---------------------------------------------------------------
+						Storm.CreateDisplayList();
+						
+						//- Position   ---------------------------------------------------------				
+						k=0;
+						for(i=0; i<10; i++){
+							for(j=0; j<25; j++){
+								Storm.obj["mcBg_2"].particle[k].x=34.9*(j-8.5);
+								Storm.obj["mcBg_2"].particle[k].y=34.9*(i-5);
+								Storm.obj["mcBg_2"].particle[k].overlayAlpha=0;
+								k++;
+							}
+						}
+						k=0;
+						for(i=0; i<25; i++){
+							for(j=0; j<10; j++){
+								Storm.obj["mcBg_3"].particle[k].x=34.9*(i-8.5);
+								Storm.obj["mcBg_3"].particle[k].y=34.9*(j-5);
+								Storm.obj["mcBg_3"].particle[k].overlayAlpha=0;
+								k++;
+							}
+						}						
+						
+						//-
+						Storm.obj["mcPhone_0"].scale0=92/Storm.obj["mcPhone_0"].width;
+						Storm.obj["mcPhone_0"].scaleX=Storm.obj["mcPhone_0"].scaleY=Storm.obj["mcPhone_0"].scale0;
+						
+						Storm.obj["mcPhone_1"].scale0=190/Storm.obj["mcPhone_1"].height;
+						Storm.obj["mcPhone_1"].scaleX=Storm.obj["mcPhone_1"].scaleY=Storm.obj["mcPhone_1"].scale0;
+						
+						Storm.obj["mcPhone_2"].scale0=190/Storm.obj["mcPhone_2"].height;
+						Storm.obj["mcPhone_2"].scaleX=Storm.obj["mcPhone_2"].scaleY=Storm.obj["mcPhone_2"].scale0;
+						
+						Storm.obj["mcPhone_3"].scale0=190/Storm.obj["mcPhone_3"].height;
+						Storm.obj["mcPhone_3"].scaleX=Storm.obj["mcPhone_3"].scaleY=Storm.obj["mcPhone_3"].scale0;
+						
+						Storm.obj["mcPhone_4"].scale0=92/Storm.obj["mcPhone_4"].width;
+						Storm.obj["mcPhone_4"].scaleX=Storm.obj["mcPhone_4"].scaleY=Storm.obj["mcPhone_4"].scale0;
+						
+						Storm.obj["mcLogoPhone"].y=Storm.obj["mcPhone_4"].y+Storm.obj["mcPhone_4"].height*Storm.obj["mcPhone_4"].scaleY*0.5+Storm.obj["mcLogoPhone"].scaleY*Storm.obj["mcLogoPhone"].height*0.5+10;
+						
+						//- auto | position y
+						for(i=0; i<6; i++){
+							if(Storm.obj["mcF1_T"+i].textParticle!=""){
+								if(Storm.obj["mcF1_T"+i].textLines.length==2 || Storm.obj["mcF1_T"+i].textLines.length==4 || Storm.obj["mcF1_T"+i].textLines.length==6){
+									Storm.obj["mcF1_T"+i].y-=15;
+								}						
+							}
+						}
+						
+						//- user | position y						
+						Storm.obj["mcF1_T0"].y=Math.ceil(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_1_text_Ypos);
+						Storm.obj["mcF1_T1"].y=Math.ceil(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_2_text_Ypos);
+						Storm.obj["mcF1_T3"].y=Math.ceil(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_3_text_Ypos);
+						Storm.obj["mcF1_T5"].y=Math.ceil(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_4_text_Ypos);
+						Storm.obj["mcF5_T0"].y=Math.ceil(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_text_Ypos);					
+						
+						//-	
+						Storm.obj["mcF1_T00"].y=Storm.obj["mcF1_T0"].y+Storm.obj["mcF1_T0"].textLines.length*(21)+12;
+						Storm.obj["mcF1_T2"].y=Storm.obj["mcF1_T1"].y+Storm.obj["mcF1_T1"].textLines.length*(21)+12;
+						Storm.obj["mcF1_T4"].y=Storm.obj["mcF1_T3"].y+Storm.obj["mcF1_T3"].textLines.length*(21)+12;
+						Storm.obj["mcF1_T6"].y=Storm.obj["mcF1_T5"].y+Storm.obj["mcF1_T5"].textLines.length*(21)+12;
+						Storm.obj["mcF5_T1"].y=Storm.obj["mcF5_T0"].y+Storm.obj["mcF5_T0"].textLines.length*(21)+12;
+						
+						Storm.obj["mcCTA"].y=Storm.obj["mcF5_T1"].y+Storm.obj["mcF5_T1"].textLines.length*(21)+Storm.obj["mcCTA_bg"].height*0.5+15;
+						if(dynamicContent.ZoomOUT_Master_Feed_01[0].Frame_5_small_text==""){
+							Storm.obj["mcCTA"].y=Storm.obj["mcF5_T0"].y+Storm.obj["mcF5_T0"].textLines.length*21+Storm.obj["mcCTA_bg"].height*0.5+30;
+						}
+						
+						Storm.obj["mcF5_T2"].y=Storm.obj["mcCTA"].y+15;
+												
+						Storm.obj["mcCTA"].addChild(Storm.obj["mcCTA_bg"]);
+						Storm.obj["mcCTA"].addChild(Storm.obj["mcCTA_text"]);
+						
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcBg_0"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcBg_1"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcBg_2"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcBg_3"]);
+						
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T0"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T00"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T1"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T2"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T3"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T4"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T5"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF1_T6"]);
+						
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcLogoPhone"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcLogo_Frame1"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcLogo_Frame2"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcLogo_Frame3"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcLogo_Frame4"]);
+						
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcPhone_0"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcPhone_1"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcPhone_2"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcPhone_3"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcPhone_4"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF5_T0"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF5_T1"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcF5_T2"]);
+						Storm.obj["mcCamera"].addChild(Storm.obj["mcCTA"]);
+												
+						//-
+						Storm.obj["mcMain"].addChild(Storm.obj["mcCamera"]);
+						
+						//- Save ---------------------------------------------------------------
+						Storm.SaveDisplayList();
+
+						//- StartAnimation
+						StartAnimation();	
+					}
+				});
+			}
+			function StartAnimation(){
+				Storm.RebootDisplayList();
+
+				tm=0.1;
+				
+				//-
+				nPart=0;
+				rnd=Storm.Random(60)*0.3;		
+				strToX="+=36";
+				isPart=100;
+				
+				for(i1=2; i1<4; i1++){
+					k=0;
+					
+					for(i=0; i<10; i++){
+						for(j=0; j<25; j++){
+							if(isPart>50){
+								TweenLite.to(Storm.obj["mcBg_"+i1].particle[k],	0.2,	{delay:tm+rnd, overwrite: "none", overlayAlpha:1});
+							
+								if(i1==2){ TweenLite.to(Storm.obj["mcBg_"+i1].particle[k],	0.8,	{delay:tm+rnd, overwrite: "none", x:strToX}); }
+								if(i1==3){ TweenLite.to(Storm.obj["mcBg_"+i1].particle[k],	0.8,	{delay:tm+rnd, overwrite: "none", y:strToX}); }
+							
+								TweenLite.to(Storm.obj["mcBg_"+i1].particle[k],	0.5,	{delay:tm+0.4+rnd, overwrite: "none", alpha:0});	
+							}
+							
+							nPart++;
+							if(nPart==4){
+								nPart=0;
+								rnd=Storm.Random(60)*0.3;
+								
+								if(Storm.Random(10)>5){
+									strToX="+=36";
+								}else{
+									strToX="-=36";
+								}
+								
+								isPart=Storm.Random(100);
+							}
+							
+							k++;
+						}
+					}
+				}
+				
+				//-	
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.1,	{delay:tm+0.01, overwrite: "none", alpha:0, onComplete:InvertMask, onCompleteParams:[Storm.obj["mcF1_T0"]]});
+				
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.4,	{delay:tm+0.01, overwrite: "none", chaos_0:1});
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.8,	{delay:tm+0.01, overwrite: "none", chaos_1:1});
+				TweenLite.from(Storm.obj["mcF1_T0"],	1.2,	{delay:tm+0.01, overwrite: "none", chaos_2:1});				
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.6,	{delay:tm+1.20, overwrite: "none", letterTint_0:0});
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.6,	{delay:tm+1.20, overwrite: "none", letterTint_1:0});	
+				TweenLite.from(Storm.obj["mcF1_T0"],	0.6,	{delay:tm+1.20, overwrite: "none", letterTint_2:0});
+				
+				TweenLite.from(Storm.obj["mcF1_T00"],		0.6,	{delay:tm+1.2, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcLogo_Frame1"],	0.6,	{delay:tm+1.2, overwrite: "none", alpha:0});	
+				
+				TweenLite.to(Storm.obj["mcBg_0"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_1"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=100", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_2"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=100", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_3"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=100", ease:Expo.easeInOut});				
+				TweenLite.to(Storm.obj["mcF1_T0"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcF1_T00"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcLogo_Frame1"],		0.8,	{delay:tm+3.0, overwrite: "none", y:"+=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcPhone_0"],	0.8,	{delay:tm+3.0, overwrite: "none", y:"+=300", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcF1_T0"],		0.1,	{delay:tm+3.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcPhone_0"],	0.1,	{delay:tm+3.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcF1_T00"],	0.1,	{delay:tm+3.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcLogo_Frame1"],	0.1,	{delay:tm+3.8, overwrite: "none", alpha:0});	
+								
+				//-
+				TweenLite.from(Storm.obj["mcPhone_1"],	0.8,	{delay:tm+3.0, overwrite: "none", y:"-=300", ease:Expo.easeInOut});
+				
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.1,	{delay:tm+3.7, overwrite: "none", alpha:0, onComplete:InvertMask, onCompleteParams:[Storm.obj["mcF1_T1"]]});
+				
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.4,	{delay:tm+3.7, overwrite: "none", chaos_0:1});
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.8,	{delay:tm+3.7, overwrite: "none", chaos_1:1});
+				TweenLite.from(Storm.obj["mcF1_T1"],	1.2,	{delay:tm+3.7, overwrite: "none", chaos_2:1});
+				
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.6,	{delay:tm+4.7, overwrite: "none", letterTint_0:0});
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.6,	{delay:tm+4.7, overwrite: "none", letterTint_1:0});
+				TweenLite.from(Storm.obj["mcF1_T1"],	0.6,	{delay:tm+4.7, overwrite: "none", letterTint_2:0});
+				
+				TweenLite.from(Storm.obj["mcF1_T2"],		0.6,	{delay:tm+4.7, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcLogo_Frame2"],	0.6,	{delay:tm+4.7, overwrite: "none", alpha:0});	
+						
+				TweenLite.to(Storm.obj["mcBg_0"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=20", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_1"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_2"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_3"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcF1_T1"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcF1_T2"],		0.8,	{delay:tm+7.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcLogo_Frame2"],0.8,	{delay:tm+7.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcPhone_1"],	0.8,	{delay:tm+7.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});					
+				TweenLite.to(Storm.obj["mcF1_T1"],		0.1,	{delay:tm+7.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcF1_T2"],		0.1,	{delay:tm+7.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcLogo_Frame2"],0.1,	{delay:tm+7.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcPhone_1"],	0.1,	{delay:tm+7.8, overwrite: "none", alpha:0});	
+				
+				//-
+				TweenLite.from(Storm.obj["mcPhone_2"],	0.8,	{delay:tm+7.0, overwrite: "none", x:"+=300", ease:Expo.easeInOut});
+				
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.1,	{delay:tm+7.7, overwrite: "none", alpha:0, onComplete:InvertMask, onCompleteParams:[Storm.obj["mcF1_T3"]]});
+				
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.4,	{delay:tm+7.7, overwrite: "none", chaos_0:1});
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.8,	{delay:tm+7.7, overwrite: "none", chaos_1:1});
+				TweenLite.from(Storm.obj["mcF1_T3"],	1.2,	{delay:tm+7.7, overwrite: "none", chaos_2:1});
+				
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.6,	{delay:tm+8.7, overwrite: "none", letterTint_0:0});
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.6,	{delay:tm+8.7, overwrite: "none", letterTint_1:0});
+				TweenLite.from(Storm.obj["mcF1_T3"],	0.6,	{delay:tm+8.7, overwrite: "none", letterTint_2:0});
+				
+				TweenLite.from(Storm.obj["mcF1_T4"],		0.6,	{delay:tm+8.7, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcLogo_Frame3"],	0.6,	{delay:tm+8.7, overwrite: "none", alpha:0});	
+						
+				TweenLite.to(Storm.obj["mcBg_0"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_1"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=100", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_2"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=100", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_3"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=100", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcF1_T3"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcF1_T4"],		0.8,	{delay:tm+11.0, overwrite: "none", y:"-=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcLogo_Frame3"],0.8,	{delay:tm+11.0, overwrite: "none", y:"-=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcPhone_2"],	0.8,	{delay:tm+11.0, overwrite: "none", y:"-=300", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcF1_T3"],		0.1,	{delay:tm+11.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcF1_T4"],		0.1,	{delay:tm+11.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcLogo_Frame3"],0.1,	{delay:tm+11.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcPhone_2"],	0.1,	{delay:tm+11.8, overwrite: "none", alpha:0});	
+				
+				//-
+				TweenLite.from(Storm.obj["mcPhone_3"],	0.8,	{delay:tm+11.0, overwrite: "none", y:"+=300", ease:Expo.easeInOut});
+				
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.1,	{delay:tm+11.7, overwrite: "none", alpha:0, onComplete:InvertMask, onCompleteParams:[Storm.obj["mcF1_T5"]]});
+				
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.4,	{delay:tm+11.7, overwrite: "none", chaos_0:1});
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.8,	{delay:tm+11.7, overwrite: "none", chaos_1:1});
+				TweenLite.from(Storm.obj["mcF1_T5"],	1.2,	{delay:tm+11.7, overwrite: "none", chaos_2:1});
+				
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.6,	{delay:tm+12.7, overwrite: "none", letterTint_0:0});
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.6,	{delay:tm+12.7, overwrite: "none", letterTint_1:0});
+				TweenLite.from(Storm.obj["mcF1_T5"],	0.6,	{delay:tm+12.7, overwrite: "none", letterTint_2:0});
+				
+				TweenLite.from(Storm.obj["mcF1_T6"],		0.6,	{delay:tm+12.7, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcLogo_Frame4"],		0.6,	{delay:tm+12.7, overwrite: "none", alpha:0});
+	
+				TweenLite.to(Storm.obj["mcBg_0"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=20", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_1"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_2"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});	
+				TweenLite.to(Storm.obj["mcBg_3"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=50", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcF1_T5"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcF1_T6"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcLogo_Frame4"],		0.8,	{delay:tm+15.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});			
+				TweenLite.to(Storm.obj["mcPhone_3"],	0.8,	{delay:tm+15.0, overwrite: "none", x:"-=300", ease:Expo.easeInOut});
+				TweenLite.to(Storm.obj["mcF1_T5"],		0.1,	{delay:tm+15.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcF1_T6"],		0.1,	{delay:tm+15.8, overwrite: "none", alpha:0});	
+				TweenLite.to(Storm.obj["mcPhone_3"],	0.1,	{delay:tm+15.8, overwrite: "none", alpha:0});
+				TweenLite.to(Storm.obj["mcLogo_Frame4"],	0.1,	{delay:tm+15.8, overwrite: "none", alpha:0});
+
+				//-	
+				TweenLite.from(Storm.obj["mcPhone_4"],	0.8,	{delay:tm+15.0, overwrite: "none", x:"+=300", ease:Expo.easeInOut});
+				
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.1,	{delay:tm+15.7, overwrite: "none", alpha:0, onComplete:InvertMask, onCompleteParams:[Storm.obj["mcF5_T0"]]});	
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.4,	{delay:tm+15.7, overwrite: "none", chaos_0:1});	
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.8,	{delay:tm+15.7, overwrite: "none", chaos_1:1});	
+				TweenLite.from(Storm.obj["mcF5_T0"],	1.2,	{delay:tm+15.7, overwrite: "none", chaos_2:1});
+				
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.6,	{delay:tm+17.0, overwrite: "none", letterTint_0:0});	
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.6,	{delay:tm+17.0, overwrite: "none", letterTint_1:0});	
+				TweenLite.from(Storm.obj["mcF5_T0"],	0.6,	{delay:tm+17.0, overwrite: "none", letterTint_2:0});		
+						
+				TweenLite.from(Storm.obj["mcF5_T1"],	0.6,	{delay:tm+16.6, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcF5_T2"],	0.6,	{delay:tm+16.6, overwrite: "none", alpha:0});					
+				TweenLite.from(Storm.obj["mcCTA"],		0.6,	{delay:tm+16.6, overwrite: "none", alpha:0});
+								
+				TweenLite.from(document.getElementById('logo_ee'),	0.6,	{delay:tm+16.6, overwrite: "none", alpha:0});
+				TweenLite.from(Storm.obj["mcLogoPhone"],			0.6,	{delay:tm+16.6, overwrite: "none", alpha:0});
+			}
+
+			function InvertMask(_objMask){
+				Storm.obj["mcBg_1"].invertMask(_objMask);
+				Storm.obj["mcBg_2"].invertMask(_objMask);
+				Storm.obj["mcBg_3"].invertMask(_objMask);
+			}
+			
+			//-
+			function bgExitHandler(e) {
+				Enabler.exitOverride("exit", dynamicContent.ZoomOUT_Master_Feed_01[0].Exit_URL.Url);
+			}
+		</script>
+	
+
+<script src="./tweenlite_1.18.0_56fa823cfbbef1c2f4d4346f0f0e6c3c_min.js.download"></script><script src="./easepack_1.18.0_ed5816e732515f56d96a67f6a2a15ccb_min.js.download"></script><script src="./cssplugin_1.18.0_71489205621d46cbe88348eeb8fe493f_min.js.download"></script><script src="./storm.js.download"></script><div style="display: none; position: absolute; top: 0px; left: 0px;"><canvas id="stageTemp" width="300" height="250" style="display:none; position:absolute; top:0px; left:0px;"></canvas></div></body></html>
