@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<!-- saved from url=(0121)https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image -->
+<html lang="en-US" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="mask-icon" href="https://learn.adafruit.com/assets/adafruit_favicon-d77f206e6cc65b40101b6e5b8987f7c35cb6a283ea73c0adad50c37f7347c61a.svg" color="#000000">
+<link rel="shortcut icon" type="image/x-icon" href="https://learn.adafruit.com/assets/favicon-0c79bd4bc582e6d4cf3afe417bd1e28120527c09d92c08a6464690c5bf6b85f4.ico">
+<title>BONUS! Make a Backup Image! | Adafruit's Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi | Adafruit Learning System</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="UaxO97VHRfMeU6dJCc4h3EcvHvFwGyBjQ1WV9cLzkQnMqWtk7NORVcbSIf2/i/koZ4n89ImyeLTT6BlwBN5wXg==">
+<link rel="alternate" type="application/atom+xml" title="ATOM" href="https://learn.adafruit.com/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://learn.adafruit.com/feed.rss">
+<link rel="stylesheet" media="screen" href="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/application-369a01db64cf610c56e936b852f163490a5cefa648b7cbde7.css">
+
+<script type="text/javascript" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/308175db61"></script><script src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/nr-1071.min.js.download"></script><script type="text/javascript" async="" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/ec.js.download"></script><script type="text/javascript" async="" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/analytics.js.download"></script><script src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/1720153058307192" async=""></script><script async="" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/fbevents.js.download"></script><script async="" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/gtm.js.download"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PRPXBQ6');</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="guide-title" content="Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@adafruit">
+<meta name="twitter:title" content="Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="https://cdn-learn.adafruit.com/guides/images/000/000/158/medium800/overview.jpg">
+<meta name="twitter:domain" content="https://learn.adafruit.com">
+<link rel="canonical" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"308175db61","applicationID":"54271218","transactionName":"cVZXRUFeWghRShtEVlVcSh5AWVkT","queueTime":0,"applicationTime":43,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<!--[if lte IE 9]>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <![endif]-->
+<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+<body class="application pages show">
+
+<noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRPXBQ6"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+
+<div id="outer-wrapper">
+<div id="inner-wrapper">
+<div id="messaging-wrapper" data-load="https://www.adafruit.com/api/multi_message.php"></div>
+<header id="adafruit-header">
+<div id="small-header-content" class="container visible-xs">
+<a id="small-header-menu-button" class="menu-link" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#small-header-nav">
+<i class="fa fa-bars"> </i>
+</a>
+<div class="small-header-logo">
+<a href="https://www.adafruit.com/">
+<img id="small-logo" height="50" width="50" alt="Adafruit Logo" title="Adafruit Logo" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/adafruit_logo_small.png">
+</a> </div>
+<a class="small-header-cart" href="https://www.adafruit.com/shopping_cart">
+<span class="small-cart-count">0</span>
+<i class="fa fa-shopping-cart"></i>
+</a> </div>
+<nav id="small-header-nav" role="navigation" class="visible-xs">
+<div class="block">
+<ul>
+<li>
+<div id="small-search-wrapper">
+<div id="small-search-inner-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="mobile-search" style="display:none;">Search</label>
+<input id="mobile-search" type="text" name="q" placeholder="Search Adafruit">
+<i class="fa fa-search"></i>
+</form>
+</div>
+</div>
+</li>
+<li>
+<a href="https://www.adafruit.com/categories">SHOP</a>
+</li>
+<li>
+<a href="https://blog.adafruit.com/">BLOG</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/">LEARN</a>
+</li>
+<li>
+<a href="https://forums.adafruit.com/">FORUMS</a>
+</li>
+<li>
+<a href="https://www.youtube.com/adafruit">VIDEOS</a>
+</li>
+<li>
+<a href="https://learn.adafruit.com/users/sign_in">SIGN IN</a>
+</li>
+<li>
+<a class="close-btn" id="small-nav-close-button" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#top">CLOSE MENU</a>
+</li>
+</ul>
+</div>
+</nav>
+<div id="header-content" class="container hidden-xs">
+<div id="header-profile">
+<a id="header-cart" href="https://www.adafruit.com/shopping_cart">
+0 Items <i class="fa fa-shopping-cart"></i>
+</a> <div id="account">
+<a href="https://learn.adafruit.com/users/sign_in">Sign In</a>
+</div>
+<div id="search-wrapper">
+<form action="https://learn.adafruit.com/search" method="get">
+<label for="search" style="display:none;">Search</label>
+<input id="search" type="text" name="q" autocomplete="off" data-page="" ,="" data-app-id="W9DMM4OTH0" data-app-key="e613bcda3453b9ef887e2724362f9e57" data-app-index="learn_guides_production" data-app-uri="https://learn.adafruit.com">
+<i class="fa fa-search"></i>
+<input type="submit" style="visibility: hidden; position: fixed;">
+</form>
+</div>
+</div>
+<div id="navigation">
+<a href="https://www.adafruit.com/">
+<img id="logo" width="172" height="60" alt="Adafruit Logo" title="Adafruit Logo" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/logo_2x.png">
+</a> <nav class="hover-menu">
+<ul>
+<li id="nav-shop" data-load="https://www.adafruit.com/api/flyouts/shop.html"><a href="https://www.adafruit.com/">SHOP</a>
+</li>
+<li id="nav-blog" data-load="https://blog.adafruit.com/adafruit-blog-flyouts"><a href="https://blog.adafruit.com/">BLOG</a>
+</li>
+<li id="nav-learn" data-load="https://learn.adafruit.com/api/hover-menu/flyouts/learn.html" class=""><a href="https://learn.adafruit.com/">LEARN</a>
+ <div class="flyouts">
+<div class="flyout" style="display: none;">
+<div class="container">
+<div class="flyout-content row">
+<div class="column col-lg-6 col-md-6 col-sm-6">
+<div class="title categories">
+GUIDE CATEGORIES <br class="hidden-lg"><a href="https://learn.adafruit.com/">(SEE ALL 1389)</a>
+</div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6">
+<ul class="links categories">
+<li><a href="https://learn.adafruit.com/category/adabox">ADABOX (19)</a></li>
+<li><a href="https://learn.adafruit.com/category/adafruit-products">ADAFRUIT PRODUCTS (241)</a></li>
+<li><a href="https://learn.adafruit.com/category/arduino">ARDUINO COMPATIBLES (248)</a></li>
+<li><a href="https://learn.adafruit.com/category/breakout-boards">BREAKOUT BOARDS (108)</a></li>
+<li><a href="https://learn.adafruit.com/category/circuit-playground">CIRCUIT PLAYGROUND (110)</a></li>
+<li><a href="https://learn.adafruit.com/category/collins-lab">COLLIN'S LAB (8)</a></li>
+<li><a href="https://learn.adafruit.com/category/components">COMPONENTS (87)</a></li>
+<li><a href="https://learn.adafruit.com/category/community-support">COMMUNITY SUPPORT (22)</a></li>
+<li><a href="https://learn.adafruit.com/category/customer-projects">CUSTOMER &amp; PARTNER PROJECTS (28)</a></li>
+<li><a href="https://learn.adafruit.com/category/development-boards">DEVELOPMENT BOARDS (143)</a></li>
+<li><a href="https://learn.adafruit.com/category/educators">EDUCATORS (15)</a></li>
+<li><a href="https://learn.adafruit.com/category/el">EL WIRE/TAPE/PANEL (12)</a></li>
+<li><a href="https://learn.adafruit.com/category/feather">FEATHER (123)</a></li>
+<li><a href="https://learn.adafruit.com/category/hacks">HACKS (39)</a></li>
+</ul>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+<ul class="links categories">
+<li><a href="https://learn.adafruit.com/category/internet-of-things-iot">INTERNET OF THINGS - IOT (122)</a></li>
+<li><a href="https://learn.adafruit.com/category/lcds-and-displays">LCDS &amp; DISPLAYS (153)</a></li>
+<li><a href="https://learn.adafruit.com/category/leds">LEDS (310)</a></li>
+<li><a href="https://learn.adafruit.com/category/maker-business">MAKER BUSINESS (31)</a></li>
+<li><a href="https://learn.adafruit.com/category/micro-bit">MICRO:BIT (9)</a></li>
+<li><a href="https://learn.adafruit.com/category/microcontrollers">MICROCONTROLLERS (193)</a></li>
+<li><a href="https://learn.adafruit.com/category/programming">PROGRAMMING (97)</a></li>
+<li><a href="https://learn.adafruit.com/category/projects">PROJECTS (179)</a></li>
+<li><a href="https://learn.adafruit.com/category/raspberry-pi">RASPBERRY PI (316)</a></li>
+<li><a href="https://learn.adafruit.com/category/robotics">ROBOTICS &amp; CNC (51)</a></li>
+<li><a href="https://learn.adafruit.com/category/sensors">SENSORS (295)</a></li>
+<li><a href="https://learn.adafruit.com/category/tools">TOOLS (57)</a></li>
+<li><a href="https://learn.adafruit.com/category/wearables">WEARABLES (206)</a></li>
+<li><a href="https://learn.adafruit.com/category/3d-printing">3D PRINTING (244)</a></li>
+</ul>
+</div>
+</div>
+</div> <div class="column col-lg-3 col-md-3 col-sm-3">
+<div class="title new">
+NEW GUIDES <br class="hidden-lg"><a href="https://learn.adafruit.com/guides/latest">(SEE ALL 64)</a>
+</div>
+<ul class="links new">
+<li>
+<a href="https://learn.adafruit.com/circuitplayground-minecraft-gesture-controller"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/GestureController-Cover2.jpg" alt="CircuitPlayground Minecraft Gesture Controller"></a>
+<a href="https://learn.adafruit.com/circuitplayground-minecraft-gesture-controller" class="name">CIRCUITPLAYGROUND MINECRAFT GESTURE CONTROLLER</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/selfieblock"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/Thumbnail.jpg" alt="Raspberry Pi SelfieBlock"></a>
+<a href="https://learn.adafruit.com/selfieblock" class="name">RASPBERRY PI SELFIEBLOCK</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/bunny-ears-with-makecode"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/bunnyears2.jpg" alt="Bunny Ears with MakeCode"></a>
+<a href="https://learn.adafruit.com/bunny-ears-with-makecode" class="name">BUNNY EARS WITH MAKECODE</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/3211-05.jpg" alt="Adafruit RGB Matrix Bonnet for Raspberry Pi"></a>
+<a href="https://learn.adafruit.com/adafruit-rgb-matrix-bonnet-for-raspberry-pi" class="name">ADAFRUIT RGB MATRIX BONNET FOR RASPBERRY PI</a>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+<div class="column col-lg-3 col-md-3 col-sm-3">
+<div class="title featured">
+FEATURED GUIDES <br class="hidden-lg"><a href="https://learn.adafruit.com/guides/featured">(SEE ALL 10)</a>
+</div>
+<ul class="links featured">
+<li>
+<a href="https://learn.adafruit.com/all-about-batteries"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/Batteries.jpg" alt="All About Batteries"></a>
+<a href="https://learn.adafruit.com/all-about-batteries" class="name">ALL ABOUT BATTERIES</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/glamour.jpg" alt="Adafruit NeoPixel Überguide"></a>
+<a href="https://learn.adafruit.com/adafruit-neopixel-uberguide" class="name">ADAFRUIT NEOPIXEL ÜBERGUIDE</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/welcome-to-circuitpython"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/BlinkaOnDark.png" alt="Welcome to CircuitPython!"></a>
+<a href="https://learn.adafruit.com/welcome-to-circuitpython" class="name">WELCOME TO CIRCUITPYTHON!</a>
+<div class="clear"></div>
+</li>
+<li>
+<a href="https://learn.adafruit.com/thermal-camera-with-display"><img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/guide-thumb.gif" alt="Thermal Camera with Display"></a>
+<a href="https://learn.adafruit.com/thermal-camera-with-display" class="name">THERMAL CAMERA WITH DISPLAY</a>
+<div class="clear"></div>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</li>
+<li id="nav-forums"><a href="https://forums.adafruit.com/">FORUMS</a>
+</li>
+<li id="nav-forums"><a href="https://www.youtube.com/adafruit">VIDEOS</a>
+</li>
+<li class="visible-lg"><a href="https://www.adabox.com/">ADABOX</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<div id="main-content">
+<div id="page-wrapper">
+<div id="content-wrapper" class="container" data-page-id="2321" data-guide-id="158">
+<div class="row">
+<div class="sidebar-left-wrapper hidden-phone hidden-tablet col-lg-two-and-half col-md-3 col-sm-4 col-xs-12">
+<div class="sidebar-left-content affix-top" data-clampedwidth=".sidebar-left-wrapper" style="width: 255px;">
+<nav class="sidebar-left">
+<div class="title-bar">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/overview.jpg" class="img img-responsive">
+<div class="title">
+<h1><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/overview">Adafruit's Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi</a></h1>
+<span class="tagline"></span>
+</div>
+</div>
+<ul class="page-parent nav">
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/overview">Overview</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/you-will-need">You Will Need</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/downloading-an-image">Downloading an Image</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7">Making an SD Card – Using Windows</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-mac">Making an SD Card – Using a Mac</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent ">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/what-next">Test &amp; Configure</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="parent active">
+<a class="sidebar-parent" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image">BONUS! Make a Backup Image!</a>
+<span class="page-draft-status">
+</span>
+</li>
+<li class="single-page-spacer"></li>
+<li class="single-page-link"><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi?view=all">Single Page</a></li>
+<li><a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi.pdf">Download PDF</a></li>
+</ul>
+</nav>
+<header class="sidebar-meta hidden-xs">
+<h4>Contributors</h4>
+<div><a href="https://learn.adafruit.com/users/simonmonk">Simon Monk</a></div>
+<div><a href="https://learn.adafruit.com/users/adafruit_support_rick">Rick Lesniak</a></div>
+</header>
+<header class="sidebar-meta hidden-xs">
+<a class="feedback-link" title="Feedback? Corrections?" rel="nofollow" data-remote="true" data-method="get" href="https://learn.adafruit.com/pages/2321/settings_modal">
+Feedback? Corrections?
+</a> </header>
+</div>
+</div>
+<article class="col-lg-7 col-md-6 col-sm-8 col-xs-12">
+<div id="categories">
+<span class="category child-category">
+<a href="https://learn.adafruit.com/category/raspberry-pi">RASPBERRY PI</a>
+<span class="category-link-spacer">/</span>
+<a href="https://learn.adafruit.com/category/learn-raspberry-pi">LEARN RASPBERRY PI</a>
+</span>
+<span class="category purple">
+<a href="https://learn.adafruit.com/series/learn-raspberry-pi">LEARN RASPBERRY PI (1 of 13)</a>
+</span>
+<span id="guide-favorite">
+<a class="favorites-link category right red" title="" data-toggle="tooltip" data-placement="left" data-remote="true" rel="nofollow" data-method="post" href="https://learn.adafruit.com/guides/158/favorites.js" data-original-title="Favorite this guide?">
+<i class="fa fa-heart-o"></i>
+</a></span>
+</div>
+<div class="content">
+<div class="page-title-wrapper">
+<h1 class="headline">
+<span id="make-a-backup-image">BONUS! Make a Backup Image!</span>
+</h1>
+<div class="author">by
+<a href="https://learn.adafruit.com/users/adafruit_support_rick">
+<span class="name">Rick Lesniak</span>
+</a> </div>
+</div>
+<div class="page-content">
+<div class="row-fluid build-text">
+It took a while to get your SD card set up, didn't it? Bet you don't want to have to do that again, do you?<br><br>Well,<br><br><h2>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#back-it-up" class="anchor-link"><span class="fa fa-link"></span></a><span id="back-it-up" class="anchor-link-target"></span>Back it up!</h2>
+<div>Forum user, Mac user, and Adafruit Customer phil.drummond took it upon himself to find the best way to back up his system image.<br><br>And he found a fast and easy way - a script which quickly creates a clone of your running Raspberry Pi system, ON THE PI ITSELF!<br><br>
+</div>
+</div>
+<div class="row-fluid build-alert">
+<div class="alert">
+<i class="fa fa-exclamation-circle"></i>
+Note: This script only works with occidentalis 0.2 and older versions of Raspbian
+</div>
+</div>
+<div class="row-fluid build-text">
+The script comes to us by way of <a href="http://pastebin.com/u/billw" title="Link: http://pastebin.com/u/billw">Pastebin user BILLW</a>.
+</div>
+<div id="element-1245862" class="button-element" data-github-release="">
+<a href="http://learn.adafruit.com/system/assets/assets/000/010/654/original/rpi-clone.sh?1377526371" class="btn btn-large btn-block btn-primary" target="" type="button">Click to get BILLW's Cloning Script</a>
+</div>
+<div class="row-fluid build-text">
+<h2>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#what-youll-need" class="anchor-link"><span class="fa fa-link"></span></a><span id="what-youll-need" class="anchor-link-target"></span>What You'll Need</h2>
+<div><ul>
+<li>USB SD Card Reader<br>
+</li>
+<li>Blank SD Card</li>
+<li>Booted and Running Raspberry Pi</li>
+</ul></div>
+</div>
+<div class="row-fluid build-text">
+<h2>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#get-the-script-file" class="anchor-link"><span class="fa fa-link"></span></a><span id="get-the-script-file" class="anchor-link-target"></span>Get the Script File</h2>First, get a copy of the script file onto your Pi. You can do that in any one of several ways:<br><ul><li>First, download the file to your computer</li></ul>Then...<br><ul><li>Use ssh or vnc to transfer the file from the computer to the Pi</li></ul>...Or...<br><ul>
+<li>Pop the blank SD into your USB Card Reader</li>
+<li>Plug the Card Reader into your computer</li>
+<li>Copy the file to the blank SD</li>
+<li>Move the Card Reader to the Pi</li>
+<li>Copy the file from the SD to the Pi</li>
+</ul>...Or...<br><ul><li>Use the Pi's Web Browser to navigate to this page and download the script file directly</li></ul>
+</div>
+<div class="row-fluid build-text">
+<h2>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#run-the-script" class="anchor-link"><span class="fa fa-link"></span></a><span id="run-the-script" class="anchor-link-target"></span>Run the Script</h2>
+<ol>
+<li>Put the blank SD card into your USB Card Reader, and plug it into one of the PI's USB ports.<br>
+</li>
+<li>Open a Terminal window on the Pi</li>
+<li>Navigate to the folder where you stored the script file. (If you stored the file on the Pi's Desktop, simply type 'cd Desktop')</li>
+</ol>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10655">
+<img class="10655-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/655/medium260/learn_raspberry_pi_script_1.png?1377526603 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/655/medium640/learn_raspberry_pi_script_1.png?1377526603 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/655/medium800/learn_raspberry_pi_script_1.png?1377526603 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/655/large1024/learn_raspberry_pi_script_1.png?1377526603 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_1.png" alt="learn_raspberry_pi_script_1.png">
+<span class="image-expand" style="display: none;"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+<span>When you run the script, you will have to specify the name of your SD card. Raspbian and occidentalis assign the names 'sda', sdb', etc. to SD cards found on USB. If you only have one USB card reader attached, the name of your new SD card will be 'sda'.<br><br></span>If you're not sure that sda is the right card, you can run this command to list the cards connected to your Pi. <br>
+</div>
+<div class="build-code code-element">
+<div class="download-code">
+<a href="https://learn.adafruit.com/pages/2321/elements/1245868/download">
+<i class="fa fa-cloud-download"></i>
+Download file
+</a> <div class="code-copy-container">
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" class="code-copy-button hidden-xs">Copy Code</a>
+</div>
+</div>
+<pre class="code-text-only" style="display: none;">sudo fdisk -l</pre>
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="pln">sudo fdisk </span><span class="pun">-</span><span class="pln">l</span></li></ol></pre>
+</div>
+<div class="row-fluid build-text">
+The SD card slot with your running Pi system will show up as /dev/mmcblk0. Your blank card will be listed as /dev/sda1 (or possibly /dev/sdb1, if you have more than one USB card readers attached to the Pi). <br><br>Note that you don't enter the '1' - if your card is listed as '/dev/sda1', then you would still enter 'sda' when you run the script ('sda' is the name of the card, 'sda1' is the name of the first partition on the card).<br><br>Ok, so now you should be ready to run the commands<br>
+</div>
+<div class="build-code code-element">
+<div class="download-code">
+<a href="https://learn.adafruit.com/pages/2321/elements/1245870/download">
+<i class="fa fa-cloud-download"></i>
+Download file
+</a> <div class="code-copy-container">
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" class="code-copy-button hidden-xs">Copy Code</a>
+</div>
+</div>
+<pre class="code-text-only" style="display: none;">chmod +x rpi-clone.sh
+sudo ./rpi_clone sda -f</pre>
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="pln">chmod </span><span class="pun">+</span><span class="pln">x rpi</span><span class="pun">-</span><span class="pln">clone</span><span class="pun">.</span><span class="pln">sh</span></li><li class="L1"><span class="pln">sudo </span><span class="pun">./</span><span class="pln">rpi_clone sda </span><span class="pun">-</span><span class="pln">f</span></li></ol></pre>
+</div>
+<div class="row-fluid build-text">
+As noted earlier, the first parameter passed to the script is is the name of the target SD card, in this case 'sda'. The -f tells the script to entirely re-format the card.<br><br>The script will ask you if you're sure you want to initialize the destination card. Type 'y', and hit the return key.<br>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10648">
+<img class="10648-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/648/medium260/learn_raspberry_pi_script_2.png?1377525457 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/648/medium640/learn_raspberry_pi_script_2.png?1377525457 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/648/medium800/learn_raspberry_pi_script_2.png?1377525457 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/648/large1024/learn_raspberry_pi_script_2.png?1377525457 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_2.png" alt="learn_raspberry_pi_script_2.png">
+<span class="image-expand" style="display: none;"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-alert">
+<div class="alert">
+<i class="fa fa-exclamation-circle"></i>
+If you see an error message instead, check below for solutions!
+</div>
+</div>
+<div class="row-fluid build-text">
+Next, the script will ask you if you want to give your new backup a label. It's not necessary to do this - just hit the return key.<br><br>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10649">
+<img class="10649-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/649/medium260/learn_raspberry_pi_script_3.png?1377525711 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/649/medium640/learn_raspberry_pi_script_3.png?1377525711 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/649/medium800/learn_raspberry_pi_script_3.png?1377525711 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/649/large1024/learn_raspberry_pi_script_3.png?1377525711 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_3.png" alt="learn_raspberry_pi_script_3.png">
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+Finally, the script will ask you if you're sure you really want to do this, before it begins creating the backup. Type 'y', and hit the return key.<br><br>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10650">
+<img class="10650-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/650/medium260/learn_raspberry_pi_script_4.png?1377525835 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/650/medium640/learn_raspberry_pi_script_4.png?1377525835 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/650/medium800/learn_raspberry_pi_script_4.png?1377525835 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/650/large1024/learn_raspberry_pi_script_4.png?1377525835 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_4.png" alt="learn_raspberry_pi_script_4.png">
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+<br>Now it's time to wait - the process will take a little while.<br><br>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10651">
+<img class="10651-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/651/medium260/learn_raspberry_pi_script_5.png?1377525870 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/651/medium640/learn_raspberry_pi_script_5.png?1377525870 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/651/medium800/learn_raspberry_pi_script_5.png?1377525870 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/651/large1024/learn_raspberry_pi_script_5.png?1377525870 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_5.png" alt="learn_raspberry_pi_script_5.png">
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+When the process is complete, the script will ask if it should unmount the card with your new system clone/ Reply with 'y', and you're done!<br><br>
+</div>
+<div class="row-fluid build-text">
+Now you can shutdown the Pi, swap the clone into the Pi's SD Card Slot, and restart - Bingo! a fully-operational clone of your Raspberry Pi system!<br><br><h2>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#problems" class="anchor-link"><span class="fa fa-link"></span></a><span id="problems" class="anchor-link-target"></span>Problems?</h2>If you see an error message like this:
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10652">
+<img class="10652-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/652/medium260/learn_raspberry_pi_script_error1.png?1377525898 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/652/medium640/learn_raspberry_pi_script_error1.png?1377525898 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/652/medium800/learn_raspberry_pi_script_error1.png?1377525898 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/652/large1024/learn_raspberry_pi_script_error1.png?1377525898 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_error1.png" alt="learn_raspberry_pi_script_error1.png">
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+...it means that your SD card is mounted in the file system. You have to unmount it before you can proceed. In the picture, I'm writing over an earlier clone of my system, which has two partitions: /dev/sda2 and /dev/sda1. You might only have one partition.<br><br>In any case, issue the umount command for each mounted partition on your destination SD card:
+</div>
+<div class="build-code code-element">
+<div class="download-code">
+<a href="https://learn.adafruit.com/pages/2321/elements/1245884/download">
+<i class="fa fa-cloud-download"></i>
+Download file
+</a> <div class="code-copy-container">
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" class="code-copy-button hidden-xs">Copy Code</a>
+</div>
+</div>
+<pre class="code-text-only" style="display: none;">sudo umount /dev/sda1</pre>
+<pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="pln">sudo umount </span><span class="pun">/</span><span class="pln">dev</span><span class="pun">/</span><span class="pln">sda1</span></li></ol></pre>
+</div>
+<div class="row-fluid build-image">
+<a href="https://learn.adafruit.com/assets/10653">
+<img class="10653-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/010/653/medium260/learn_raspberry_pi_script_error2.png?1377526153 260w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/653/medium640/learn_raspberry_pi_script_error2.png?1377526153 640w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/653/medium800/learn_raspberry_pi_script_error2.png?1377526153 800w,
+               https://cdn-learn.adafruit.com/assets/assets/000/010/653/large1024/learn_raspberry_pi_script_error2.png?1377526153 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/learn_raspberry_pi_script_error2.png" alt="learn_raspberry_pi_script_error2.png">
+<span class="image-expand"><i class="fa fa-search-plus"></i></span>
+</a> </div>
+<div class="row-fluid build-text">
+Now try to run the script again!
+</div>
+<div class="page-navigation">
+<a class="previous-page" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/what-next">
+<i class="fa fa-chevron-left"></i>TEST &amp; CONFIGURE
+</a> <div class="clear"></div>
+</div>
+<span class="page-last-updated">Last updated on 2015-05-04 at 04.24.29 PM</span>
+<span class="page-last-updated">Published on 2012-12-03 at 11.57.52 AM</span>
+</div>
+</div>
+</article>
+<div class="col-lg-two-and-half col-md-3 hidden-sm hidden-xs">
+<header class="sidebar-right">
+<div class="sidebar-right-content">
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/2380">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/2380-02.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">Raspberry Pi 2 Model B Starter Pack - Includes a Raspberry Pi 2</div>
+<span class="product-price">$99.95</span>
+<a id="2380-product" class="notify product-buy " data-pid="2380" data-qty="1" data-name="Raspberry Pi 2 Model B Starter Pack - Includes a Raspberry Pi 2" data-price="99.95" href="https://www.adafruit.com/product/2380">
+Out of Stock (Notify Me)
+</a> </div>
+</div>
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/965">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/965-03.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">Budget Pack for Raspberry Pi 1 Model B (Doesn't include RasPi)</div>
+<span class="product-price">$39.95</span>
+<a id="965-product" class="product-buy btn " data-pid="965" data-qty="1" data-name="Budget Pack for Raspberry Pi 1 Model B (Doesn&#39;t include RasPi)" data-price="39.95" href="https://www.adafruit.com/product/965">
+Add to Cart
+</a> </div>
+</div>
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/939">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/939-05.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">USB MicroSD Card Reader/Writer - microSD / microSDHC / microSDXC</div>
+<span class="product-price">$5.95</span>
+<a id="939-product" class="product-buy btn " data-pid="939" data-qty="1" data-name="USB MicroSD Card Reader/Writer - microSD / microSDHC / microSDXC" data-price="5.95" href="https://www.adafruit.com/product/939">
+Add to Cart
+</a> </div>
+</div>
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/102">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/102-01.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">4GB Blank SD/MicroSD Memory Card</div>
+<span class="product-price">$7.95</span>
+<a id="102-product" class="product-buy btn " data-pid="102" data-qty="1" data-name="4GB Blank SD/MicroSD Memory Card" data-price="7.95" href="https://www.adafruit.com/product/102">
+Add to Cart
+</a> </div>
+</div>
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/1294">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/1294-01.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">SD/MicroSD Memory Card (8 GB SDHC)</div>
+<span class="product-price">$9.95</span>
+<a id="1294-product" class="product-buy btn " data-pid="1294" data-qty="1" data-name="SD/MicroSD Memory Card (8 GB SDHC)" data-price="9.95" href="https://www.adafruit.com/product/1294">
+Add to Cart
+</a> </div>
+</div>
+<div class="product-wrapper">
+<div class="product-image">
+<a href="https://www.adafruit.com/product/2692">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/2692-01.jpg" alt="" height="233" class="img-responsive">
+</a> </div>
+<div class="product-details">
+<div class="product-title">8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included</div>
+<span class="product-price">$9.95</span>
+<a id="2692-product" class="product-buy btn " data-pid="2692" data-qty="1" data-name="8GB Class 10 SD/MicroSD Memory Card - SD Adapter Included" data-price="9.95" href="https://www.adafruit.com/product/2692">
+Add to Cart
+</a> </div>
+</div>
+<div class="add-all-to-cart-container">
+<a class="add-all-to-cart" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" data-multi-add="{&quot;102&quot;:{&quot;quantity&quot;:1,&quot;price&quot;:7.95},&quot;939&quot;:{&quot;quantity&quot;:1,&quot;price&quot;:5.95},&quot;965&quot;:{&quot;quantity&quot;:1,&quot;price&quot;:39.95},&quot;1294&quot;:{&quot;quantity&quot;:1,&quot;price&quot;:9.95},&quot;2692&quot;:{&quot;quantity&quot;:1,&quot;price&quot;:9.95}}">Add All To Cart</a>
+<div class="add-all-to-cart-progress"></div>
+</div>
+<div class="clear"></div>
+</div>
+</header>
+</div>
+</div>
+</div>
+<div class="related-guides-wrapper container">
+<div class="row">
+<div class="related-guides-title col-lg-12">
+<h2>
+RELATED GUIDES
+</h2>
+</div>
+</div>
+<div class="related-guides-content row">
+<div class="14-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+<div class="guide-block">
+<div class="title-bar">
+<div class="guide-type popular-guide">
+<a href="https://learn.adafruit.com/guides/popular">POPULAR</a>
+</div>
+<div class="title">
+<h5>
+<a href="https://learn.adafruit.com/ttl-serial-camera">
+TTL Serial Camera<br>
+</a> </h5>
+<div class="tagline">
+<a href="https://learn.adafruit.com/ttl-serial-camera">
+Snap, Snap!
+</a> </div>
+<div class="author">by
+<a href="https://learn.adafruit.com/users/adafruit2">
+<span class="name">lady ada</span>
+</a> </div>
+</div>
+</div>
+<a href="https://learn.adafruit.com/ttl-serial-camera">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/397.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/014/medium310/397.jpg?1514389029" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/014/medium800/397.jpg?1514389029">
+</a> <div class="details">
+<div class="description">
+<a href="https://learn.adafruit.com/ttl-serial-camera">
+This guide is for our new TTL serial camera module with NTSC video output. These modules are a nice addition to a microcontroller project when you want to take a photo or control a video stream. The modules have a few features built in, such as the ability to change the brightness/saturation/hue of images, auto-contrast and auto-brightness adjustment, and motion detection.
+</a> </div>
+</div>
+</div>
+</div>
+<div class="15-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+<div class="guide-block">
+<div class="title-bar">
+<div class="guide-type popular-guide">
+<a href="https://learn.adafruit.com/guides/popular">POPULAR</a>
+</div>
+<div class="title">
+<h5>
+<a href="https://learn.adafruit.com/el-wire">
+EL Wire<br>
+</a> </h5>
+<div class="tagline">
+<a href="https://learn.adafruit.com/el-wire">
+Working with Electroluminescent Wire
+</a> </div>
+<div class="author">by
+<a href="https://learn.adafruit.com/users/adafruit2">
+<span class="name">lady ada</span>
+</a> </div>
+</div>
+</div>
+<a href="https://learn.adafruit.com/el-wire">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/EL_Wire.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/015/medium310/EL_Wire.jpg?1514389623" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/015/medium800/EL_Wire.jpg?1514389623">
+</a> <div class="details">
+<div class="description">
+<a href="https://learn.adafruit.com/el-wire">
+EL Wire, also known as Electroluminescent wire, is a stiff wire core coated with phosphor and then covered with a protective PVC sheath. When an AC signal is applied to it, it glows a cool neon color. Find out how to solder, power, and work with EL Wire in your next project.
+</a> </div>
+</div>
+</div>
+</div>
+<div class="16-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+<div class="guide-block">
+<div class="title-bar">
+<div class="guide-type popular-guide">
+<a href="https://learn.adafruit.com/guides/popular">POPULAR</a>
+</div>
+<div class="title">
+<h5>
+<a href="https://learn.adafruit.com/hacking-the-kinect">
+Hacking the Kinect<br>
+</a> </h5>
+<div class="tagline">
+<a href="https://learn.adafruit.com/hacking-the-kinect">
+Reverse engineering the Microsoft Kinect
+</a> </div>
+ <div class="author">by
+<a href="https://learn.adafruit.com/users/adafruit2">
+<span class="name">lady ada</span>
+</a> </div>
+</div>
+</div>
+<a href="https://learn.adafruit.com/hacking-the-kinect">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/04a1fe47-8b58-41e9-a486-65456d2bf6ce_1.7d6bbbf694215ef00e24e.jpeg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/016/medium310/04a1fe47-8b58-41e9-a486-65456d2bf6ce_1.7d6bbbf694215ef00e24e2f11adddb89.jpeg?1514389899" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/016/medium800/04a1fe47-8b58-41e9-a486-65456d2bf6ce_1.7d6bbbf694215ef00e24e2f11adddb89.jpeg?1514389899">
+</a> <div class="details">
+<div class="description">
+<a href="https://learn.adafruit.com/hacking-the-kinect">
+Here's a step by step guide on how you can reverse engineer a Microsoft Kinect for the Xbox 360.
+</a> </div>
+</div>
+</div>
+</div>
+<div class="17-guide masonry-block col-lg-3 col-md-3 col-sm-4 col-xs-12">
+<div class="guide-block">
+<div class="title-bar">
+<div class="guide-type popular-guide">
+<a href="https://learn.adafruit.com/guides/popular">POPULAR</a>
+</div>
+<div class="title">
+<h5>
+<a href="https://learn.adafruit.com/beaglebone">
+BeagleBone<br>
+</a> </h5>
+<div class="tagline">
+<a href="https://learn.adafruit.com/beaglebone">
+Tutorials for the TI embedded Linux board
+</a> </div>
+<div class="author">by
+<a href="https://learn.adafruit.com/users/adafruit2">
+<span class="name">lady ada</span>
+</a> </div>
+</div>
+</div>
+<a href="https://learn.adafruit.com/beaglebone">
+<img src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/beaglebonetop_LRG.jpg" class="img-responsive guide-image" data-standard-image="https://cdn-learn.adafruit.com/guides/images/000/000/017/medium310/beaglebonetop_LRG.jpg?1448300904" data-mobile-image="https://cdn-learn.adafruit.com/guides/images/000/000/017/medium800/beaglebonetop_LRG.jpg?1448300904">
+</a> <div class="details">
+<div class="description">
+<a href="https://learn.adafruit.com/beaglebone">
+New from the fine people who have brought us the Beagle Board, we now have a smaller, lighter, but powerful single board linux computer, Beagle Bone! We like this move to a more compact and integrated SBC. For example, there is onboard Ethernet and USB host, as well as a USB client interface (a FTDI chip for shell access). It even comes preloaded with Angstrom Linux on the 4 GB microSD card! Here are some tips and tricks to get your BeagleBone up and running.
+</a> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-spacer"></div>
+</div>
+<div class="modal fade" id="notify-modal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" class="close" data-dismiss="modal">×</a>
+<h5>OUT OF STOCK NOTIFICATION</h5>
+</div>
+<div class="modal-body">
+<p class="notify-modal-form-header"></p>
+<div class="notify-modal-products"></div>
+<form id="notify-modal-form" name="back_in_stock_notification">
+<p class="notify-modal-form-notice"></p>
+<div class="notify-modal-break"></div>
+<div class="form-group">
+<label class="inputLabel" for="name">YOUR NAME</label>
+<input type="text" size="25" maxlength="64" name="name" value="">
+</div>
+<div class="form-group">
+<label class="inputLabel" for="email">YOUR EMAIL</label>
+<input type="email" size="25" maxlength="96" name="email" value="">
+</div>
+ <input type="text" name="daigo" style="display:none;">
+<input type="hidden" name="notify_me" value="true">
+</form>
+<div id="notify-modal-success" style="display:none">
+<p>You have been successfully subscribed to the Notification List for this product and will therefore receive an e-mail from us when it is back in stock!</p>
+<p>For security reasons, an e-mail has been sent to you acknowledging your subscription. Please remember that this subscription will not result in you receiving any e-mail from us about anything other than the restocking of this item.</p>
+<p>If, for any reason, you would like to unsubscribe from the Notification List for this product you will find details of how to do so in the e-mail that has just been sent to you!</p>
+</div>
+</div>
+<div class="modal-footer">
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" id="close-notify" style="display: none" data-dismiss="modal" data-target="#notify-modal">CLOSE</a>
+<a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/make-a-backup-image#" id="submit-notify" rel="nofollow" class="blue-button">NOTIFY ME</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer id="adafruit-footer">
+<div id="footer-content" class="container">
+<div class="row">
+<div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
+<nav>
+<ul>
+<li><a href="https://www.adafruit.com/contact_us">CONTACT</a></li>
+<li><a href="https://www.adafruit.com/support">SUPPORT</a>
+</li><li><a href="https://www.adafruit.com/distributors">DISTRIBUTORS</a></li>
+<li><a href="https://www.adafruit.com/educators">EDUCATORS</a></li>
+<li><a href="https://www.adafruit.com/jobs">JOBS</a></li>
+<li><a href="https://www.adafruit.com/faq">FAQ</a></li>
+<li><a href="https://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a></li>
+<li><a href="https://www.adafruit.com/terms_of_service/">TERMS OF SERVICE</a></li>
+<li><a href="https://www.adafruit.com/privacy">PRIVACY &amp; LEGAL</a></li>
+<li><a href="https://www.adafruit.com/about">ABOUT US</a></li>
+</ul>
+</nav>
+<div id="footer-copyright">
+<a href="http://nytm.org/made-in-nyc/">ENGINEERED IN NYC</a> <span>Adafruit&nbsp;®</span>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
+<div id="footer-quote" class="">
+"The key to the future of the world is finding the optimistic stories and letting them be known"
+<span class="quote-author">- <a href="http://en.wikipedia.org/wiki/Pete_Seeger">Pete Seeger</a></span>
+</div>
+</div>
+<div id="footer-seals">
+<img class="img-responsive" src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/seals_2x.jpg" alt="Seals 2x">
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<script>
+    window.rails_env = 'production';
+  </script>
+<script src="./BONUS! Make a Backup Image! _ Adafruit&#39;s Raspberry Pi Lesson 1. Preparing an SD Card for your Raspberry Pi _ Adafruit Learning System_files/application-8b5be248ee3af4b8548c7e83f8f4332713556aff09ca.download"></script>
+<script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1720153058307192");fbq("track","PageView");</script>
+<noscript>&lt;img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1720153058307192&amp;amp;ev=PageView&amp;amp;noscript=1"&gt;</noscript>
+
+
+
+<script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://learn.adafruit.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://learn.adafruit.com/search?q={search_term}",
+        "query-input": "required name=search_term"
+      }
+    }
+  </script>
+
+
+</body></html>
