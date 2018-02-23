@@ -1,0 +1,5 @@
+(Possible file correption using other editors)
+open in userclone.txt in notepad and copy contents.
+on pi nano userclone.sh and paste in contents.
+chmod +x userclone.sh
+sudo ./userclone.sh pi NewUser
