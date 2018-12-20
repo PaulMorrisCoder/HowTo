@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/*!
+Theme Name: Decode Child
+Theme URI: http://ScottHSmith.com/projects/decode/
+Version: 3.0.9
+Author: Scott Smith
+Author URI: http://ScottHSmith.com/
+Description: Decode Child Theme
+Tags: responsive-layout, one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light
+License: GNU General Public License v3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0-standalone.html
+Template: decode
+Text Domain: decode-child
+*/
+
+* { margin: 0; padding: 0; }
+
+/*# sourceMappingURL=styles/srcmaps/style.css.map */
+
+h1.entry-title { font-size: 1.5em}
+
+.page .entry-header, .single .entry-header {
+  font-size: 1.25em;
+  margin-top: 2.5% auto 5%;
+  margin-bottom: 1.5%;
+}
+
+.entry-content h3 {
+  font-size: 1.4em;
+}
+
+.entry-content h4 {
+  font-size: 1.3em;
+}
+
+.entry-content h5 {
+  font-size: 1.2em;
+}
+
+.entry-content h6 {
+  font-size: 1.1em;
+}
+
+.home .entry-title {display: none;}
+a.djhome {color: inherit;}
+p.djfirst,h4.djfirst {margin:0;padding:0}
+
+.no-comments { display: none; }
+
+.entry-content table, .entry-content th, .entry-content td  {
+  font-family: Arial, Helvetica, sans-serif;  
+  border: 1px solid #2471A3;
+  border-collapse: collapse;
+  padding: 5px;
+  width: auto;
+}
+
+.entry-content th {
+  background-color: #7FB3D5;
+  font-size: .8em;
+}
+
+table.djt,
+table.djt th,
+table.djt td {
+  font-family: Arial, Helvetica, sans-serif;  
+  border: 1px solid #c0c0c0;
+  border-collapse: collapse;
+  padding: 3px;
+}
+
+td.djtshade {
+  background-color: #e7e7e7;
+}
+
+.EnlighterJS{
+   width: auto !important;
+   overflow-x: auto !important;
+   word-wrap: normal !important;
+}
+.EnlighterJS li{
+  white-space: pre !important;
+}
+
+.page .blockquote-note {
+  font-style: normal;
+}
+
+.page .blockquote-warning {
+  border-color: orange;
+  font-style: normal;
+}
+
+.page .blockquote-danger {
+  border-color: red;
+  font-style: normal;
+}
+
+ol.wpcustomEnlighterJS, ul.wpcustomEnlighterJS, .wpcustomEnlighterJSWrapper pre {
+  background-color: #212121 !important;
+}
+
+ol li {
+  margin-top: 0.5em;
+}
+
+pre code {
+  color: #DCDCDC;
+}
