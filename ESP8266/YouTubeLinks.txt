@@ -1,0 +1,11 @@
+ESP8266 - Getting Started & Connected
+https://www.youtube.com/watch?v=z07zjfOHb8E
+
+Easy way to program an ESP8266
+https://www.youtube.com/watch?v=ZJnpgYlelEA
+
+Over The Air programming Tutorial
+https://www.youtube.com/watch?v=GR2ZXyPaqMo
+
+The Smallest WiFi Button in the World (ESP8266, MQTT, IFTTT)
+https://www.youtube.com/watch?v=ImVK5cGVrpQ
