@@ -9,3 +9,6 @@ https://www.youtube.com/watch?v=GR2ZXyPaqMo
 
 The Smallest WiFi Button in the World (ESP8266, MQTT, IFTTT)
 https://www.youtube.com/watch?v=ImVK5cGVrpQ
+
+Arduino Mega 2560 with ESP8266 (ESP-01) Wifi, AT Commands and Blynk
+https://www.youtube.com/watch?v=YLKEZtLhfZo
