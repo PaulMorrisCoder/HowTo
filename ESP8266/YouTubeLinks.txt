@@ -9,3 +9,6 @@ https://www.youtube.com/watch?v=GR2ZXyPaqMo
 
 The Smallest WiFi Button in the World (ESP8266, MQTT, IFTTT)
 https://www.youtube.com/watch?v=ImVK5cGVrpQ
+
+Learn How to Setup the Wifi Module ESP8266 by Using Just Arduino IDE
+https://www.instructables.com/id/Learn-How-to-Setup-the-Wifi-Module-ESP8266-by-Usin/
