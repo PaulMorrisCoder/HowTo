@@ -12,3 +12,7 @@ https://www.youtube.com/watch?v=ImVK5cGVrpQ
 
 Learn How to Setup the Wifi Module ESP8266 by Using Just Arduino IDE
 https://www.instructables.com/id/Learn-How-to-Setup-the-Wifi-Module-ESP8266-by-Usin/
+
+Arduino Mega 2560 with ESP8266 (ESP-01) Wifi, AT Commands and Blynk
+https://www.youtube.com/watch?v=YLKEZtLhfZo
+
