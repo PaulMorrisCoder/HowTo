@@ -16,3 +16,6 @@ https://www.instructables.com/id/Learn-How-to-Setup-the-Wifi-Module-ESP8266-by-U
 Arduino Mega 2560 with ESP8266 (ESP-01) Wifi, AT Commands and Blynk
 https://www.youtube.com/watch?v=YLKEZtLhfZo
 
+Connect an ESP8266 module to an Arduino Nano and control it with Blynk
+https://home.et.utwente.nl/slootenvanf/2018/03/17/connect-esp8266-control-blynk/
+
